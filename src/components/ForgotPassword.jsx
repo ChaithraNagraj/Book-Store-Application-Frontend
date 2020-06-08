@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { Card } from '@material-ui/core';
+import { withRouter } from "react-router-dom";
 
 export default class ForgotPassword extends Component{
     constructor(props) {

@@ -5,6 +5,10 @@ import Login from './components/Login';
 import UpdatePassword from './components/UpdatePassword';
 import ForgotPassword from './components/ForgotPassword';
 import VerifyUser from './components/VerifyUser';
+import Registration from './components/Registration'
+import ResetPassword from './components/ResetPassword'
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
 function App() {
   return (
     <div className="App">
@@ -23,10 +27,20 @@ function App() {
           Learn React
         </a>
       </header> */}
+      {/* <Registration/>
+      <ResetPassword/>
       <Login/>
       <UpdatePassword/>
       <ForgotPassword/>
-      <VerifyUser/>
+      <VerifyUser/> */}
+      <Router>
+      <Route path="/" component={Registration}></Route>
+      <Route path="/ResetPassword" component={ResetPassword}></Route>
+
+
+
+
+      </Router>
     </div>
   );
 }

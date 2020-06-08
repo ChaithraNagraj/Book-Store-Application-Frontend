@@ -5,6 +5,7 @@ import { Card } from '@material-ui/core';
 // import userService from '../service/userService';
 import { IconButton, Snackbar } from '@material-ui/core';
 // import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
+import { withRouter } from "react-router-dom";
 
 export default class UpdatePassword extends Component {
 
