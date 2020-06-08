@@ -35,7 +35,11 @@ function App() {
       <VerifyUser/> */}
       <Router>
       <Route path="/" component={Registration}></Route>
+      <Route path="/Login" component={Login}></Route>
+      <Route path="/UpdatePasswword" component={UpdatePassword}></Route>
       <Route path="/ResetPassword" component={ResetPassword}></Route>
+      <Route path="/verifyUser" component={VerifyUser}></Route>
+
 
 
 
