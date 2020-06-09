@@ -3,7 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import Login from './components/Login';
 import UpdatePassword from './components/UpdatePassword';
-
+import ForgotPassword from './components/ForgotPassword';
+import VerifyUser from './components/VerifyUser';
 function App() {
   return (
     <div className="App">
@@ -24,6 +25,8 @@ function App() {
       </header> */}
       <Login/>
       <UpdatePassword/>
+      <ForgotPassword/>
+      <VerifyUser/>
     </div>
   );
 }
