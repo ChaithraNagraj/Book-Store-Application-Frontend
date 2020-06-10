@@ -8,6 +8,7 @@ import VerifyUser from './components/VerifyUser';
 import Registration from './components/Registration'
 import ResetPassword from './components/ResetPassword'
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import AddBook from './components/AddBook';
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
           Learn React
         </a>
       </header> */}
-      {/* <Registration/>
+      {/* <Registration/>v 
       <ResetPassword/>
       <Login/>
       <UpdatePassword/>
@@ -35,6 +36,7 @@ function App() {
       <VerifyUser/> */}
       <Router>
       <Route path="/" component={Registration}></Route>
+      <Route path="/AddBook" component={AddBook}></Route>
       <Route path="/Login" component={Login}></Route>
       <Route path="/UpdatePasswword" component={UpdatePassword}></Route>
       <Route path="/ResetPassword" component={ResetPassword}></Route>

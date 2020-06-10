@@ -132,10 +132,10 @@ class Registration extends Component {
     }
     render() {
         return (
-            <div className>
+            <div className="registration-container">
                 {/* <div className="registerForm"> */}
 
-                <Card className>
+                <Card className="registration-card">
                     {/* <Card className="formCard"> */}
 
                     {/* <h1>This is from card div</h1> */}
@@ -229,8 +229,9 @@ class Registration extends Component {
 
 
 
-                            <div style={{ width: '92%', marginLeft: '390px', paddingBottom: '20px' }} >
-                                <div style={{ width: '92%', marginLeft: '-300px', paddingBottom: '20px' }} className="typeRadio">Type of Registration</div>
+                                <div className="regFName"> 
+                            {/* <div style={{ width: '92%', marginLeft: '390px', paddingBottom: '20px' }} >
+                                <div style={{ width: '92%', marginLeft: '-300px', paddingBottom: '20px' }} className="typeRadio">Type of Registration</div> */}
                                 <RadioGroup style ={{allign:"centre"}} aria-label="Type"  name="type" row >
                                     <FormControlLabel value="user"
                                      control={<Radio />} 
