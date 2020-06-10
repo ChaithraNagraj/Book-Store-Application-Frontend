@@ -1,96 +1,93 @@
 import React, { Component } from 'react'
+import { Card, Link } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { Card } from '@material-ui/core';
-// import userService from '../service/userService';
+//import userService from '../service/userService';
 import { IconButton, Snackbar } from '@material-ui/core';
-// import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
+// CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
+import { withRouter } from "react-router-dom";
 
-export default class UpdatePassword extends Component {
 
+export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
 
-            newPassword: '',
-            confirmPassword: '',
+            email: '',
+            password: '',
             Error: false,
             message: ""
         }
     }
 
+
     snackBarClose = () => {
         this.setState({ Error: false });
     }
-    onChangeNewPassword = (event) => {
 
-        var newPassword = event.target.value;
+    onChangeEmail = (event) => {
+
+        var email = event.target.value;
         this.setState({
-            newPassword: newPassword
+            email: email
         })
-
-    }
-    onChangeConfirmPassword = (event) => {
-
-        var confirmPassword = event.target.value;
-        this.setState({
-            confirmPassword: confirmPassword
-        })
-
+        console.log(this.state.email);
     }
 
+    onChangePassword = (event) => {
+
+        var password = event.target.value;
+        this.setState({
+            password: password
+        })
+    }
 
     onSubmit = () => {
-
-        let token = this.props.match.params.token;
-        // console.log(token);
-        if (this.state.newPassword === "" && this.state.confirmPassword === "") {
+        if (this.state.email === "") {
             this.setState({
                 Error: true,
-                message: "Password Field cannot be empty"
+                message: "Email cannot be empty"
             })
         }
-
-        else if (this.state.newPassword !== this.state.confirmPassword) {
+        else if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(this.state.email)) {
             this.setState({
                 Error: true,
-                message: "Passwords not matches"
+                message: 'Please provide a valid email address'
             })
         }
-
-
-
-        else if (this.state.newPassword.length < 4 && this.state.confirmPassword.length < 4) {
+        else if (this.state.password === null || this.state.password.length < 4) {
             this.setState({
                 Error: true,
                 message: "Password should be min 4"
             })
         }
-
-
-
         else {
-            var passwordDetails = {
-                "newPassword": this.state.newPassword,
-                "confirmPassword": this.state.confirmPassword
+            var loginDetails = {
+                "username": this.state.email,
+                "password": this.state.password
             }
-            console.log(passwordDetails);
-            // controller.updatePassword(passwordDetails, token).then((res) => {
-            //     console.log(res.data);
-            //     this.props.history.push("/login")
+            console.log(loginDetails);
+            //             service.userLogin(loginDetails).then((res) => {
+            //     console.log('login res---', res.data.token);
+            //     if (res.data.statuscode === 200) {
+
+            //         localStorage.setItem('token', res.data.token);
+            //         this.props.history.push("/dashboard")
+            //     }
             // }).catch((err) => {
-            //     console.log("in eror");
-            //     console.log("error", err.response)
+            //     console.log("in error");
+            //     console.log("error", err.response.data);
             //     // var msg = err.response.data.message
+            //     this.setState({ message: 'invalid credentials' })
 
-            //     this.setState({ message: 'something went wrong' })
-
-            // });
+            // })
+            console.log('-----', this.state.message);
         }
+        // })
     }
-
     render() {
         return (
+
             <div className="registerForm">
                 <Card className="logincard">
                     <Snackbar
@@ -99,7 +96,7 @@ export default class UpdatePassword extends Component {
                             horizontal: "center",
                         }}
                         open={this.state.Error}
-                        autoHideDuration={6000}
+                        autoHideDuration={2000}
                         onClose={this.snackBarClose}
                         message={<span id="message-id">{this.state.message}</span>}
                         action={
@@ -108,12 +105,10 @@ export default class UpdatePassword extends Component {
                                 {/* <CloseOutlinedIcon /> */}
                             </IconButton>
                         } />
-
-
                     <div className="heading">
                         <div className='register-book-store'>
                             <h1 className='register-h1'>
-                                <span style={{ color: "#2196f3" }}>B</span>
+                            <span style={{ color: "#2196f3" }}>B</span>
                                 <span style={{ color: "#b71c1c" }}>o</span>
                                 <span style={{ color: "#ffc107" }}>o</span>
                                 <span style={{ color: "#1976d2" }}>k</span>
@@ -122,53 +117,53 @@ export default class UpdatePassword extends Component {
                                 <span style={{ color: "#1976d2" }}>o</span>
                                 <span style={{ color: "#ffc107" }}>r</span>
                                 <span style={{ color: "#b71c1c" }}>e</span>
-
                                 </h1>
-
                         </div>
-                        <div className='register-h2'><h2>Update your Password</h2></div>
+                        <div className='register-h2'><h2>Login to BookStore Account</h2></div>
                     </div>
 
                     <div className='register-names'>
 
                         <div>
                             <TextField
-                                id="outlined-password-input"
-                                label="New Password"
+                                id="outlined-email-input"
+                                label="Email"
+                                name="email"
 
-                                type="password"
-                                autoComplete="current-password"
                                 margin="normal"
                                 variant="outlined"
-                                value={this.state.password}
-                                onChange={this.onChangeNewPassword}
+                                value={this.state.email}
+                                onChange={this.onChangeEmail}
                             />
                         </div>
                         <TextField
                             id="outlined-password-input"
-                            label="Confirm Password"
+                            label="Password"
 
                             type="password"
                             autoComplete="current-password"
                             margin="normal"
                             variant="outlined"
-                            value={this.state.password}
-                            onChange={this.onChangeConfirmPassword}
+                            value={this.state.passwors}
+                            onChange={this.onChangePassword}
                         />
                         <div>
                             <Button variant="contained" color="primary" className="loginSubmit"
                                 onClick={this.onSubmit}   >
                                 Submit
-                        </Button>
-
+                            </Button>
+                            <small className="link"><Link href="/forgotPassword" >
+                                ForgotPassword?
+                        </Link></small>
                         </div>
-
+                        <div className="errorMessage">
+                            <span style={{ color: "#b71c1c" }}>{this.state.message}</span>
+                        </div>
                     </div>
 
                 </Card>
             </div>
-
         )
     }
 }
-//export default UpdatePassword;
+// export default Login;

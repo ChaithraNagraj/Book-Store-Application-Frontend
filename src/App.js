@@ -1,10 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Login from './components/Login';
-import UpdatePassword from './components/UpdatePassword';
-import ForgotPassword from './components/ForgotPassword';
-import VerifyUser from './components/VerifyUser';
+import Login from './components/userLogin/Login';
+import UpdatePassword from './components/userLogin/UpdatePassword';
+import ForgotPassword from './components/userLogin/ForgotPassword';
+import VerifyUser from './components/userLogin/VerifyUser';
 function App() {
   return (
     <div className="App">
