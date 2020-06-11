@@ -4,7 +4,7 @@ import { Card, Snackbar, IconButton } from "@material-ui/core";
 //import CloseOutlinedIcon from "@material-ui/icons/CloseOutlined";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import controller from '../service/UserService'
+// import controller from '../service/UserService'
 import Select from '@material-ui/core/Select';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -105,17 +105,17 @@ class Registration extends Component {
             passwordError: this.state.password
         };
 
-        controller.userRegister(registrationData).then(res => {
-            console.log("resp-----", res.data);
-            console.log("this method called to service layer and took response from  there");
-            if (res.status === 201) {
-                alert('Registration succsefully done')
-                this.props.history.push("/Login");
-            } else {
-                alert('Registration failed')
-            }
+        // controller.userRegister(registrationData).then(res => {
+        //     console.log("resp-----", res.data);
+        //     console.log("this method called to service layer and took response from  there");
+        //     if (res.status === 201) {
+        //         alert('Registration succsefully done')
+        //         this.props.history.push("/Login");
+        //     } else {
+        //         alert('Registration failed')
+        //     }
 
-        });
+        // });
 
 
     }
@@ -132,10 +132,10 @@ class Registration extends Component {
     }
     render() {
         return (
-            <div className="registration-container">
+            <div className>
                 {/* <div className="registerForm"> */}
 
-                <Card className="registration-card">
+                <Card className>
                     {/* <Card className="formCard"> */}
 
                     {/* <h1>This is from card div</h1> */}
@@ -229,9 +229,8 @@ class Registration extends Component {
 
 
 
-                                <div className="regFName"> 
-                            {/* <div style={{ width: '92%', marginLeft: '390px', paddingBottom: '20px' }} >
-                                <div style={{ width: '92%', marginLeft: '-300px', paddingBottom: '20px' }} className="typeRadio">Type of Registration</div> */}
+                            <div style={{ width: '92%', marginLeft: '390px', paddingBottom: '20px' }} >
+                                <div style={{ width: '92%', marginLeft: '-300px', paddingBottom: '20px' }} className="typeRadio">Type of Registration</div>
                                 <RadioGroup style ={{allign:"centre"}} aria-label="Type"  name="type" row >
                                     <FormControlLabel value="user"
                                      control={<Radio />} 
