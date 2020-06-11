@@ -49,7 +49,7 @@ export default class ToolBar extends Component {
   render() {
     return (
       <div>
-        <AppBar position="static" style={{ backgroundColor: ' #800000	', position: 'fixed', top: '0' }}>
+        <AppBar position="static" style={{ backgroundColor: ' #008060', position: 'fixed', top: '0' }}>
           <Toolbar>
             <Icon
               edge="start"
