@@ -2,8 +2,8 @@ import React from 'react';
 import { Card, TextField, Snackbar, IconButton, Button } from '@material-ui/core'
 import { withRouter } from "react-router-dom";
 
-
-import controller from '../service/UserService'
+// import UserService from './service/UserService';
+//import UserService from '../service/UserService'
 
 export default class Resetpassword extends React.Component {
     constructor(props) {
@@ -50,13 +50,13 @@ export default class Resetpassword extends React.Component {
                 "password": this.state.password
             }
             console.log("Reset Password Component data", data)
-            controller.resetPassword(data).then(res => {
-                console.log("Response after hitting reset password api >> ", data);
-                this.props.history.push('/')
+            // service.resetPassword(data).then(res => {
+            //     console.log("Response after hitting reset password api >> ", data);
+            //     this.props.history.push('/')
 
-            }).catch(error => {
-                console.log("Error after hitting reset password api  ", error);
-            })
+            // }).catch(error => {
+            //     console.log("Error after hitting reset password api  ", error);
+            // })
         }
     }
     handleClose = () => {
