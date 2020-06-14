@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
+//  import './App.css';
 // import "./card.scss"
 import Card from '@material-ui/core/Card';
 import { Container } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
-// import OrderPlaced from  './components/cart/OrderPlaced'
+// import OrderPlaced from './components/OrderPlaced'
 import RemoveRoundedIcon from '@material-ui/icons/RemoveRounded';
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-// import controller from '../service/UserService';
+import controller from '../service/UserService';
 import TextField from '@material-ui/core/TextField';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -20,7 +21,10 @@ import Radio from '@material-ui/core/Radio';
 
 
 
-export class cart extends Component {
+
+export class Cart extends Component {
+
+    
     constructor(props) {
         super(props)
 
@@ -124,15 +128,42 @@ export class cart extends Component {
     }
 
     removeFromCart = event => {
-        
+        // controller.removeFromCart(somedata).then =>{
+        //     console.log("resp-----", res.data);
+        //     console.log("this method called to service layer and took response from  there");
+        //     if (res.status === 201) {
+        //         alert('Registration succsefully done')
+        //         this.props.history.push("/Login");
+        //     } else {
+        //         alert('Registration failed')
+        //     }
+
+        // }
 
     }
 
  
 
     render() {
+        const mystyle = {
+            dislay: "flex",
+            alignitems: "center",
+            padding: "10px",
+            fontFamily: "Arial"
+          };
+          
+    //     const mystyle = cart-component
+    // {
+    //   display: flex;
+    //     align-items :  center;
+    //     justify-content: center;
+    //     height: auto;
+        
+        
+    // };
         return (
-            <div className="cart-component">
+            // <div style={mystyle}>
+            <div className="Customer-address-div">
                    <Container maxWidth="lg">            
                 <div >
                 <Grid item xs={10}>
@@ -274,7 +305,7 @@ export class cart extends Component {
                                                     }):null
                                                 }
                                                 <div className="checkout-div">
-                                                    <button className="checkout-button"
+                                                    <button 
                                                         onClick={this.orderPlacedPageHandler}
                                                     >CHECKOUT</button>
                                                 </div>
@@ -314,6 +345,6 @@ export class cart extends Component {
     }
 }
 
-export default cart
+export default Cart
 
 

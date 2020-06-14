@@ -609,7 +609,8 @@ display: flex;
     align-items: center;
     justify-content: center;
     height: auto;
-       
+    
+    
 }
 
 .form-group{
@@ -1244,4 +1245,6 @@ margin-left: -116px;
   width: 300px;
   
   
+
+
 }

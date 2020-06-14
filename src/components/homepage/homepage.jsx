@@ -25,8 +25,28 @@ class Home extends React.Component {
         
     }
 
-    componentDidMount() {
-        this.getAllBooks();
+    // componentDidMount() {
+    //     this.getAllBooks();
+    // }
+    componentWillMount() {
+        this.setState({
+            books: [
+                {
+                    id: 1,
+                    title: "Don't Make Me to think",
+                    author: "Steven King",
+                    price: 150,
+                    image:""
+                }
+                //  {
+                //     id: 2,
+                //     title: "Java for Beginners",
+                //     author: "kalpesh mali",
+                //     price: 250,
+                //     image:""
+                // }
+            ]
+        });
     }
 
     

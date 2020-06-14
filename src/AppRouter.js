@@ -1,8 +1,10 @@
 import React from 'react';
+import './App.css';
+
 import { BrowserRouter, Route } from 'react-router-dom';
 import homepage from './components/homepage/homepage';
 import user from './components/user/Login';
-import cart from './components/cart/cart';
+import cart from './components/cart';
 import Registration from './components/user/Registration';
 
 
