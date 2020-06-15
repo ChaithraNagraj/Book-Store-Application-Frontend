@@ -99,60 +99,7 @@ class Home extends React.Component {
                             <LowerBar data={this.state.books.length} function={this.setbooks} />
                         </div>
                         <div>
-                        <div className="Customer-address-div">
-                            {
-                                this.state.books.map(books => {
-                                    return(
-                                        <div>
-                                        <div>
-                                            <div className="book-details-div">
-
-                                            <div className="img-book">
-                                                                <img src={"books.image"} className="order-logo" />
-                                              </div>
-                                                
-                                            {/* <CardActionArea >
-                    <div className="bookImage">
-                        <img alt="" width="100px" height="130px" />
-                    </div>
-                </CardActionArea> */}
-                <div className="aligncontentbesidepic">
-                                    <div >
-                                        
-                                                <h4 className="h4-div">{books.title}</h4>
-
-                                            </div>
-                                            <div className="author-name-div">
-                                                <p>{books.author}</p>
-
-                                            </div>
-                                            <div className="book-price-div">
-                                                <p>Rs.{books.price}</p>
-                                            </div>
-                                            <div className="quantity-div">
-                                                {/* <button className="minus-btn" onClick={this.substractQuantity}><RemoveRoundedIcon className="icon" /></button> */}
-
-                                                {/* <div className="input-type">
-                                                    {this.state.quantity}
-                                                </div> */}
-                                                {/* <input type="text"  className="input-type"> */}
-
-                                                {/* <button className="" onClick={this.addQuantity}><AddRoundedIcon className="icon" /></button> */}
-                                                {/* <button className="" onClick={() => this.removeFromCart(books.cartId)} >Remove</button> */}
-                                            </div>
-                                        </div>   
-                         </div>               
-                                            {/* <div className="bookButtons">
-                    <Button variant="outlined" style={{ backgroundColor: '#A03037', color: 'white', width: '40%', height: '10%', fontSize: '10px' }} onClick={() => this.buyBook(this.props.data)}>buynow</Button>
-                </div> */}
-               
-                                        </div>
-
-                                    </div>
-                                    )
-                                })
-                            }
-                        </div>
+                        
 
                         </div>
                         
