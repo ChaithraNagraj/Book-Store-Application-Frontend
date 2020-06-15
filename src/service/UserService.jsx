@@ -1,24 +1,24 @@
-// import AxiosServices from './AxioServices'
-import axios from 'axios'
-
-
+import axios from 'axios';
 let headers = {
     'Content-Type': 'application/json'
 }
 
-var controller = {
+export var controller = {
     userRegister(registrationData){
-        return axios.post("http://localhost:8080/user/Registration", registrationData, {
+        return axios.post("http://localhost:8080/user/register", registrationData, {
             headers: headers
             
         });
+    },
+    userLogin(loginData){
+        return axios.post("http://localhost:8080/login",loginData, {
+            headers: headers
+        });
+    },
+    forgetPassword(email){
+        return axios.post("http://localhost:8080/forgetPassword",email,{
+            headers : headers
+        });
     }
-    
-    // resetPassword(data){
-    //     return axios.post("http://local:8080/user/ResetPasssword",data,{
-    //         headers:headers
-    //     });
-    // }
-   
 }
-export default controller;
+// export default controller;

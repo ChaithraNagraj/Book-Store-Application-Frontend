@@ -5,6 +5,8 @@ import { Card, Snackbar, IconButton } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 // import controller from '../service/UserService';
+import { controller } from '../../service/UserService.jsx';
+
 import Select from '@material-ui/core/Select';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -108,17 +110,17 @@ class Registration extends Component {
 
         // commenting it for time being
 
-        // controller.userRegister(registrationData).then(res => {
-        //     console.log("resp-----", res.data);
-        //     console.log("this method called to service layer and took response from  there");
-        //     if (res.status === 201) {
-        //         alert('Registration succsefully done')
-        //         this.props.history.push("/Login");
-        //     } else {
-        //         alert('Registration failed')
-        //     }
+        controller.userRegister(registrationData).then(res => {
+            console.log("resp-----", res.data);
+            console.log("this method called to service layer and took response from  there");
+            if (res.status === 201) {
+                alert('Registration succsefully done')
+                this.props.history.push("/Login");
+            } else {
+                alert('Registration failed')
+            }
 
-        // });
+        });
 
 
     }
