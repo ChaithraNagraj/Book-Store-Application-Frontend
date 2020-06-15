@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 //  import './App.css';
 // import "./card.scss"
+
 import Card from '@material-ui/core/Card';
 import { Container } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
@@ -35,20 +36,36 @@ export class Cart extends Component {
             // i m taking this dummy data for checking purpose
 
             book: [],
-            //title : "Dont Make Me Think",
-            //    author:"Steven King",
-            //    price,1500
-            total:'',
+           
+            total:"1500",
             showCustomerDetails:false,
             showOrderSummery: false,
             showOrderPlacedPage: false,
+            sameBook: 1,
+            name: "",
+            phoneNumber: 0,
+            pincode: 0,
+            locality: "",
+            city: "",
+            address: "",
+            landmark: "",
+            type: "",
+            email: "",
+            
+
+
 
 
 
 
 
         }
+      
+    
+       
     }
+      
+         
     componentWillMount() {
         this.setState({
             book: [
@@ -56,8 +73,9 @@ export class Cart extends Component {
                     id: 1,
                     title: "Don't Make Me to think",
                     author: "Steven King",
-                    price: 150,
-                    image:""
+                    price: 1500,
+                    image:"C:\Users\Shilpa\Documents\React\Book-Store-Application-Frontend\src\assets\dontMakeMeThink.jpg",
+
                 }
                 //  {
                 //     id: 2,
@@ -68,46 +86,149 @@ export class Cart extends Component {
                 // }
             ]
         });
+        this.setState({
+            total:this.state.book.price
+        })
+        
     }
+    nameHandler = (event) => {
+        const name = event.target.value;
+        console.log("name", name);
+        this.setState({
+            name: name,
+        })
+    }
+    phoneNumberHandler = (event) => {
+        const phoneNumber = event.target.value;
+        console.log('phoneNumber', phoneNumber)
+        this.setState({
+            phoneNumber: phoneNumber
+        })
+    }
+
+    pincodeHandler = (event) => {
+        const pincode = event.target.value;
+        console.log("pincode", pincode);
+        this.setState({
+            pincode: pincode
+        })
+    }
+    localityHandler = (event) => {
+        const locality = event.target.value;
+        console.log('locality', locality)
+        this.setState({
+            locality: locality
+        })
+    }
+    cityHandler = (event) => {
+        const city = event.target.value;
+        console.log("city", city);
+        this.setState({
+            city: city,
+        })
+    }
+    addressHandler = (event) => {
+        const address = event.target.value;
+        console.log('address', address)
+        this.setState({
+            address: address
+        })
+    }
+    landmarkHandler = (event) => {
+        const landmark = event.target.value;
+        console.log("landmark", landmark);
+        this.setState({
+            landmark: landmark,
+        })
+    }
+    typeHandler = (event) => {
+        const type = event.target.value;
+        console.log('type', type)
+        this.setState({
+            type: type
+        })
+    }
+    addCustomerDetailsHandler = (event) => {
+        event.preventDefault();
+        //const email = window.sessionStorage.getItem('email');
+        //console.log(`email is ${email}`);
+        var data = {
+            email: this.state.email,
+            fullName: this.state.name,
+            phoneNumber: this.state.phoneNumber,
+            address: this.state.address,
+            pincode: this.state.pincode,
+            citytown: this.state.city,
+            landmark: this.state.landmark,
+            addressType: this.state.type
+        }
+        //need to write method to send data to db
+
+    }
+
+    
 
     addQuantity = event => {
         let count=this.state.quantity;
+        let a=this.state.price;
+        
 
-        this.setState({
+        
+        if(this.state.quantity<=5){
+           
+
+this.setState({
             quantity: count + 1
-        })
+
+
+        });
+
+        this.state.book.forEach(book=>{
+           this.state.total = book.price*count;
+        });
+    }else{
+        alert(" oops!!!! totol 5 items can be avaible in a cart ")
     }
+    
+        
+    }
+
+
 
     substractQuantity = event => {
         let count=this.state.quantity;
 
+        if(this.state.quantity>=2){
+
+        
         this.setState({
-            quantity : count - 1
-        })
+            quantity: count - 1
+
+
+        });
+
+        this.state.book.forEach((book)=>{
+            this.state.total = this.state.total-book.price;
+         });
+        }else{
+            alert("quanity cannot be zero")
+        }
     }
-    placeorder = evetn => {
+    placeorder = event => {
         this.setState({
             placeorder : true
         })
     }
-    // buyBook(items) {
-    //     this.props.function(items)
-    // }
+   
     totalCost(){
         let total = 0;
         this.state.book.forEach((book)=>{
-            total += book.price;
+            total = book.price;
         });
         console.log("the total price is" + total)
 
-        return <div>${total}</div>
     }
-    // customerDetailsShowHandler = async () => {
-    //     let doesShowCustomerDetails = this.state.showCustomerDetails;
-    //     await this.setState({
-    //         showCustomerDetails: !doesShowCustomerDetails
-    //     })
-    // }
+    
      
     customerDetailsShowHandler = (event) => {
         this.setState({
@@ -128,64 +249,38 @@ export class Cart extends Component {
     }
 
     removeFromCart = event => {
-        // controller.removeFromCart(somedata).then =>{
-        //     console.log("resp-----", res.data);
-        //     console.log("this method called to service layer and took response from  there");
-        //     if (res.status === 201) {
-        //         alert('Registration succsefully done')
-        //         this.props.history.push("/Login");
-        //     } else {
-        //         alert('Registration failed')
-        //     }
-
-        // }
+        //need to write wen service layer is ready**
+        
 
     }
 
  
 
     render() {
-        const mystyle = {
-            dislay: "flex",
-            alignitems: "center",
-            padding: "10px",
-            fontFamily: "Arial"
-          };
+        
           
-    //     const mystyle = cart-component
-    // {
-    //   display: flex;
-    //     align-items :  center;
-    //     justify-content: center;
-    //     height: auto;
-        
-        
-    // };
+   
         return (
-            // <div style={mystyle}>
             <div className="Customer-address-div">
                    <Container maxWidth="lg">            
                 <div >
                 <Grid item xs={10}>
-                        <div className="Customer-address-div">                                          
+                        <div  className="Customer-address-div">    
+                                      
                             {
                                 this.state.book.map(book => {
                                     return (
                                         <div>
                                             <div>
-                                                <div className="book-details-div">
+                                                <div className="book-details-div" >
 
                                                 <div className="img-book">
                                                                     <img src={"book.image"} className="order-logo" />
                                                   </div>
                                                     
-                                                {/* <CardActionArea >
-                        <div className="bookImage">
-                            <img alt="" width="100px" height="130px" />
-                        </div>
-                    </CardActionArea> */}
-                    <div className="aligncontentbesidepic">
-                                        <div >
+                                
+                                          <div className="aligncontentbesidepic">
+                                             <div >
                                             
                                                     <h4 className="h4-div">{book.title}</h4>
 
@@ -197,30 +292,48 @@ export class Cart extends Component {
                                                 <div className="book-price-div">
                                                     <p>Rs.{book.price}</p>
                                                 </div>
-                                                <div className="quantity-div">
-                                                    <button className="minus-btn" onClick={this.substractQuantity}><RemoveRoundedIcon className="icon" /></button>
+                                                
+                                                <div className="book-price-div">
+                                                    <p>totalprice{this.state.quantity * book.price}</p>
+                                                </div>
 
-                                                    <div className="input-type">
+
+                                                <div className="quantity-div">
+                                                    <button className="minus-btn" 
+                                                    onClick={this.substractQuantity} >
+                                                        <RemoveRoundedIcon className="icon" />
+                                                        </button>
+
+                                                    <div className="input-type" >
                                                         {this.state.quantity}
                                                     </div>
-                                                    {/* <input type="text"  className="input-type"> */}
 
-                                                    <button className="" onClick={this.addQuantity}><AddRoundedIcon className="icon" /></button>
-                                                    <button className="" onClick={() => this.removeFromCart(book.cartId)} >Remove</button>
+                                                                                              
+
+                                                    <div >
+                                                           
+                                                       <button   onClick={this.addQuantity} ><AddRoundedIcon className="icon" /></button>
+                                                       
+
+                                                           
+                                                    </div>
+                                                    <button className="" key ={book.id} onClick={() => this.removeFromCart(book.cartId)} >Remove</button>
+                                                    
+                                                
                                                 </div>
                                             </div>   
                              </div>               
-                                                {/* <div className="bookButtons">
-                        <Button variant="outlined" style={{ backgroundColor: '#A03037', color: 'white', width: '40%', height: '10%', fontSize: '10px' }} onClick={() => this.buyBook(this.props.data)}>buynow</Button>
-                    </div> */}
+                         
                    
                                             </div>
 
                                         </div>
-                                    )
+                                    );
+                                   
                                 })
                                
                             }
+                           
                             
                             {
                                 this.state.cartItem!=0 ? 
@@ -241,19 +354,47 @@ export class Cart extends Component {
                                                     this.state.showCustomerDetails ?
                                                         <form >
                                                             <div className="form-group">
-                                                                <input type="text" placeholder='Name' id="name" className="form-control " onChange={this.nameHandler} />
-                                                                <input type="text" placeholder='Phone number' id="phoneNumber" className="form-control " onChange={this.phoneNumberHandler} />
+                                                                <input type="text" 
+                                                                placeholder='Name' 
+                                                                id="name" 
+                                                                className="form-control "
+                                                                 onChange={this.nameHandler} />
+                                                                 
+                                                                <input type="text"
+                                                                 placeholder='Phone number'
+                                                                  id="phoneNumber" 
+                                                                  className="form-control "
+                                                                   onChange={this.phoneNumberHandler} />
                                                             </div>
                                                             <div className="form-group">
-                                                                <input type="text" placeholder='pincode' id="pincode" className="form-control " onChange={this.pincodeHandler} />
-                                                                <input type="text" placeholder='locality' id="locality" className="form-control " onChange={this.localityHandler} />
+                                                                <input type="text" 
+                                                                placeholder='pincode'
+                                                                 id="pincode" className="form-control " 
+                                                                 onChange={this.pincodeHandler} />
+                                                                <input type="text" 
+                                                                placeholder='locality'
+                                                                 id="locality" className="form-control "
+                                                                  onChange={this.localityHandler} />
                                                             </div>
                                                             <div className="form-group">
-                                                                <input type="text" placeholder='city/town' id="city" className="form-control " onChange={this.cityHandler} />
-                                                                <input type="text" placeholder='landmark' id="landmark" className="form-control " onChange={this.landmarkHandler} />
+                                                                <input type="text" 
+                                                                placeholder='city/town'
+                                                                 id="city" 
+                                                                 className="form-control "
+                                                                  onChange={this.cityHandler} />
+
+                                                                <input type="text" 
+                                                                placeholder='landmark' 
+                                                                id="landmark" 
+                                                                className="form-control " 
+                                                                onChange={this.landmarkHandler} />
                                                             </div>
                                                             <div className="form-group">
-                                                                <input type="text" placeholder='address' id="address" className="address-group " onChange={this.addressHandler} />
+                                                                <input type="text" 
+                                                                placeholder='address'
+                                                                 id="address" 
+                                                                 className="address-group " 
+                                                                 onChange={this.addressHandler} />
                                                             </div>
                                                             <div className="type-div">
                                                                 <label >Type</label>
@@ -312,39 +453,17 @@ export class Cart extends Component {
                                             </div>
                                         </Grid>
 
-                    {/* </Card> */}
-                    {/* commenting for some purpose */}
-                    {/* {this.checkOut()} */}
+                   
                 </div>
-
-                {/* <Container maxWidth="lg">
-                    <div className="grid-div">
-                        <Grid container spacing={5}>
-                            <Grid item xs={10}>
-                                <div className="cart-title-div">
-                                    <h3 className="my-cart-h4">My Cart</h3>
-                                    
-
-                                </div>
-                            </Grid>
-                        </Grid> */}
-                {/* </div> */}
-
-
-
-
-
-
-
-
-
-                </Container>
+                            </Container>
 
             </div>
         )
     }
 }
 
-export default Cart
+export default Cart;
+
+
 
 
