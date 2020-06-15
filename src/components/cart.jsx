@@ -76,14 +76,14 @@ export class Cart extends Component {
                     price: 1500,
                     image:"C:\Users\Shilpa\Documents\React\Book-Store-Application-Frontend\src\assets\dontMakeMeThink.jpg",
 
+                },
+                 {
+                    id: 2,
+                    title: "Java for Beginners",
+                    author: "kalpesh mali",
+                    price: 250,
+                    image:""
                 }
-                //  {
-                //     id: 2,
-                //     title: "Java for Beginners",
-                //     author: "kalpesh mali",
-                //     price: 250,
-                //     image:""
-                // }
             ]
         });
         this.setState({
@@ -168,7 +168,7 @@ export class Cart extends Component {
 
     
 
-    addQuantity = event => {
+    addQuantity =  async (cartId) => {
         let count=this.state.quantity;
         let a=this.state.price;
         
@@ -275,7 +275,7 @@ this.setState({
                                                 <div className="book-details-div" >
 
                                                 <div className="img-book">
-                                                                    <img src={"book.image"} className="order-logo" />
+                                                                    <img src={"C:\Users\Shilpa\Desktop"} className="order-logo" />
                                                   </div>
                                                     
                                 
@@ -311,10 +311,12 @@ this.setState({
                                                                                               
 
                                                     <div >
+                                                    {/* <button className="" key ={book.id} onClick={() => this.addQuantity(book.cartId)} ></button> */}
+
                                                            
                                                        <button   onClick={this.addQuantity} ><AddRoundedIcon className="icon" /></button>
                                                        
-
+ 
                                                            
                                                     </div>
                                                     <button className="" key ={book.id} onClick={() => this.removeFromCart(book.cartId)} >Remove</button>
