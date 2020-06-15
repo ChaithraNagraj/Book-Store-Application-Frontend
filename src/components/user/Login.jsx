@@ -6,6 +6,8 @@ import Button from '@material-ui/core/Button';
 import { IconButton, Snackbar } from '@material-ui/core';
 // CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
 import { withRouter } from "react-router-dom";
+// import "../login.scss";
+import "./login.css";
 
 
 export default class Login extends Component {
@@ -152,9 +154,15 @@ export default class Login extends Component {
                                 onClick={this.onSubmit}   >
                                 Submit
                             </Button>
-                            <small className="link"><Link href="/forgotPassword" >
-                                ForgotPassword?
+                            <small className="link"><Link href="/Registration" >
+                                Clich Here To Register
                         </Link></small>
+                        {/* <small className="link"><Link href="../../Registration" >
+
+                                Register-Here?
+
+                        </Link></small> */}
+
                         </div>
                         <div className="errorMessage">
                             <span style={{ color: "#b71c1c" }}>{this.state.message}</span>

@@ -5,10 +5,14 @@ import Toolbar from '@material-ui/core/Toolbar';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import MenuBookTwoToneIcon from '@material-ui/icons/MenuBookTwoTone';
-import { getMethod } from '../../service/httpService';
+import { getMethod } from '../../service/httpService.jsx';
 import Icon from "@material-ui/core/Icon";
-// import "./css/headerBar";
-// import "./headerBar.scss";
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import "./headerbar.css";
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+// import PermIdentityIcon from '@material-ui/icons/PermIdentity';
+// import headerBar from '../../headerBar.scss';
+
 export default class ToolBar extends Component {
 
   constructor(props) {
@@ -17,7 +21,25 @@ export default class ToolBar extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleGoToHome = this.handleGoToHome.bind(this);
+    // this.handleGoToLogin=this.handleGoToLogin.bind(this);
+    this.handleGoToCart=this.handleGoToCart.bind(this);
+    this.showDropdownMenu = this.showDropdownMenu.bind(this);
+    this.hideDropdownMenu = this.hideDropdownMenu.bind(this);
+
   }
+showDropdownMenu(event) {
+         event.preventDefault();
+         this.setState({ displayMenu: true }, () => {
+         document.addEventListener('click', this.hideDropdownMenu);
+         });
+       }
+     
+       hideDropdownMenu() {
+         this.setState({ displayMenu: false }, () => {
+           document.removeEventListener('click', this.hideDropdownMenu);
+         });
+     
+       }
 
   handleChange(value) {
     this.setState({ value: value.target.value });
@@ -29,6 +51,18 @@ export default class ToolBar extends Component {
     window.location.reload(false);
 
   }
+  // handleGoToLogin(event)
+  // {
+  //   // window.location='bookstorefrontend/src/components/user/Login.jsx';
+  //   window.location.assign('../../Login');
+  //   // window.location.assign('../../Registration');
+  // }
+
+handleGoToCart(event)
+{
+  window.location.assign('../../cart');
+}
+
 
   search() {
     let path = {
@@ -49,7 +83,7 @@ export default class ToolBar extends Component {
   render() {
     return (
       <div>
-        <AppBar position="static" style={{ backgroundColor: ' #800000	', position: 'fixed', top: '0' }}>
+        <AppBar position="static" style={{ backgroundColor: '#A03037', position: 'fixed', top: '0' }}>
           <Toolbar>
             <Icon
               edge="start"
@@ -61,17 +95,53 @@ export default class ToolBar extends Component {
               <MenuBookTwoToneIcon />
             </Icon>
             <Typography onClick={() => this.handleGoToHome()}  style={{ marginLeft: '1%' }} variant="h6" noWrap>
-              Bookstore    
+              Bookstore
             </Typography>
           
             <div className="searchBar">
-              <SearchIcon style={{ color: '#ffffff', margin: '1%' }} />
+              <SearchIcon style={{ color: 'grey', margin: '1%' }} />
               <InputBase
-                placeholder="Type author, book name, subject, keyword..."
-                style={{ width: '100%',color: '#ffffff' }}
+                placeholder="Search…"
+                style={{ width: '100%' }}
                 value={this.state.value} onChange={(value) => this.handleChange(value)}
               />
             </div>
+            {/* <div className="PermIdentityIcon">
+              <PermIdentityIcon style={{ color: 'white', margin: '1%' }} />
+              </div> */}
+             <div className="dropdown" style = {{ color:' white', marginLeft: '12%',width:"180px"}} >
+             {/* <div className="PermIdentityIcon">
+              <PermIdentityIcon style={{ color: 'white', margin: '1%' }} />
+              </div> */}
+
+         <div className="Sign" onClick={this.showDropdownMenu}varient="h9" noWrap>       
+            <AccountCircleIcon style={{ color: 'white', margin: '-1%'}} />
+             Hello,Sign-in Accounts&Lists</div>
+
+          { this.state.displayMenu ? (
+           <ul> 
+         <li><a href="../../Login">Login</a></li> 
+          <li><a href="/Account">Account Details</a></li> 
+         <li><a href="/orders">Your orders</a></li> 
+         <li><a href="/wishlist">Your wishlist</a></li> 
+
+         </ul> 
+        ):
+        (
+          null
+        )
+      }  
+             </div>
+             {/* <div className="PermIdentityIcon">
+              <PermIdentityIcon style={{ color: 'white', margin: '15%' }} />
+              </div> */}
+
+           <Typography onClick={() => this.handleGoToCart()}  style={{ marginLeft: '1%' }} variant="h9" noWrap>
+             Cart
+            </Typography>
+            <div className="ShoppingCart">
+              <ShoppingCartIcon style={{ color: 'white', margin: '15%' }} />
+              </div>
 
           </Toolbar>
         </AppBar>
