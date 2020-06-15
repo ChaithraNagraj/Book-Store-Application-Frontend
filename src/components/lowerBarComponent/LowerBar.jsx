@@ -34,7 +34,59 @@ export default class LowerBar extends Component {
          });
      
        }
-    
+       searchHandler = (event) => {
+        let search = event.target.value;
+        console.log("searching for", search);
+        if (search.toString().length >= 1) {
+            const newData = this.state.books.filter(item => {
+                return (
+                    item.bookTitle.toLowerCase().indexOf(search.toLowerCase()) > -1 ||
+                    item.authorName.toLowerCase().indexOf(search.toLowerCase()) > -1
+                );
+            })
+            this.setState({
+                isSearching: true,
+                filterArray: newData,
+                filterArrayCount: newData.length
+            })
+            console.log("filter array", this.state.filterArray);
+        }
+        else {
+            this.setState({
+                isSearching: false
+            })
+        }
+    }
+    sortingHandler=(event)=>{
+      const selection = event.target.value;
+      let books = this.state.books;
+      if (selection === "Price: low to high")
+      {
+          function compare(a, b){
+          let comparison = 0
+          if(a.bookPrice<b.bookPrice){
+              comparison=-1
+          }
+              return comparison
+          }
+          this.setState({
+              books: books.sort(compare)
+          })
+      }
+      else{
+          function compare(a, b){
+              let comparison = 0
+              if(a.bookPrice > b.bookPrice){
+                  comparison=-1
+              }
+                  return comparison
+              }
+              this.setState({
+                  books: books.sort(compare)
+              })
+      }
+  }
+
     render() {
         return (
             <p>
@@ -45,19 +97,16 @@ export default class LowerBar extends Component {
                         </Typography>
                         <div className="dropdown" style = {{ marginLeft: '60%',background:"white",width:"200px"}} >
          
-         <div className="button" onClick={this.showDropdownMenu}> Sort by relevance </div>
+         {/* <div className="button" onClick={this.showDropdownMenu}> Sort by relevance </div> */}
 
-          { this.state.displayMenu ? (
-           <ul> 
-         <li><a href="price">Price:High to Low</a></li> 
-          <li><a href="price">Price:Low to High</a></li> 
-         <li><a href="Arrivals">Newest Arrivals</a></li> 
-         </ul> 
-        ):
-        (
-          null
-        )
-        }
+                                <div class="sort-by-div">
+                                    <select onChange={this.sortingHandler} className="select-bar">
+                                        <option >Sort By</option>
+                                        <option>Price: high to low</option>
+                                        <option>Price: low to high</option>
+                                        <option>Newest arrivals</option>
+                                    </select>
+                                </div>
 
        </div>
              </Toolbar>
