@@ -199,6 +199,10 @@ class Home extends React.Component {
 
                         </div>
                         </div>
+                        <div>
+                        
+
+                        </div>
                         
                         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '3%', marginTop: '2%' }}>
                             <CustomPaginationActionsTable perPage={this.state} function={this.setPageNumber}
@@ -208,6 +212,11 @@ class Home extends React.Component {
                             
                         </div>
                     </div>
+                   
+                
+                        
+
+                   
                      
 
                     <div style={this.state.orderState ? { display: 'block' } : { display: 'none' }}>
