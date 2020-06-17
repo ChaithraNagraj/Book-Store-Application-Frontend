@@ -12,12 +12,12 @@ class Home extends React.Component {
         this.state = {
             books: [],
             currentPage: 1,
-            todosPerPage: 12,
+            todosPerPage:3,
             bookState: true,
             orderState: false,
             finalPage: false,
             selectedbook: {},
-            maxNumOfPage: 1,
+            maxNumOfPage:1,
             orderId: 0
         }
         this.setbooks = this.setbooks.bind(this);
@@ -133,7 +133,7 @@ class Home extends React.Component {
                             clickedId={this.state.clickedId} 
                             /> */}
 <div>
-                        <div style={{ display: 'flex', flexDirection: 'row' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column' }}>
                             {
                                 this.state.books.map(books => {
                                     return(
