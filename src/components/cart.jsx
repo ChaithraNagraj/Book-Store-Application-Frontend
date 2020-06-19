@@ -79,6 +79,7 @@ export class Cart extends Component {
          
     componentWillMount() {
         //this method will bring the books which are in cart table and number of quantity
+        //
            Promise.all([getCartAddedCountRequestMethod(), getCartValuesRequestMethod()])
             .then(([cartAddedCountResult, getCartValues]) => {
                 this.setState({

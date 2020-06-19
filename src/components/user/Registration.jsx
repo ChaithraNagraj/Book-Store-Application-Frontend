@@ -73,13 +73,13 @@ class Registration extends Component {
         })
     }
 
-    // handleChangeRadio = (event) => {
-    //     console.log("radiobutton****")
+    handleChangeRadio = (event) => {
+        console.log("radiobutton****")
         
-    //     this.setState({     
-    //         role: event.target.value
-    //     })
-    // }
+        this.setState({     
+            role: event.target.value
+        })
+    }
 
     vallidate = () => {
         let nameError = "";
@@ -259,7 +259,7 @@ class Registration extends Component {
                                 {/* <div className="regFName"> 
                             {/* <div style={{ width: '92%', marginLeft: '390px', paddingBottom: '20px' }} >
                                 <div style={{ width: '92%', marginLeft: '-300px', paddingBottom: '20px' }} className="typeRadio">Type of Registration</div> */}
-                                {/* <RadioGroup style ={{allign:"centre"}} aria-label="Type"  name="type" row >
+                                <RadioGroup style ={{allign:"centre"}} aria-label="Type"  name="type" row >
                                     <FormControlLabel value="1"
                                      control={<Radio />} 
                                      onChange={this.handleChangeRadio}
@@ -273,7 +273,7 @@ class Registration extends Component {
                                     label="Seller" />
 
                                     
-                                </RadioGroup> */}
+                                </RadioGroup>
                             </div> 
 
                         </div>
