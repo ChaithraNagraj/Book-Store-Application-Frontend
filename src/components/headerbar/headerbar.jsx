@@ -116,7 +116,7 @@ handleGoToCart(event)
 
          <div className="Sign" onClick={this.showDropdownMenu}varient="h9" noWrap>       
             <AccountCircleIcon style={{ color: 'white', margin: '-1%'}} />
-             Hello,Sign-in Accounts&Lists</div>
+             Hello,Sign-in..</div>
 
           { this.state.displayMenu ? (
            <ul> 

@@ -1,177 +1,107 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Typography } from '@material-ui/core';
 import { Card, Link } from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-//import userService from '../service/userService';
-import { IconButton, Snackbar } from '@material-ui/core';
-// CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
-import { withRouter } from "react-router-dom";
-// import "../login.scss";
 import "./login.css";
-
-
-export default class Login extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-
-            email: '',
-            password: '',
-            Error: false,
-            message: ""
-        }
+import { LoginRequestMethod} from '../../service/LoginServices';
+class Login extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      loginId: "",
+      password: "",
+      role: "",
+      loginAuthentication: false,
+      showError: false
     }
+  }
 
+  loginIdHandler = (event) => {
+    const loginId = event.target.value;
+    console.log("loginId", loginId);
+    this.setState({
+      loginId: loginId,
+    })
+  }
+  passwordHandler = (event) => {
+    const password = event.target.value;
+    console.log('password', password)
+    this.setState({
+      password: password,
+    })
+  }
+  roleHandler = (event) => {
+    const role = event.target.value;
+    console.log('role', role)
+    this.setState({
+      role: role
+    })
+  }
 
-    snackBarClose = () => {
-        this.setState({ Error: false });
+  submitHandler = (event) => {
+    event.preventDefault();
+    var data = {
+      LoginId: this.state.loginId,
+      Password: this.state.password,
+      Role: this.state.role
     }
-
-    onChangeEmail = (event) => {
-
-        var email = event.target.value;
+    sessionStorage.setItem("loginId",this.state.loginId);
+    const response = LoginRequestMethod(data);
+    response.then(res => {
+      console.log(res.data);
+      if (res.data === data.LoginId) {
         this.setState({
-            email: email
+          loginAuthentication: true
         })
-        console.log(this.state.email);
-    }
+      }
+      this.props.history.push('../../homepage');
+    }).catch(() => {
+      //alert("email or password is incorrect");
+      this.setState({
+        showError: true
+      })
+    })
+  }
 
-    onChangePassword = (event) => {
+  render() {
 
-        var password = event.target.value;
-        this.setState({
-            password: password
-        })
-    }
+    return (
+      <>
+              <Card className="logincard">
 
-    onSubmit = () => {
-        if (this.state.email === "") {
-            this.setState({
-                Error: true,
-                message: "Email cannot be empty"
-            })
-        }
-        else if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(this.state.email)) {
-            this.setState({
-                Error: true,
-                message: 'Please provide a valid email address'
-            })
-        }
-        else if (this.state.password === null || this.state.password.length < 4) {
-            this.setState({
-                Error: true,
-                message: "Password should be min 4"
-            })
-        }
-        else {
-            var loginDetails = {
-                "username": this.state.email,
-                "password": this.state.password
-            }
-            console.log(loginDetails);
-            //             service.userLogin(loginDetails).then((res) => {
-            //     console.log('login res---', res.data.token);
-            //     if (res.data.statuscode === 200) {
+                <form className=" container p-5 bg-light text-primary mx-auto" id='form' onSubmit={this.submitHandler} >
+                <div className="form-group" style={{background:'#A03037', marginLeft: '12px' }}>
+            <h1 className='display-3 text-dark'>Login</h1>
+          </div>
+          <div className="form-group">
+            <label for="loginId">LoginId :</label>
+            <input type="text" id="loginId" className="form-control " onChange={this.loginIdHandler} style={{marginRight:'70px'}}/>
 
-            //         localStorage.setItem('token', res.data.token);
-            //         this.props.history.push("/dashboard")
-            //     }
-            // }).catch((err) => {
-            //     console.log("in error");
-            //     console.log("error", err.response.data);
-            //     // var msg = err.response.data.message
-            //     this.setState({ message: 'invalid credentials' })
+          </div>
+          <div className="form-group" style={{ marginTop: '15px', marginnRight:'100px' }}>
+            <label for="password">Password :</label>
+            <input type="password" id="password" className="form-control " onChange={this.passwordHandler} style={{marginRight:'75px'}}/>
+          </div>
+          <div className="form-group" style={{ marginTop: '15px', marginnRight:'100px' }}>
+            <label for="role">Role:</label>
+            <input type="role" id="role" className="form-control " onChange={this.roleHandler}style={{marginRight:'65px'}} />
+          </div>
 
-            // })
-            console.log('-----', this.state.message);
-        }
-        // })
-    }
-    render() {
-        return (
+          {
+            this.state.showError ? <div className="form-group text-danger" id="error">Email or Password is incorrect </div> : null
+          }
+          <button type="submit" className="btn btn-success" id="submitBtn"  style={{ background:' #A03037',margin:'center',color:'Balck' }}>Login</button>
 
-            <div className="registerForm">
-                <Card className="logincard">
-                    <Snackbar
-                        anchorOrigin={{
-                            vertical: "bottom",
-                            horizontal: "center",
-                        }}
-                        open={this.state.Error}
-                        autoHideDuration={2000}
-                        onClose={this.snackBarClose}
-                        message={<span id="message-id">{this.state.message}</span>}
-                        action={
-                            <IconButton
-                                onClick={this.snackBarClose}>
-                                {/* <CloseOutlinedIcon /> */}
-                            </IconButton>
-                        } />
-                    <div className="heading">
-                        <div className='register-book-store'>
-                            <h1 className='register-h1'>
-                            <span style={{ color: "#2196f3" }}>B</span>
-                                <span style={{ color: "#b71c1c" }}>o</span>
-                                <span style={{ color: "#ffc107" }}>o</span>
-                                <span style={{ color: "#1976d2" }}>k</span>
-                                <span style={{ color: "#43a047" }}>S</span>
-                                <span style={{ color: "#b71c1c" }}>t</span>
-                                <span style={{ color: "#1976d2" }}>o</span>
-                                <span style={{ color: "#ffc107" }}>r</span>
-                                <span style={{ color: "#b71c1c" }}>e</span>
-                                </h1>
-                        </div>
-                        <div className='register-h2'><h2>Login to BookStore Account</h2></div>
-                    </div>
-
-                    <div className='register-names'>
-
-                        <div>
-                            <TextField
-                                id="outlined-email-input"
-                                label="Email"
-                                name="email"
-
-                                margin="normal"
-                                variant="outlined"
-                                value={this.state.email}
-                                onChange={this.onChangeEmail}
-                            />
-                        </div>
-                        <TextField
-                            id="outlined-password-input"
-                            label="Password"
-
-                            type="password"
-                            autoComplete="current-password"
-                            margin="normal"
-                            variant="outlined"
-                            value={this.state.passwors}
-                            onChange={this.onChangePassword}
-                        />
-                        <div>
-                            <Button variant="contained" color="primary" className="loginSubmit"
-                                onClick={this.onSubmit}   >
-                                Submit
-                            </Button>
-                            <small className="link"><Link href="/Registration" >
-                                Clich Here To Register
-                        </Link></small>
-                        {/* <small className="link"><Link href="../../Registration" >
+                         <small className="link"><Link href="../../Registration" >
 
                                 Register-Here?
 
-                        </Link></small> */}
+                        </Link></small>
 
-                        </div>
-                        <div className="errorMessage">
-                            <span style={{ color: "#b71c1c" }}>{this.state.message}</span>
-                        </div>
-                    </div>
+        </form>
+        </Card>
 
-                </Card>
-            </div>
-        )
-    }
+      </>
+    )
+  }
 }
-// export default Login;
+export default Login;
