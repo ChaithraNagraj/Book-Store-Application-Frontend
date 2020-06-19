@@ -55,6 +55,7 @@
   flex-direction: row;
 }
 .registration-container {
+
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -1247,4 +1248,40 @@ margin-left: -116px;
   
 
 
+}
+
+/* ------Angular---------------- */
+buttonAngular{
+   /* color: rgb(102, 26, 26); 
+  color: aliceblue; */
+  color: red;
+
+
+}
+.my-cardAngular {
+  width: 300px;
+  outline: none;
+  border: none;
+  /* margin-right: 20%; */
+  display: flex;
+  padding: 10px;
+  /* flex-wrap: wrap; */
+  box-sizing: border-box;
+  justify-content: center;
+  box-shadow: 0 4px 8px 0  rgb(179, 59, 59),0 6px 20px 0 rgba(241, 37, 37, 0.19);
+  border-radius: 13px;
+    margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+
+}
+registration-container {
+
+  justify-content: center;
+  
+}
+.my-cardNGULAR {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }

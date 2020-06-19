@@ -23,26 +23,26 @@ class Registration extends Component {
 
 
         this.state = {
-            firstName: '',
+            name: '',
             userName: '',
             email: '',
             password: '',
             mobileNumber: '',
-            role: 'user',
-            firstNameError: '',
-            userNameError: '',
-            emailError: '',
-            passwordError: '',
-            error: false,
-            message: " "
+            role: ''
+            // firstNameError: '',
+            // userNameError: '',
+            // emailError: '',
+            // passwordError: '',
+            // error: false,
+            // message: " "
         }
 
 
     }
 
-    handlefirstNamechange = (event) => {
+    handlenamechange = (event) => {
         this.setState({
-            firstName: event.target.value
+            name: event.target.value
         })
     }
     handleuserNamechange = (event) => {
@@ -60,19 +60,34 @@ class Registration extends Component {
             password: event.target.value
         })
     }
+    
+
     handlemobilechange = (event) => {
         this.setState({
             mobileNumber: event.target.value
         })
     }
+    handlerolechange = (event) =>{
+        this.setState({
+            role : event.target.value
+        })
+    }
+
+    // handleChangeRadio = (event) => {
+    //     console.log("radiobutton****")
+        
+    //     this.setState({     
+    //         role: event.target.value
+    //     })
+    // }
 
     vallidate = () => {
-        let firstNameError = "";
+        let nameError = "";
         let userNameError = "";
         let emailError = "";
         let passwordError = ""
-        if (!this.state.firstName) {
-            firstNameError = 'name cannot be blank';
+        if (!this.state.name) {
+            nameError = 'name cannot be blank';
 
         }
         if (!this.state.userName) {
@@ -86,8 +101,8 @@ class Registration extends Component {
         if (!this.state.password) {
             passwordError = 'password cannot be blank';
         }
-        if (emailError || firstNameError || userNameError || passwordError) {
-            this.setState({ emailError, firstNameError, userNameError, passwordError });
+        if (emailError || nameError || userNameError || passwordError) {
+            this.setState({ emailError, nameError, userNameError, passwordError });
             return false;
         }
         return true
@@ -102,10 +117,11 @@ class Registration extends Component {
         }
         //else{
         var registrationData = {
-            firstName: this.state.firstName,
+            name: this.state.name,
             userName: this.state.userName,
             email: this.state.email,
-            passwordError: this.state.password
+            password: this.state.password,
+            role:this.state.role
         };
 
         // commenting it for time being
@@ -113,7 +129,7 @@ class Registration extends Component {
         controller.userRegister(registrationData).then(res => {
             console.log("resp-----", res.data);
             console.log("this method called to service layer and took response from  there");
-            if (res.status === 201) {
+            if (res.status === 200) {
                 alert('Registration succsefully done')
                 this.props.history.push("/Login");
             } else {
@@ -128,16 +144,11 @@ class Registration extends Component {
         this.setState({ Error: false });
     };
 
-    handleChangeRadio = (e) => {
-        console.log("radiobutton****")
-        console.log(e.target.value)
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
+   
     render() {
         return (
-            <div className="registration-container">
+            
+             <div className="registration-container"> 
                 {/* <div className="registerForm"> */}
 
                 <Card className="registration-card">
@@ -174,8 +185,8 @@ class Registration extends Component {
                                 autoComplete="name"
                                 margin="dense"
                                 variant="filled"
-                                value={this.state.firstName}
-                                onChange={this.handlefirstNamechange}
+                                value={this.state.name}
+                                onChange={this.handlenamechange}
                             />
                         </div>
                         <div>{this.state.firstNameError}</div>
@@ -230,38 +241,49 @@ class Registration extends Component {
                             />
                         </div>
                         <div>{this.state.passwordError}</div>
+                        <div className="registerNames">
+                            <TextField
+                                id="outlined-name-input"
+                                label="role"
+                                name="role"
+                                autoComplete="name"
+                                margin="dense"
+                                variant="filled"
+                                value={this.state.role}
+                                onChange={this.handlerolechange}
+                            />
                         <div>
 
 
 
-                                <div className="regFName"> 
+                                {/* <div className="regFName"> 
                             {/* <div style={{ width: '92%', marginLeft: '390px', paddingBottom: '20px' }} >
                                 <div style={{ width: '92%', marginLeft: '-300px', paddingBottom: '20px' }} className="typeRadio">Type of Registration</div> */}
-                                <RadioGroup style ={{allign:"centre"}} aria-label="Type"  name="type" row >
-                                    <FormControlLabel value="user"
+                                {/* <RadioGroup style ={{allign:"centre"}} aria-label="Type"  name="type" row >
+                                    <FormControlLabel value="1"
                                      control={<Radio />} 
                                      onChange={this.handleChangeRadio}
                                     // checked={!this.state.role === "user"}
                                      label="User" />
 
-                                    <FormControlLabel value="seller" 
+                                    <FormControlLabel value="2" 
                                     control={<Radio />} 
                                     onChange={this.handleChangeRadio}
                                     // checked={!this.state.role === "user"}
                                     label="Seller" />
 
                                     
-                                </RadioGroup>
-                            </div>
+                                </RadioGroup> */}
+                            </div> 
 
                         </div>
-                        <div>
+                        <div buttonAngular>
                             <Button
-                                variant="outlined"
-                                color="secondary"
+                                // variant="outlined"
+                                // color="secondary"
                                 onClick={this.handleSubmit}
                             >
-                                Submit
+                                Register
                 </Button>
                         </div>
 

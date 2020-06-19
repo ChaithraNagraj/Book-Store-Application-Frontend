@@ -19,7 +19,13 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 // import { Header } from './Header';
 // import { Footer } from './Footer';
-
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
+import {
+    getCartAddedCountRequestMethod, getCartValuesRequestMethod,
+    deleteCartValueRequestMethod, getCustomerAddressRequestMethod, addCustomerDetailsRequestMethod
+} from '../service/CartServices';
+import OrderPlaced from  './OrderPlaced'
 
 
 
@@ -32,6 +38,7 @@ export class Cart extends Component {
         super(props)
 
         this.state = {
+            orderID: 0,
             cartItem: 1,
             quantity: 1,
             descrption:'abc',
@@ -39,9 +46,9 @@ export class Cart extends Component {
 
             book: [],
            
-            total:"1500",
+            total:"",
             showCustomerDetails:false,
-            showOrderSummery: false,
+            showOrderSummery: true,
             showOrderPlacedPage: false,
             sameBook: 1,
             name: "",
@@ -53,6 +60,8 @@ export class Cart extends Component {
             landmark: "",
             type: "",
             email: "",
+            incrementDecrementCount: 1
+
             
 
 
@@ -69,6 +78,15 @@ export class Cart extends Component {
       
          
     componentWillMount() {
+        //this method will bring the books which are in cart table and number of quantity
+           Promise.all([getCartAddedCountRequestMethod(), getCartValuesRequestMethod()])
+            .then(([cartAddedCountResult, getCartValues]) => {
+                this.setState({
+                    cartAddedCount: cartAddedCountResult.data,
+                    cart: getCartValues.data
+                })
+            })
+    
         this.setState({
             book: [
                 {
@@ -78,7 +96,7 @@ export class Cart extends Component {
                     price: 1500,
                     image:"C:\Users\Shilpa\Documents\React\Book-Store-Application-Frontend\src\assets\dontMakeMeThink.jpg",
 
-                },
+                }, 
                  {
                     id: 2,
                     title: "Java for Beginners",
@@ -165,14 +183,44 @@ export class Cart extends Component {
             addressType: this.state.type
         }
         //need to write method to send data to db
+        console.log(data);
+         addCustomerDetailsRequestMethod(data).then((response) => {
+            console.log(response.data, "-----------------data---------------");
+        })
+        // let doesShowOrderSummary = this.state.showOrderSummery;
+        // let doesShowCustomerDetails = this.state.showOrderPlacedPage;
+        // this.setState({
+        //     showOrderSummary: !doesShowOrderSummary,
+        //     showOrderPlacedPage: !doesShowCustomerDetails
+        // })
 
     }
+//  ----------------------shryas--------------------------------------------------------   
 
-    
+sameBookAddHandler = (event,id) => {
+    // event.preventDefault();
+    // console.log(event+"+++"+id);
+     let count = this.state.incrementDecrementCount;
+     this.setState({
+         incrementDecrementCount: count + 1
+     })
+ }
+ sameBookRemoveHandler = (id) => {
+     let count = this.state.incrementDecrementCount;
+     this.setState({
+         incrementDecrementCount: count - 1
+     })
+ }
 
-    addQuantity =  async (cartId) => {
+
+// -------------------shryas------------------------------------------------------------
+
+//  -------------------------add/sub--------vinod-----------------------   
+
+    addQuantity =  async (id) => {
         let count=this.state.quantity;
         let a=this.state.price;
+        let b=this.state.total;
         
 
         
@@ -210,19 +258,21 @@ this.setState({
         });
 
         this.state.book.forEach((book)=>{
-            this.state.total = this.state.total-book.price;
+           this.state.total = this.state.total-book.price;
          });
         }else{
             alert("quanity cannot be zero")
         }
     }
+//  -------------------------------add/sub----------vinod----------------------   
     placeorder = event => {
         this.setState({
             placeorder : true
         })
     }
    
-    totalCost(){
+    totalCost=(id) =>{
+        
         let total = 0;
         this.state.book.forEach((book)=>{
             total = book.price;
@@ -239,21 +289,31 @@ this.setState({
     }
     orderSummeryShowHandler = async () => {
         let doesShowOrderSummery = this.state.showOrderSummery;
-        await this.setState({
+         this.setState({
             showOrderSummery: !doesShowOrderSummery
         })
     }
     orderPlacedPageHandler = async () => {
         let doesShowOrderPlacedPage = this.state.showOrderPlacedPage;
-        await this.setState({
+        this.setState({
             showOrderPlacedPage: !doesShowOrderPlacedPage
         })
+        this.props.history.push("/OrderPlaced");
+
     }
 
     removeFromCart = event => {
         //need to write wen service layer is ready**
         
 
+    }
+    checkoutClickHandler = () => {
+        const doesShowOrderSuccessful = this.state.showOrderSuccessful;
+        let orderID = Math.floor(Math.random() * 90000) + 10000;
+        this.setState({
+            showOrderSuccessful: !doesShowOrderSuccessful,
+            orderID: orderID
+        })
     }
 
  
@@ -268,79 +328,83 @@ this.setState({
                 <div >
                 <Grid item xs={10}>
                         <div  className="Customer-address-div">    
-                                      
+                        <Typography id='mycart-title'variant="h4">My cart ({this.state.quantity})</Typography>
+       
                             {
                                 this.state.book.map(book => {
                                     return (
-                                        <div>
-                                            <div>
+                                        <div key={book.id}>
+                                            <div >
                                                 <div className="book-details-div" >
 
                                                 <div className="img-book">
-                                                                    <img src={"C:\Users\Shilpa\Desktop"} className="order-logo" />
-                                                  </div>
+                                                  <img src={"C:\Users\Shilpa\Desktop"} className="order-logo" />
+                                                </div>
                                                     
                                 
-                                          <div className="aligncontentbesidepic">
-                                             <div >
-                                            
+                                             <div className="aligncontentbesidepic">
+                                                <div >
                                                     <h4 className="h4-div">{book.title}</h4>
-
                                                 </div>
                                                 <div className="author-name-div">
                                                     <p>{book.author}</p>
-
                                                 </div>
                                                 <div className="book-price-div">
                                                     <p>Rs.{book.price}</p>
                                                 </div>
-                                                
-                                                <div className="book-price-div">
-                                                    <p>totalprice{this.state.quantity * book.price}</p>
+                                                <div className="book-price-div" >
+                                                    <p>totalprice{this.state.incrementDecrementCount * book.price}</p>
+                                                    <p>this.state.total</p>
                                                 </div>
-
-
-                                                <div className="quantity-div">
-                                                    <button className="minus-btn" 
-                                                    onClick={this.substractQuantity} >
+     {/* -------------------------------------but---------------------------------------------------                                            */}
+                                                <div className="quantity-div" >
+                                                    {/* <button className="minus-btn" 
+                                                       onClick={this.substractQuantity} >
                                                         <RemoveRoundedIcon className="icon" />
-                                                        </button>
+                                                    </button> */}
+                                                     <Button
+                                                                    onClick={() =>this.sameBookRemoveHandler(book.id )}
+                                                                >
+                                                                    <RemoveCircleOutlineIcon />
+                                                      </Button>
 
                                                     <div className="input-type" >
-                                                        {this.state.quantity}
+                                                        {this.state.incrementDecrementCount}
                                                     </div>
-
-                                                                                              
-
-                                                    <div >
-                                                    {/* <button className="" key ={book.id} onClick={() => this.addQuantity(book.cartId)} ></button> */}
-
-                                                           
-                                                       <button   onClick={this.addQuantity} ><AddRoundedIcon className="icon" /></button>
-                                                       
- 
-                                                           
-                                                    </div>
-                                                    <button className="" key ={book.id} onClick={() => this.removeFromCart(book.cartId)} >Remove</button>
                                                     
-                                                
-                                                </div>
-                                            </div>   
-                             </div>               
-                         
-                   
-                                            </div>
+                                                    <div key={book.id}>  
 
-                                        </div>
+                                                     {/* <button   
+                                                       onClick={this.addQuantity}
+                                                        ><AddRoundedIcon
+                                                         className="icon" />
+                                                     </button> */}
+                                                     <Button
+                                                                    id={book.iD}
+                                                                    onClick={() => this.sameBookAddHandler(book.id)}
+                                                                >
+                                                                    <AddCircleOutlineIcon />
+                                                                </Button>
+                    
+                                                    </div>
+                                                    <button
+                                                     className="" 
+                                                     key ={book.id}
+                                                      onClick={() => this.removeFromCart(book.cartId)} 
+                                                      >Remove</button>
+                                                </div>
+    {/* --------------------------but----------------------------------------------------------------------                                             */}
+                                            </div>   
+                                          </div>                  
+                                            </div>
+                                      </div>
                                     );
                                    
                                 })
                                
                             }
-                           
-                            
                             {
-                                this.state.cartItem!=0 ? 
+                                this.state.quantity!=0 ? 
                                 <div className="continue-cart-div">
                                     <button
                                    onClick={this.customerDetailsShowHandler}
@@ -434,15 +498,15 @@ this.setState({
                                                                 <div className="img-book">
                                                                     <img src={book.bookImage} className="order-logo" />
                                                                 </div>
-                                                                <div className="book-details-div">
+                                                                <div className= "aligncontentbesidepic">
                                                                     <div className="book-title-div">
-                                                                        <h4 >{book.bookTitle}</h4>
+                                                                        <h4 >{book.title}</h4>
                                                                     </div>
                                                                     <div className="author-name-div">
-                                                                        <p>{book.authorName}</p>
+                                                                        <p>{book.author}</p>
                                                                     </div>
                                                                     <div className="book-price-div">
-                                                                        <p>Rs.{book.bookPrice}</p>
+                                                                        <p>Rs.{book.price}</p>
                                                                     </div>
                                                                 </div>
                                                             </div>

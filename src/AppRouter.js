@@ -7,7 +7,7 @@ import user from './components/user/Login';
 import cart from './components/cart';
 import Registration from './components/user/Registration';
 
-
+    import OrderPlaced from './components/OrderPlaced';
 const AppRouter = () => (
     <BrowserRouter>
         <div>
@@ -15,6 +15,9 @@ const AppRouter = () => (
             <Route path="/Login" component={user} eaxcat={true}/>
             <Route path="/cart" component={cart} eaxcat={true}/>
             <Route path="/Registration" component={Registration} eaxcat={true}/>
+            <Route path='/OrderPlaced' component={OrderPlaced} />
+
+
         </div>
     </BrowserRouter>
 );
