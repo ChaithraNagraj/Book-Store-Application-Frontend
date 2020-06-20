@@ -17,8 +17,10 @@ import TextField from '@material-ui/core/TextField';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
-// import { Header } from './Header';
-// import { Footer } from './Footer';
+// import  Toolbar  from '../components/headerbar/headerbar';
+// import  Footer  from './Footer';
+// import { Toolbar } from '../components/headerbar/headerbar';
+
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import {
@@ -97,14 +99,14 @@ export class Cart extends Component {
                     price: 1500,
                     image:"C:\Users\Shilpa\Documents\React\Book-Store-Application-Frontend\src\assets\dontMakeMeThink.jpg",
 
-                }, 
-                 {
-                    id: 2,
-                    title: "Java for Beginners",
-                    author: "kalpesh mali",
-                    price: 250,
-                    image:""
-                }
+                } 
+                //  {
+                //     id: 2,
+                //     title: "Java for Beginners",
+                //     author: "kalpesh mali",
+                //     price: 250,
+                //     image:""
+                // }
             ]
         });
         this.setState({
@@ -238,7 +240,7 @@ this.setState({
            this.state.total = book.price*count;
         });
     }else{
-        alert(" oops!!!! totol 5 items can be avaible in a cart ")
+        alert(" oops!!!! totol 6 items can be avaible in a cart ")
     }
     
         
@@ -354,8 +356,8 @@ this.setState({
                                                     <p>Rs.{book.price}</p>
                                                 </div>
                                                 <div className="book-price-div" >
-                                                    <p>totalprice{this.state.incrementDecrementCount * book.price}</p>
-                                                    <p>this.state.total</p>
+                                                    <p>totalprice{this.state.quantity * book.price}</p>
+                                                    {/* <p>this.state.total</p> */}
                                                 </div>
      {/* -------------------------------------but---------------------------------------------------                                            */}
                                                 <div className="quantity-div" >
@@ -364,13 +366,13 @@ this.setState({
                                                         <RemoveRoundedIcon className="icon" />
                                                     </button> */}
                                                      <Button
-                                                                    onClick={() =>this.sameBookRemoveHandler(book.id )}
+                                                                    onClick={() =>this.substractQuantity()}
                                                                 >
                                                                     <RemoveCircleOutlineIcon />
                                                       </Button>
 
                                                     <div className="input-type" >
-                                                        {this.state.incrementDecrementCount}
+                                                        {this.state.quantity}
                                                     </div>
                                                     
                                                     <div key={book.id}>  
@@ -382,7 +384,7 @@ this.setState({
                                                      </button> */}
                                                      <Button
                                                                     id={book.iD}
-                                                                    onClick={() => this.sameBookAddHandler(book.id)}
+                                                                    onClick={() => this.addQuantity()}
                                                                 >
                                                                     <AddCircleOutlineIcon />
                                                                 </Button>
