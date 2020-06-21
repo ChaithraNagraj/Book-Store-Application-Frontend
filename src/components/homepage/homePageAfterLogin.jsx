@@ -1,5 +1,6 @@
+
 import React from 'react';
-import ToolBar from '../headerbar/headerbar';
+import ToolBar from '../headerbar/headerAfterLogin';
 import Footer from "../Footer/Footer";
 import CustomPaginationActionsTable from '../paginationComponent/Pagination';
 import LowerBar from '../lowerBarComponent/LowerBar';
@@ -48,7 +49,7 @@ class Home extends React.Component {
                 },
                 {
                     id: 3,
-                    title: "The girl Room 103",
+                    title: "The girl Room 205",
                     author: "Durjoydat",
                     price: 219,
                     image:""
