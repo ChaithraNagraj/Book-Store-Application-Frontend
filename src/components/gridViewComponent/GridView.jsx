@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
-import BookCard from '../Bookcart/BookCart';
+import BookCard from '../BookCart/BookCart';
 
 const useStyles = createMuiTheme({
     root: {

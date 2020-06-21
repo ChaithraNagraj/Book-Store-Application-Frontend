@@ -7,44 +7,53 @@ class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      email: "",
+      loginId: "",
       password: "",
+      role: "",
       loginAuthentication: false,
       showError: false
     }
   }
 
-  emailHandler = (event) => {
-    const email = event.target.value;
-    console.log("email", email);
+  loginIdHandler = (event) => {
+    const loginId = event.target.value;
+    console.log("loginId", loginId);
     this.setState({
-      email: email,
+      loginId: loginId,
     })
   }
   passwordHandler = (event) => {
     const password = event.target.value;
     console.log('password', password)
     this.setState({
-      password: password
+      password: password,
+    })
+  }
+  roleHandler = (event) => {
+    const role = event.target.value;
+    console.log('role', role)
+    this.setState({
+      role: role
     })
   }
 
   submitHandler = (event) => {
     event.preventDefault();
     var data = {
-      Email: this.state.email,
-      Password: this.state.password
+      LoginId: this.state.loginId,
+      Password: this.state.password,
+      Role: this.state.role
     }
-    sessionStorage.setItem("email",this.state.email);
+    sessionStorage.setItem("loginId",this.state.loginId);
     const response = LoginRequestMethod(data);
     response.then(res => {
       console.log(res.data);
-      if (res.data === data.Email) {
+      if (res.data === data.LoginId) {
         this.setState({
           loginAuthentication: true
         })
       }
-      this.props.history.push('/homepage');
+      this.props.history.push('../../homepage');
     }).catch(() => {
       //alert("email or password is incorrect");
       this.setState({
@@ -59,36 +68,28 @@ class Login extends Component {
       <>
               <Card className="logincard">
 
-        <Typography variant='h3' id='welcome-text'>
-                                <span style={{ color: "#2196f3" }}>B</span>
-                                <span style={{ color: "#b71c1c" }}>o</span>
-                                <span style={{ color: "#ffc107" }}>o</span>
-                                <span style={{ color: "#1976d2" }}>k</span>
-                                <span style={{ color: "#43a047" }}>S</span>
-                                <span style={{ color: "#b71c1c" }}>t</span>
-                                <span style={{ color: "#1976d2" }}>o</span>
-                                <span style={{ color: "#ffc107" }}>r</span>
-                                <span style={{ color: "#b71c1c" }}>e</span>
-
-        
-        </Typography>
-        <form className=" container p-5 bg-light text-primary mx-auto" id='form' onSubmit={this.submitHandler} >
-          <div className="form-group" style={{ marginLeft: '47px' }}>
+                <form className=" container p-5 bg-light text-primary mx-auto" id='form' onSubmit={this.submitHandler} >
+                <div className="form-group" style={{background:'#A03037', marginLeft: '12px' }}>
             <h1 className='display-3 text-dark'>Login</h1>
           </div>
           <div className="form-group">
-            <label for="email">Email :</label>
-            <input type="text" id="email" className="form-control " onChange={this.emailHandler} />
+            <label for="loginId">LoginId :</label>
+            <input type="text" id="loginId" className="form-control " onChange={this.loginIdHandler} style={{marginRight:'70px'}}/>
 
           </div>
           <div className="form-group" style={{ marginTop: '15px', marginnRight:'100px' }}>
             <label for="password">Password :</label>
-            <input type="password" id="password" className="form-control " onChange={this.passwordHandler} />
+            <input type="password" id="password" className="form-control " onChange={this.passwordHandler} style={{marginRight:'75px'}}/>
           </div>
+          <div className="form-group" style={{ marginTop: '15px', marginnRight:'100px' }}>
+            <label for="role">Role:</label>
+            <input type="role" id="role" className="form-control " onChange={this.roleHandler}style={{marginRight:'65px'}} />
+          </div>
+
           {
             this.state.showError ? <div className="form-group text-danger" id="error">Email or Password is incorrect </div> : null
           }
-          <button type="submit" className="btn btn-success" id="submitBtn"  style={{ marginleft: '440px',color:'blue' }}>Login</button>
+          <button type="submit" className="btn btn-success" id="submitBtn"  style={{ background:' #A03037',margin:'center',color:'Balck' }}>Login</button>
 
                          <small className="link"><Link href="../../Registration" >
 
