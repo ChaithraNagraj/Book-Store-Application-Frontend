@@ -14,6 +14,8 @@ const AppRouter = () => (
             <Route path="/BookStoreApplication" component={homepage} exact={true} />
             <Route path="/Login" component={user} eaxcat={true}/>
             <Route path="/cart" component={cart} eaxcat={true}/>
+            <Route path="/homepage" component={homepage} eaxcat={true}/>
+
             <Route path="/Registration" component={Registration} eaxcat={true}/>
             <Route path='/OrderPlaced' component={OrderPlaced} />
 

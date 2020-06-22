@@ -6,14 +6,13 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 // import controller from '../service/UserService';
 import { controller } from '../../service/UserService.jsx';
-
 import Select from '@material-ui/core/Select';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-
+import "./Registration.css";
 
 
 
@@ -29,17 +28,10 @@ class Registration extends Component {
             password: '',
             mobileNumber: '',
             role: ''
-            // firstNameError: '',
-            // userNameError: '',
-            // emailError: '',
-            // passwordError: '',
-            // error: false,
-            // message: " "
-        }
+                   }
 
 
     }
-
     handlenamechange = (event) => {
         this.setState({
             name: event.target.value
@@ -124,7 +116,6 @@ class Registration extends Component {
             role:this.state.role
         };
 
-        // commenting it for time being
 
         controller.userRegister(registrationData).then(res => {
             console.log("resp-----", res.data);
@@ -146,119 +137,42 @@ class Registration extends Component {
 
    
     render() {
+
         return (
-            
-             <div className="registration-container"> 
-                {/* <div className="registerForm"> */}
-
-                <Card className="registration-card">
-                    {/* <Card className="formCard"> */}
-
-                    {/* <h1>This is from card div</h1> */}
-                    <Snackbar
-                        anchorOrigin={{
-                            vertical: "bottom",
-                            horizontal: "center"
-                        }}
-                        autoHideDuration={1000}
-                        onClose={this.snackBarClose}
-                        message={<span id="message-id">this.state.firstNameError</span>}
-                        action={
-                            <IconButton onClick={this.snackBarClose}>
-                                {/* <CloseOutlinedIcon /> */}
-                            </IconButton>
-                        }
-                    />
-                    <div className="heading">
-                        <div className="register-fundo">
-
-
-                        </div>
-                        <div className="register-h2">
-                            <h3 style={{ color: "#ffb300" }}> Sign up here for BookStore!!!</h3>
-                        </div>
-                        <div className="registerNames ">
-                            <TextField
-                                id="outlined-name-input"
-                                label="FirstName"
-                                name="name"
-                                autoComplete="name"
-                                margin="dense"
-                                variant="filled"
-                                value={this.state.name}
-                                onChange={this.handlenamechange}
-                            />
-                        </div>
-                        <div>{this.state.firstNameError}</div>
-                        <div className="registerNames">
-                            <TextField
-                                id="outlined-name-input"
-                                label="UserName"
-                                name="Usename"
-                                autoComplete="name"
-                                margin="dense"
-                                variant="filled"
-                                value={this.state.userName}
-                                onChange={this.handleuserNamechange}
-                            />
-                        </div>
-                        <div>{this.state.userNameError}</div>
-                        <div className="registerNames">
-                            <TextField
-                                id="outlined-name-input"
-                                label="email"
-                                name="email"
-                                autoComplete="name"
-                                margin="dense"
-                                variant="filled"
-                                value={this.state.email}
-                                onChange={this.handleemailchange}
-                            />
-                        </div>
-                        <div>{this.state.emailError}</div>
-                        <div className="registerNames">
-                            <TextField
-                                id="outlined-name-input"
-                                label="mobileNumber"
-                                name="mobileNumber"
-                                autoComplete="name"
-                                margin="dense"
-                                variant="filled"
-                                value={this.state.mobileNumber}
-                                onChange={this.handlemobilechange}
-                            />
-                        </div>
-                        <div className="registerNames">
-                            <TextField
-                                id="outlined-name-input"
-                                label="password"
-                                name="password"
-                                autoComplete="name"
-                                margin="dense"
-                                variant="filled"
-                                value={this.state.password}
-                                onChange={this.handlepasswordchange}
-                            />
-                        </div>
-                        <div>{this.state.passwordError}</div>
-                        <div className="registerNames">
-                            <TextField
-                                id="outlined-name-input"
-                                label="role"
-                                name="role"
-                                autoComplete="name"
-                                margin="dense"
-                                variant="filled"
-                                value={this.state.role}
-                                onChange={this.handlerolechange}
-                            />
-                        <div>
-
-
-
-                                {/* <div className="regFName"> 
-                            {/* <div style={{ width: '92%', marginLeft: '390px', paddingBottom: '20px' }} >
-                                <div style={{ width: '92%', marginLeft: '-300px', paddingBottom: '20px' }} className="typeRadio">Type of Registration</div> */}
+          <>
+                  <Card className="registrationCard">
+    
+                    <form className=" container p-5 bg-light text-primary mx-auto" id='form' onSubmit={this.submitHandler} >
+                    <div className="form-group" style={{background:'#A03037', marginLeft: '20px' }}>
+                <h1 className='display-3 text-dark'>Hello Sign up here</h1>
+              </div>
+              <div className="form-group">
+                <label for="name">FirstName :</label>
+                <input type="text" id="name" className="form-control " onChange={this.handlenamechange} style={{marginRight:'73px'}}/>
+    
+              </div>
+              <div className="form-group" style={{marginTop:'20px',marginnRight:'100px' }}>
+                <label for="userName">userName:</label>
+                <input type="password" id="userName" className="form-control " onChange={this.handleuserNamechange} style={{marginRight:'74px'}}/>
+              </div>
+              <div className="form-group" style={{ marginTop: '20px', marginnRight:'100px' }}>
+                <label for="email">Email:</label>
+                <input type="email" id="email" className="form-control " onChange={this.handleemailchange} style={{marginRight:'65px'}} />
+              </div>
+              <div className="form-group" style={{ marginTop: '20px', marginnRight:'130px' }}>
+                <label for="mobilenumber">MobilPassword:</label>
+                <input type="mobilenumber" id="mobilnumber" className="form-control " onChange={this.handlemobilechange}style={{marginRight:'90px'}} />
+              </div>
+              <div className="form-group" style={{ marginTop: '20px', marginnRight:'100px' }}>
+                <label for="password">Password:</label>
+                <input type="password" id="password" className="form-control " onChange={this.handlepasswordchange}style={{marginRight:'80px'}} />
+              </div>
+              <div className="form-group" style={{ marginTop: '20px', marginnRight:'100px' }}>
+                <label for="role">role:</label>
+                <input type="int" id="role" className="form-control " onChange={this.handlerolechange}style={{marginRight:'68px'}} />
+              </div>
+            <div>
+            <div style={{ width: '92%', marginLeft: '-300px', paddingBottom: '20px' }} className="typeRadio">Type of Registration</div>
                                 <RadioGroup style ={{allign:"centre"}} aria-label="Type"  name="type" row >
                                     <FormControlLabel value="1"
                                      control={<Radio />} 
@@ -275,29 +189,13 @@ class Registration extends Component {
                                     
                                 </RadioGroup>
                             </div> 
+                            <button type="submit" className="btn btn-success" id="submitBtn" onClick={this.handleSubmit} style={{ background:' #A03037',margin:'center',color:'Balck' }}>Register</button>
 
-                        </div>
-                        <div buttonAngular>
-                            <Button
-                                // variant="outlined"
-                                // color="secondary"
-                                onClick={this.handleSubmit}
-                            >
-                                Register
-                </Button>
-                        </div>
-
-                    </div>
-
-                </Card>
-
-
-            </div>
-
-
+                        </form>
+            </Card>
+    
+          </>
         )
+      }
     }
-}
-
-
 export default Registration;
