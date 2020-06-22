@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Button from '@material-ui/core/Button';
 import { withRouter } from "react-router-dom";
 
-
 export default class VerifyUser extends Component {
     constructor(props){
         super(props);
