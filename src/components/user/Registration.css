@@ -13,4 +13,19 @@
       outline: none;
       margin-bottom: 300px;
   }
+  .formcard  {
+    width: 600px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .register-h2 {
+    text-align: center;
+    font-size: 25px;
+    margin-top: -30px;
+  }
+  .register-names {
+margin-left: 110px;
+  }
   

@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { withRouter } from "react-router-dom";
 import { Card, Snackbar, IconButton } from "@material-ui/core";
-//import CloseOutlinedIcon from "@material-ui/icons/CloseOutlined";
+import CloseOutlinedIcon from "@material-ui/icons/CloseOutlined";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-// import controller from '../service/UserService';
 import { controller } from '../../service/UserService.jsx';
 import Select from '@material-ui/core/Select';
 import Radio from '@material-ui/core/Radio';
@@ -18,184 +17,219 @@ import "./Registration.css";
 
 class Registration extends Component {
     constructor(props) {
-        super(props)
-
-
+        super(props);
         this.state = {
-            name: '',
-            userName: '',
-            email: '',
-            password: '',
-            mobileNumber: '',
-            role: ''
-                   }
-
-
-    }
-    handlenamechange = (event) => {
-        this.setState({
-            name: event.target.value
-        })
-    }
-    handleuserNamechange = (event) => {
-        this.setState({
-            userName: event.target.value
-        })
-    }
-    handleemailchange = (event) => {
-        this.setState({
-            email: event.target.value
-        })
-    }
-    handlepasswordchange = (event) => {
-        this.setState({
-            password: event.target.value
-        })
-    }
+          name: "",
+          userName:"",
+          email: "",
+          password: "",
+          mobileNumber: "",
+          role:"",
+          error: false,
+          message: ""
+        };
+      }
     
-
-    handlemobilechange = (event) => {
+      snackBarClose = () => {
+        this.setState({ Error: false });
+      };
+      onChangeName = event => {
+        var name = event.target.value;
         this.setState({
-            mobileNumber: event.target.value
-        })
-    }
-    handlerolechange = (event) =>{
+          name: name
+        });
+        // console.log("aaaaaaa",this.state.name)
+      };
+      onChangeUserName = event => {
+        var userName = event.target.value;
         this.setState({
-            role : event.target.value
-        })
-    }
+          userName: userName
+        });
+        // console.log("aaaaaaa",this.state.name)
+      };
 
-    handleChangeRadio = (event) => {
-        console.log("radiobutton****")
-        
-        this.setState({     
-            role: event.target.value
-        })
-    }
+      onChangeEmail = event => {
+        var email = event.target.value;
+        this.setState({
+          email: email
+        });
+      };
+      onChangeMobno = event => {
+        this.setState({
+          mobileNumber: event.target.value
+        });
+      };
+      onChangeRole = event => {
+          this.setState({
+         role: event.target.value
 
-    vallidate = () => {
-        let nameError = "";
-        let userNameError = "";
-        let emailError = "";
-        let passwordError = ""
-        if (!this.state.name) {
-            nameError = 'name cannot be blank';
-
+          });
+      };
+      onChangePassword = event => {
+        var password = event.target.value;
+        this.setState({
+          password: password
+        });
+      };
+    
+      onSubmit = () => {
+        if (this.state.name === "") {
+          this.setState({
+            Error: true,
+            message: "name cannot be empty"
+          });
         }
-        if (!this.state.userName) {
-            userNameError = 'userName cannot be blank';
-
-        }
-        if (!this.state.email.includes('@')) {
-            emailError = 'invalid email';
-
-        }
-        if (!this.state.password) {
-            passwordError = 'password cannot be blank';
-        }
-        if (emailError || nameError || userNameError || passwordError) {
-            this.setState({ emailError, nameError, userNameError, passwordError });
-            return false;
-        }
-        return true
-    }
-    handleSubmit = event => {
-        // alert (`${this.state.firstName} ${this.state.userName} ${this.state.email}`);
-        event.preventDefault();
-        const isValid = this.vallidate();
-        if (isValid) {
-            console.log(this.state);
-            console.log("hello world!!!");
-        }
-        //else{
-        var registrationData = {
+    
+        if (this.state.email === "") {
+          this.setState({
+            Error: true,
+            message: "Email cannot be empty"
+          });
+        } else if (
+          !/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(this.state.email)
+        ) {
+          this.setState({
+            Error: true,
+            message: "Please provide a valid email address"
+          });
+        } else if (!/^[6789]\d{9}$/.test(this.state.mobileNumber)) {
+          this.setState({
+            Error: true,
+            message: "Please provide a valid mobile no"
+          });
+        } else if (this.state.password === null || this.state.password.length < 4) {
+          this.setState({
+            Error: true,
+            message: "Password should be min 4"
+          });
+        } else {
+          var registartionDetails = {
             name: this.state.name,
             userName: this.state.userName,
             email: this.state.email,
             password: this.state.password,
-            role:this.state.role
-        };
-
-
-        controller.userRegister(registrationData).then(res => {
+            mobileNumber: this.state.mobileNumber,
+            role: this.state.role
+          };
+    
+          // userRegister.then(response => {
+          //     console.log(response.data);
+    
+          // })
+          controller.userRegister(registartionDetails).then(res => {
             console.log("resp-----", res.data);
-            console.log("this method called to service layer and took response from  there");
-            if (res.status === 200) {
-                alert('Registration succsefully done')
-                this.props.history.push("/Login");
-            } else {
-                alert('Registration failed')
-            }
-
-        });
-
-
-    }
-    snackBarClose = () => {
-        this.setState({ Error: false });
-    };
-
-   
-    render() {
-
+    
+            this.props.history.push("/inform");
+          });
+        }
+      };
+    
+      render() {
         return (
-          <>
-                  <Card className="registrationCard">
-    
-                    <form className=" container p-5 bg-light text-primary mx-auto" id='form' onSubmit={this.submitHandler} >
-                    <div className="form-group" style={{background:'#A03037', marginLeft: '20px' }}>
-                <h1 className='display-3 text-dark'>Hello Sign up here</h1>
+          <div className="registerForm">
+            <Card className="formcard">
+              <Snackbar
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "center"
+                }}
+                open={this.state.Error}
+                autoHideDuration={2000}
+                onClose={this.snackBarClose}
+                message={<span id="message-id">{this.state.message}</span>}
+                action={
+                  <IconButton onClick={this.snackBarClose}>
+                    <CloseOutlinedIcon />
+                  </IconButton>
+                }
+              />
+              <div className="heading" >
+                                <div className="register-h2"  style={{backgroundColor:'#A03037'}}>
+                  <h2>Sign up for BookStore</h2>
+                </div>
               </div>
-              <div className="form-group">
-                <label for="name">FirstName :</label>
-                <input type="text" id="name" className="form-control " onChange={this.handlenamechange} style={{marginRight:'73px'}}/>
-    
-              </div>
-              <div className="form-group" style={{marginTop:'20px',marginnRight:'100px' }}>
-                <label for="userName">userName:</label>
-                <input type="password" id="userName" className="form-control " onChange={this.handleuserNamechange} style={{marginRight:'74px'}}/>
-              </div>
-              <div className="form-group" style={{ marginTop: '20px', marginnRight:'100px' }}>
-                <label for="email">Email:</label>
-                <input type="email" id="email" className="form-control " onChange={this.handleemailchange} style={{marginRight:'65px'}} />
-              </div>
-              <div className="form-group" style={{ marginTop: '20px', marginnRight:'130px' }}>
-                <label for="mobilenumber">MobilPassword:</label>
-                <input type="mobilenumber" id="mobilnumber" className="form-control " onChange={this.handlemobilechange}style={{marginRight:'90px'}} />
-              </div>
-              <div className="form-group" style={{ marginTop: '20px', marginnRight:'100px' }}>
-                <label for="password">Password:</label>
-                <input type="password" id="password" className="form-control " onChange={this.handlepasswordchange}style={{marginRight:'80px'}} />
-              </div>
-              <div className="form-group" style={{ marginTop: '20px', marginnRight:'100px' }}>
-                <label for="role">role:</label>
-                <input type="int" id="role" className="form-control " onChange={this.handlerolechange}style={{marginRight:'68px'}} />
-              </div>
-            <div>
-            <div style={{ width: '92%', marginLeft: '-300px', paddingBottom: '20px' }} className="typeRadio">Type of Registration</div>
-                                <RadioGroup style ={{allign:"centre"}} aria-label="Type"  name="type" row >
-                                    <FormControlLabel value="1"
-                                     control={<Radio />} 
-                                     onChange={this.handleChangeRadio}
-                                    // checked={!this.state.role === "user"}
-                                     label="User" />
+              <div>
+                <div className="register-names">
+                  <TextField
+                    id="outlined-name-input"
+                    label="Name"
+                    name="name"
+                    autoComplete="name"
+                    margin="normal"
+                    variant="outlined"
+                    value={this.state.name}
+                    onChange={this.onChangeName}
+                  />
+                  <TextField
+                    id="outlined-name-input"
+                    label="UserName"
+                    name="userName"
+                    autoComplete="userName"
+                    margin="normal"
+                    variant="outlined"
+                    value={this.state.userName}
+                    onChange={this.onChangeUserName}
+                  />
 
-                                    <FormControlLabel value="2" 
-                                    control={<Radio />} 
-                                    onChange={this.handleChangeRadio}
-                                    // checked={!this.state.role === "user"}
-                                    label="Seller" />
+                  <div>
+                    <TextField
+                      id="outlined-email-input"
+                      label="Email"
+                      name="email"
+                      margin="normal"
+                      variant="outlined"
+                      value={this.state.email}
+                      onChange={this.onChangeEmail}
+                    />
+                  </div>
+                  <TextField
+                    id="outlined-password-input"
+                    label="Password"
+                    type="password"
+                    autoComplete="current-password"
+                    margin="normal"
+                    variant="outlined"
+                    value={this.state.password}
+                    onChange={this.onChangePassword}
+                  />
+                  <div>
+                    <TextField
+                      id="outlined-mobno-input"
+                      label="Mobile Number"
+                      type="text"
+                      margin="normal"
+                      variant="outlined"
+                      value={this.state.mobileNumber}
+                      onChange={this.onChangeMobno}
+                    />
+                  </div>
+                  <div>
+                    <TextField
+                      id="outlined-role-input"
+                      label="Role"
+                      type="text"
+                      margin="normal"
+                      variant="outlined"
+                      value={this.state.role}
+                      onChange={this.onChangeRole}
+                    />
+                  </div>
 
-                                    
-                                </RadioGroup>
-                            </div> 
-                            <button type="submit" className="btn btn-success" id="submitBtn" onClick={this.handleSubmit} style={{ background:' #A03037',margin:'center',color:'Balck' }}>Register</button>
-
-                        </form>
+                  <div  style={{marginTop:'50px'}}>
+                      <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={this.onSubmit}
+                    >
+                      Submit
+                    </Button>
+                  </div>
+                </div>
+              </div>
             </Card>
-    
-          </>
-        )
+          </div>
+        );
       }
     }
-export default Registration;
+    export default withRouter(Registration);
+    
