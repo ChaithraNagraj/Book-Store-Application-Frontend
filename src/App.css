@@ -1,628 +1,275 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-.flexDiv{
-  display: flex;
-  justify-content:space-between ;
-  align-items:center ;
-  flex-direction: row;
-}
-.flexDivCol{
-  display: flex;
+  background-color: #88040fd8;
   justify-content: space-between;
-  align-items: centre;
-  flex-direction: column;
-}
-.registration-card {
-  width: 380%;
-  display: flex;
-  justify-content: center;
+  padding: 10px;
   flex-direction: row;
-}
-.registration-container {
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 20px;
-  
-}
-.regFName {
-  width: 340px;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: center;
-}
-
-.CartCard{
-  margin-bottom: 30px;
-  background-color : #FFFFFF;
-  height: 1000px;
-  width: 1000px;
-  border-color: gray;
-}
-.bookDetail {
-  margin-left: 300px;
-  margin-top: 6px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-
-}
-.bookTitle {
-  color: rgb(27, 24, 24);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-}
-
-/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
-.topnav {
-  background-color: #791212;
-  overflow: hidden;
-  display: flex;
-  height: 50px;
-  align-items: center;
-  position: fixed;
   width: 100%;
-  z-index: 1;
-}
-.book-icon {
-  margin-left: 13em;
-  margin-right: 15px;
-  margin-top: 3px;
-  color: whitesmoke;
-}
-.cart-icon{
-  color: whitesmoke;
-}
-.counter-div{
-  margin-top: 8px;
-    border-radius: 480px;
-    height: 12px;
-    margin-left: -12px;
-    padding: 5px;
-    padding-top: 0px;
-    font-size: 12px;
-    color: black;
-    background: #fbe67d;
-    font-weight: 700;
-    border: none;
-}
-.bookicon{
-  font-size: 24px;
-  outline: none;
+  color: white;
+  height:45px;
 }
 
-.logo-title{
-  margin-top: 15px;
+.book-logo-search-div{
+display: flex;
+position: relative;
+left: 150px;
+align-items: center;
+}
+
+.book-logo-div{
+margin-right: 20px;
 }
 
 .book-title{
-  color: whitesmoke;
-  font-family: adobe-clean, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  /* display: flex; */
-  /* align-items: center; */
-  margin-top: -3px;
+margin-right: 60px;
+margin-top:-55px;
+margin-left: auto;
+height: 20px;
+display: flex;
 }
-
-.search-bar{
-  margin: 19px;
-    margin-left: 4em;
-}
-
-.MuiInputBase-root{
-  padding-left: 7px;
-  color: gray;
-}
-
-.MuiInput-root {
+.Sign{
+  display: flex;
+  align-items: center;
   position: relative;
-  height: 42px;
-}
-
-
-.search {
-  width: 403px;
-  outline: none;
-  border-radius: 4px;
-  background-color: white;
-    /*height: 30px;*/
-    opacity: 90%;
+  right: -80px;
+  font-weight:bold;
 
 }
-.MuiTextField-root{
-  height: 30px;
-  opacity: 90%;
+
+
+.search-textfield{
+ width: 500px;
+ background-color: white;
+ border-radius: 10px;
+ outline: none;
+}
+
+.cart-wishlist-div{
+  display: flex;
+  align-items: center;
+  position: relative;
+  right: 1 gfds5px;
+  right:-20px;
 }
 .cart-div{
   display: flex;
-  color: whitesmoke;
-  font-size: 13px;
-  font-family: adobe-clean, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  width: 117px;
-  padding-left: 372px;
-}
-
-.App-logo{
-  display: flex;
-    padding-left: 47px;
-    padding-right: 47px;
-    height: 50%;
-    width: 100%;
-    padding-right: -135px;
-    /* margin-left: 65px; */
-    margin-top: 12px;
-}
-.book-count-div{
-  color: #3c3636;
-  margin-top: 11px;
-  font-size: 13px;
-  margin-left: -57em;
-}
-/*login css*/
-
-.main-div {
-  display: flex;
-  height: inherit;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.links {
-  text-align: center;
-  margin-top: 6px;
-  font-size: 13px;
-  display: flex;
-  margin-left: 109px;
+.wishlist-div{
+display: flex;
+flex-direction: column;
+justify-content: center;  
+margin-left: 20px;
+align-items: center;
 }
 
-.login-div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 33px;
-  font-family: cursive;
-  height: 85px;
+#icon-btn{
+  color: white;
 }
-.main-Test-div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.test {
-  border: 2px solid #000;
-  height: 353px;
-  position: relative;
-  top: 9em;
-  width: 453px;
-  padding: 43px;
-  background-color: rgb(235, 231, 231);
-}
-.input-email-div{
-  padding-left: 6px;
-  height: 35px;
-  width: 252px;
-  margin-top: 47px;
-}
-
-button.submit {
-  border-radius: 4px;
-  background-color: rgb(105, 197, 79);
-  color: #fff;
-  outline: none;
-  border: 1px solid #000;
-  outline: none;
-  height: 35px;
-  width: 122px;
-}
-button.submit:hover{
-  background-color:rgb(83, 171, 58);
-}
-.app-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-
-
-.email-div{
-  margin: 7px;
-  height: 84px;
-    margin-top: -28px;
-}
-.password-div{
-  
-    margin: 7px;
-    height: 84px;
-      margin-top: -28px;
-  
-}
-.cart-icon-div {
-  margin-top: 14px;
-    margin-left: 6px;
-}
-.p-footer{
-  font-size: 13px;
-  display: flex;
-  justify-content: center;
-  padding-top: 12px;
-}
-.footer {
-   position: relative;
-    width: 100%;
-    background-color: #333;
-    color: white;
-    height: 45px;
-    bottom: 0px;
-}
-
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-/* Change the color of links on hover */
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-.cart-button{
-  background: none;
-    border: none;
-    outline: none;
-}
-/* Add an active class to highlight the current page */
-.topnav a.active {
-  background-color: #4CAF50;
+.icon-counter {
+  padding-left: 9px;
+  padding-right: 2px;
+  border-radius: 50%;
+  height: 25px;
+  width: 30px;
+  border: 1px solid white;
   color: white;
 }
 
-/* Hide the link that should open and close the topnav on small screens */
-.topnav .icon {
-  display: none;
-}
-
-.book-card-div {
-  box-shadow: 14px 10px 11px 0px rgba(0,0,0,0.2);
-  transition: 0.3s;
-  width: 228px;
-  border-radius: 5px;
-  border: 1px solid black;
-  margin: 22px;
-  height: 322px;
-
-}
-
-.book-card-div:hover {
-  box-shadow: 11px 11px 11px 5px rgba(0, 0, 0, 0.40);
-  /*height: 323px;*/
-  /*width:229px;*/
-}
-
-
-
-.card-header {
-  padding-top: 90px !important;
-  /* padding-bottom: 1px;
-  padding-left: 12px; */
+.bookcount-sortby-div{
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  padding: .75rem 1.25rem;
-  margin-bottom: 0;
-  background-color: white !important;
-  border-bottom: none !important;
-  position: relative;
-    padding-bottom: 10px;
-  /* margin-left: 14%; */
-}
-
-.sort-by-div {
-  margin-right: 164px;
-}
-.select-bar{
-  height: 30px;
-  border: 1px solid black;
-  border-radius: 5px;
-  width: 141px;
-  outline: none;
-  /*background-color: #eae6e6;*/
-}
-
-.dashboard-div{
-  overflow: hidden;
-}
-
-.cart-h4 {
-  font-size: 18px;
-  font-weight: 700;
-  margin-top: 15px;
-  margin-left: 1em;
-}
-
-/* .card-header {
-  padding: .75rem 1.25rem;
-  margin-bottom: 0;
-   background-color:0; 
-  border-bottom: 0;
-} */
-.book-title-div{
-  font-family: adobe-clean, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  margin-left: 20px;
-  margin-top: 16px;
-  margin-bottom: 27px;
-  /* font-size: 18px !important; */
-}
-.author-name-div{
-  font-family: adobe-clean, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: 13px;
-  color: #968e8e;
-  margin-left: 20px;
-  margin-top: -18px;
-}
-.book-price-div{
-    font-family: adobe-clean, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    margin-left: 20px;
-    margin-top: -11px;
-    font-weight: 500;
-}
-
-.button-div{
-    display: flex;
-    outline: none;
-    justify-content: space-around;
-    margin: 5px;
-}
-.add-bag-button{
-  height: 29px;
-  outline: none;
-  width: 110px;
-  background-color: #791212;
-  color: whitesmoke;
-  font-family: adobe-clean, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  border: 1px solid black;
-  border-radius: 5px;
-  outline: none;
-}
-
-.added-bag-button{
-  height: 29px;
-  width: 187px;
-  background-color: dodgerblue;
-  color: whitesmoke;
-  font-family: adobe-clean, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  border: 1px solid black;
-  border-radius: 5px;
-  outline: none;
-}
-.add-bag-button:hover{
-  background-color:#a22121;
-  transition-duration: .3s;
-  width: 115px;
-}
-.add-bag-button:focus{
-  /*width:174px;*/
-  background-color:#a22121;
-  margin-left: 7px;
-  margin-right:7px;
-}
-.wishlist-button{
-  width: 79px;
-    background-color: #ffffff;
-    color: black;
-    font-family: adobe-clean, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    border: 1px solid black;
-    border-radius: 5px;
-    outline: none;
-}
-
-.p-5{
-  padding: 1rem!important;
-}
-
-.input-type{
-  width: 14%;
-  padding: 0px 6px;
-  height: 30px;
-  padding-top: 3px;
-  /* padding-right: 10px; */
-  border-radius: 0px;
-  border: 1px solid #aaa;
-  outline: none;
-  display: inline;
-  text-align: center;
-}
-
-.wishlist-button:hover{
-  background-color: #f7f3f3;
-  transition-duration: .3s;
-  width: 83px;
-}
-.wishlist-button:focus{
-  width: 93px;
-  background-color: #efe3e3;
-}
-.MuiContainer-maxWidthLg {
-    margin-left: 22px !important;
-}
-
-.BookCard-Header {
-  font-size: 22px;
-  font-family: cursive;
-  padding-left: 164px;
-}
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  padding-left: 133px;
-  min-height: 578px;
-  margin-left: 32px;
-}
-
-/* OrderPlaced Css */
-
-.order-placed-container{
-  display: flex;
-  /* height: 522px; */
-  /* justify-content: center; */
+  margin-left: 16%;
+  margin-right: 18%;
+  margin-top: 40px;
   align-items: center;
-  /* margin-top: 81px; */
-  min-height: 696px;
-  flex-direction: column;
 }
-.upper-image-div{
-  margin-top: 102px;
+
+#Sort_By_Relevance{
+  border-radius: 10px;
+  outline: none;
+  padding: 10px;
+
 }
-.table-div{
-  position: relative;
-    top: 52px;
-    width: 772px;
-    height: 52px;
-}
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-td, th {
-  border: 1px solid #dddddd;
-  text-align: center;
-  padding: 8px;
-}
-table {
-  font-family:  adobe-clean, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-.order-image-div{
-  height: 112px;
-    top: 83px;
-    left: 580px;
-}
-.order-info{
-  text-align: center;
-  font-weight: 600;
-  font-family:  adobe-clean, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-.continue-shopping-button-div{
-display: flex;
-    /* margin-top: 2px; */
-    position: absolute;
-    top: 576px;
-    height: 35px;
-}
-.continue-shopping-button{
-  background-color: dodgerblue;
-    border: none;
-    outline: none;
-    color: white;
-    border-radius: 5px;
-    width: 190px;
-    font-family: adobe-clean, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-.continue-cart-div{
+
+.pagination-div{
   display: flex;
-  justify-content: flex-end;
-  padding-right: 5%;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.display-books-div{
+    display: grid;
+    grid-template-columns: 250px 250px 250px 250px;
+    grid-gap: 30px;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: 40px;
+    margin-bottom: 20px;
+    min-height: 100px;
+}
+
+.MuiPaper-root.MuiCard-root.note-card.MuiPaper-elevation1.MuiPaper-rounded{ 
+  width:100%;
+  margin:1%;
+  height: 400px;
+  background-color: #f1faee;
+}
+
+.MuiCardActions-root {
+  display: flex;
+  padding: 8px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.hover-card{ 
+  width:18%;
+  height: 40%;
+  background-color: transparent;
+  z-index: 1;
+}
+
+#pagination{
+  display: flex;
+  justify-content: center;
   
 }
-.radioLeft{
-  justify-content: flex-start;
-
-
-}
-.continue-shopping-cart-button{
-  background-color: dodgerblue;
-  height: 32px;
-  /* margin-top: -99px; */
-  margin-block-start: auto;
-  /* padding-bottom: 5px; */
-  border: none;
-  color: white;
-  outline: none;
-  border-radius: 5px;
-  width: 190px;
-  font-family: adobe-clean, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-.continue-shopping-details-button{
-  background-color: dodgerblue;
-  border: none;
-  outline: none;
-  color: white;
-  height: 32px;
-  border-radius: 5px;
-  width: 190px;
-  font-family: adobe-clean, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-.continue-shopping-button:hover{
-  background-color: #007bf3;
+.pagination{
+  border: 1px solid #aaa;
 }
 
-/* AddCartComponent Css */
+.footer-div {
+    display: flex;
+      position: relative;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: #380008;
+      color: white;
+      height: 40px;
+      justify-content: center;
+      align-items: center;
+    }
 
-.cart-component
-{
-  display: flex;
-    align-items: center;
-    justify-content: center;
+    .my-cart-main-div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      min-height: 71px;
+      height: 800px;
+      
+  }
+
+  .my-cart-sub-div {
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    width: 1000px;
     height: auto;
-    
-    
+    border: 1px solid #aaa;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
 }
-
-.form-group{
+.book-image-details-div {
   display: flex;
-    justify-content: space-around;
-    width: 93%;
-    outline: none;
-    margin-bottom: 15px;
+  margin:'center';
+  flex-direction: row;
 }
 
-.form-control {
+.book-details-div {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  justify-content: space-around;
+}
+.item-quantity-div {
+  display: flex;
+  align-items: center;
+}
+
+.book-image-div {
+  width: 220px;
+  height: 200px;
+
+}
+
+#mycart-counter{
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid #aaa;
+}
+.place-order-btn-div{
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 30px;
+}
+
+#check-box-div{
+  display: flex;
+  
+}
+
+.customer-details-div{
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  width: 1000px;
+  height: auto;
+  border: 1px solid #aaa;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+.order-summary-div{
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  width: 1000px;
+  height: auto;
+  border: 1px solid #aaa;
+  /* padding-left: 10px;
+  padding-top: 10px */
+  padding: 10px;
+}
+
+.order-main-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  min-height: 781px;
+}
+#img-ordersummary {
+  vertical-align: middle;
+  border-style: none;
+  width: 300px;
+  height: 300px;
+  padding: 10px;
+}
+
+#img-book{
+  vertical-align: middle;
+  border-style: none;
+  width: 220px;
+  height: 220px;
+  padding: 10px;
+}
+
+#form-check-label {
+  margin-bottom: 0;
+  padding-right: 40px;
+}
+#form-control {
   width: 51%;
   outline: none;
   border-radius: 4px;
@@ -632,656 +279,191 @@ display: flex;
   border: 1px solid #aaa;
 }
 
-.type-div{
+#img-cart {
+    vertical-align: middle;
+    border-style: none;
+    height: 200px;
+    width: 200px;
+    padding: 10px;
+
+}
+
+#bookcountfont{
+  font-size: small;
+}
+
+form#form {
+  width: 520px;
   display: flex;
-  justify-content: flex-start;
-  padding-left: 26px;
-}
-
-.address-group{
-  width: 100%;
-  border-radius: 4px;
-  height: 36px;
-  padding: 3px;
-  margin-left: 26px;
-  border: 1px solid #aaa;
-}
-
-.MuiGrid-spacing-xs-5 {
-  width: calc(100% + 40px);
-  margin: -20px;
-  margin-top: 117px;
-}
-
-.grid-div{
-  margin-top: -232px;
-}
-
-.order-details-div{
-  display: flex;
-  width: 400%;
-  height: 350%;
-
-}
-
-.cart-title-div {
-  padding: 1px;
-  margin-left: 58px;
-}
-
-.img-book {
-  width: 220px;
-    /* border: 2px solid; */
-    margin-left: 26px;
-    margin-bottom: 15px;
-    outline: none;
-}
-
-.plus-btn {
-  border-radius: 20px;
-    border: 1px solid gray;
-    margin: 6px;
-    width: 27px;
-   
-    outline: none !important;
-    height: 27px;
-    width: 28px;
-}
-
-.quantity-div {
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  border: 1px solid #aaa
+}
+
+h2#welcome-text {
+  text-align: center;
+  margin: 50px;
+  color: #a71621;
+}
+.MuiTypography-h4{
+  font-size: 2.5rem !important;
+}
+
+#table-div {
+  display: flex;
+  justify-content: center;
+  width: auto;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+/* Media Query  */
+/* @media  screen and (max-width:1280px) and (min-width: 1024px){
+  .display-books-div{
+    display: grid;
+    grid-template-columns: repeat(4,1fr) !important;
+    grid-gap: 30px;
     justify-content: center;
-    display: flex;
-    outline: none;
-    padding: 14px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    min-height: 699px;
 }
 
-.pagination-nav{
-  display: flex;
-    justify-content: center;
-}
-
-.my-cart-h4{
-  font-size: 21px;
-    padding: 11px;
-    text-align: left;
-}
-
-.pagination{
-  border: 1px solid #aaa;
-}
-
-.remove-btn {
-  margin-left: 20px;
-  height: 29px;
-  outline: none;
-  width: 73px;
-  border: 2px solid brown;
-  color: brown;
-  background: #efe7e7;
-  background: #f5eded;
-  border-radius: 3px;
-  outline: none;
-}
-.MuiOutlinedInput-root {
-  position: relative; 
-  border-radius: 4px;
-}
-.order-logo {
-  width: 136px;
-  margin-left: 40px;
-  margin-top: 16px;
-  outline: none;
-  height: 158px;
-}
-.book-details-div{
-  
-  display: flex;
-  margin-top: 13px;
-  outline: none;
-  flex-direction: row;
-
-
-}
-.book-title-div h4{
-  font-size: 18px;
-}
-.icon {
-  margin-left: -5px;
-  margin-top: -1px;
-  outline: none;
-}
-
-.minus-btn {
-  border-radius: 20px;
-    border: 1px solid gray;
-    margin: 6px;
-    width: 27px;
-    height: 25px;
-    outline: none !important;
-}
-
-.checkout-div{
-  display: flex;
-    justify-content: flex-end;
-    padding: 14px;
-    margin-right: 45px;
-}
-
-.checkout-button {
-  color: whitesmoke;
-  background-color: dodgerblue;
-  height: 32px;
-  width: 190px;
-  border-radius: 5px;
-  border: 1px;
-}
-
-.order-sumary{
-  border: 1px solid #757575;
-    border-radius: 2px;
-    box-shadow: 14px 10px 11px 0px rgba(0,0,0,0.2);
-}
-.order-sumary:hover{
-  box-shadow: 11px 11px 11px 5px rgba(0, 0, 0, 0.40);
-}
-.cart-order{
-  border: 1px solid #757575;
-  box-shadow: 14px 10px 11px 0px rgba(0,0,0,0.2);
-  border-radius: 5px;
-  margin-top: 358px;
-  padding-bottom: 10px;
-}
-.cart-order:hover{
-  box-shadow: 11px 11px 11px 5px rgba(0, 0, 0, 0.40);
-}
-
-.MuiGrid-spacing-xs-5 {
-  width: calc(100% + 40px);
-  margin: -20px;
-  padding-bottom: 87px;
-  }
-.Customer-address-div{
-  border: 1px solid #757575;
-    border-radius: 5px;
-    box-shadow: 14px 10px 11px 0px rgba(0,0,0,0.2);
-}
-.Customer-address-div:hover{
-  box-shadow: 11px 11px 11px 5px rgba(0, 0, 0, 0.40);
-}
-.address-title{
-  padding: 1px;
-  margin-left: 24px;
-  /*box-shadow: 14px 10px 11px 0px rgba(0,0,0,0.2);*/
-}
-/*.address-title:hover{
-  box-shadow: 11px 11px 11px 5px rgba(0, 0, 0, 0.40);
-}*/
-
-.row-1{
-  display: flex;
-    justify-content: space-around;
-    margin-left: -43px;
-    padding: 15px;
-}
-
-.row-2{
-  display: flex;
-    justify-content: space-around;
-    margin-left: -43px;
-    padding: 15px;
-}
-
-.row-3{
-  display: flex;
-    justify-content: space-around;
-    margin-left: -43px;
-    padding: 15px;
-}
-
-.row-4{
-  display: flex;
-    justify-content: space-around;
-    margin-left: -43px;
-    padding: 15px;
-}
-
-.address-button {
-  color: whitesmoke;
-  background-color: dodgerblue;
-  height: 33px;
-  width: 199px;
-  border-radius: 5px;
-  border: 1px;
-  outline: none;
-}
-
-.add-btn{
-  display: flex;
-    justify-content: flex-end;
-    margin: 18px;
-    outline: none;
-}
-
-
-/* media query for width 1280px */
-
-@media only screen and (min-width: 1280px) {
-  .book-icon {
-    margin-left: 13em ;
-}
-
-.book-details-div {
-  margin-left: -25px !important;
-}
-
-.search {
-  width: 403px;
-}
-.MuiContainer-root {
-  padding-left: 123px !important;
-  padding-right: 0px !important;
-}
-.cart-div {
-  margin-left: 70px !important;
-}
-
-.select-bar {
-  margin-right: 0px !important;
-}
-
-.sort-by-div {
-  margin-right: 184px !important;
-}
-
-.bookicon {
-  font-size: 24px ;
-}
-
-.grid-div {
-  margin-left: -7px;
-  width: 89%;
-}
-
-.card-header{
-  margin-left: 14%;
-  padding-top: 90px !important;
-  position: relative;
-    padding-bottom: 10px;
-}
-
-h2 {
-  font-weight: 700;
-}
-
-.search-bar {
-  padding-left: 67px;
-}
-
-.book-count-div {
-  padding-right: 250px;
-}
-
-.p-footer {
-  font-size: 14px !important;
-}
-.book-title-div{
-  font-size: 18px !important;
-}
-/* cartpage  */
-.quantity-div {
-  display: flex !important;
-  padding: 14px !important;
-  justify-content: normal;
-  width: 270px;
-}
-
-.cart-order {
-    margin-left: 3px;
-}
-
-.Customer-address-div{
-  margin-left: 3px;
-}
-
-.order-sumary{
-  margin-left: 3px;
-}
-
-.row-3{
-  margin-left: -29px;
-}
-
-.remove-btn{
-  margin-top: -1px !important;
-}
-
-.MuiOutlinedInput-root {
-  width: 442px !important;
-  margin-left: -11px !important;
-}
-
-.MuiInputLabel-outlined {
-  margin-left: -40px;
-}
-
-.MuiGrid-spacing-xs-5 {
-  margin: 42px !important;
-}
-
-/* orderplaced */
-.table-div {
-  width: 772px !important;
-}
-  
-}
-
-/* media query of 1024px */
-
-@media only screen and (min-width: 1024px)
-{
-  .book-icon {
-    margin-left: 8em !important;
-}
-
-.logo-title {
-  font-size: 19px!important;
-}
-
-
-/* .card-header{
-  padding-left: 137px;
 } */
-.search-bar {
-  margin-left: 4em !important;
-}
 
-.search {
-  width: 403px !important;
-}
-
-.cart-div {
-  padding-left: 176px !important;
-}
-
-.card-container {
-  padding-left: 172px;
-}
-
-.sort-by-div {
-  padding-right: 32px;
-}
-.dashboard-div{
-  overflow: hidden;
-}
-
-.select-bar{
-  margin-right: 70px;
-}
-
-.book-count-div {
-  margin-left: -34em;
-    margin-top: 9px;
-}
-
-/* AddCartPage */
- .MuiOutlinedInput-root {
-  width: 332px!important;
-    margin-left: 54px;
-}
-
-.MuiGrid-spacing-xs-5 {
-  width: calc(100% + -75px);
-  margin: -20px;
-}
-
-.MuiInputLabel-outlined {
-  margin-left: 25px;
-}
-
-.MuiGrid-spacing-xs-5 > .MuiGrid-item {
-  padding: 20px;
-  margin-left: 0px;
-}
-
-.grid-div {
-  margin-left: 94px;
-}
-
-/* orderplaced */
-.table-div {
-  width: 90% !important;
-}
-}
-
-
-/* 768 px medis query */
-
-@media only screen and (min-width: 768px) and (min-height: 1024px)
+@media all and (max-width:768px)  
 {
-  .card-container {
-    padding-left: 178px;
+  /* .display-books-div {
+    grid-template-columns: repeat(2,1fr) !important;
+    margin-right: 10%;
+    margin-left: 10%;
 }
 
-.card-header {
-  padding-left: 119px;
+.search-textfield {
+  width: 0px;
+}
+.search-div {
+  margin-left: -30px;
+} */
 }
 
-.logo-title{
-  font-size:17px !important;
-}
-
-.book-icon {
-  margin-left: 7em !important;
-  display: flex;
-  margin-top: -1px;
-  margin-right: 5px;
-}
-.search-bar {
-  margin-left: 2em !important;
-}
-
-.book-details-div {
-  margin-left: -40px !important;
-}
-
-.table-div {
-  width: 601px !important;
-}
-.cart-div{
-  padding-left: 75px !important;
-}
-
-.grid-div {
-  margin-left: 73px;
-}
-.MuiGrid-spacing-xs-5 > .MuiGrid-item {
-  margin-bottom: 45px;
-}
-
-.order-placed-container {
-  min-height: 1024px;
-}
-
-.MuiSvgIcon-root {
-  width: 1em !important;
-  font-size: 1.75rem !important;
-}
-
-
-
-.sort-by-div {
-  padding-right: 129px;
-}
-.BookCard-Header {
-  padding-left: 118px;
-}
-
-}
-
-
-@media only screen and (min-width: 360px)
+ @media all and (max-width: 360px) 
 {
-  .book-icon {
-    margin-left: 1rem;
-    margin-right: 5px;
-  }
-
-  .book-title{
-    font-size:9px;
-  }
-  .logo-title {
-    margin-top: 15px;
-    font-size: 16px;
+  .book-logo-search-div {
+    display: flex;
+    position: relative;
+    left: 0px;
+    align-items: center;
+}
+.book-title {
+  margin-right: 18px;
+  margin-top: 8px;
 }
 
-  .search-bar {
-    margin-left: 1em;
-}
-
-.MuiTextField-root {
+.search-textfield {
   width: 100%;
 }
 
-.MuiInput-root {
-  width: 99%;
+.cart-wishlist-div {
+  right: 0px;
 }
 
-.cart-div{
-  padding-left: 24px;
-    margin-right: 5px;
-    margin-left: -33px;
+.wishlist-div {
+  margin-left: -34px;
 }
 
-.cart-title-div {
-  padding: 1px;
-  margin-left: 12px;
+.bookcount-sortby-div {
+  margin-left: 8%;
+  margin-right: 8%;
+  margin-top: 30px;
 }
 
-.order-details-div {
-  margin-left: -42px;
+.display-books-div {
+  display: grid;
+  grid-template-columns: 300px;
 }
 
-.book-details-div {
-  margin-left: -6px;
+.MuiSvgIcon-fontSizeLarge {
+  font-size: 20px !important;
 }
-
-.quantity-div {
-  display: block;
-  padding: 8px;
-}
-
-.remove-btn {
-  margin-left: 29px;
-  margin-top: 3px;
-}
-
-.order-sumary{
-  margin-right: -37px;
-}
-
-.cart-order{
-  margin-right: -37px;
-}
-
-.Customer-address-div{
-  margin-right: -37px;
-}
-
-.table-div {
-  width: 377px;
-}
-
-.sort-by-div {
-  margin-right: 13px;
-}
-
-.BookCard-Header {
-  padding-left: 0;
-}
-.card-container{
-margin-left: -116px;
-}
-
-.p-footer {
+.icon-counter {
+  padding-left: 7px;
+  padding-right: 2px;
+  height: 22px;
+  width: 24px;
   font-size: 12px;
 }
 
-}
-.bookButtons{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin-top: 10px;
+h4.title {
+  font-size: 17px;
 }
 
-#info:hover #bookInfo{
-  width: 500px;
-  display: block;
-  position: absolute;
-  min-height: 90px;
-  width: 300px;
-  margin-left: 208px;
-  margin-top: -244px;
-  background-color: white;
-  z-index: 100;
+.MuiOutlinedInput-root {
+  height: 40px;
 }
 
-.bookImage {
-  background-color: #F5F5F5; 
+#Sort_By_Relevance {
+  padding: 0px;
+  font-size: 12px;
+}
+
+#display-book-title{
+  font-size: 18px;
+}
+p {
+  margin-top: 0;
+  margin-bottom: 0rem;
+  font-size: 10px;
+}
+
+.my-cart-sub-div {
+   width: 347px;
+}
+.customer-details-div {
+  width: 347px;
+}  
+.order-summary-div {
+  width: 347px;
+} 
+#mycart-title{
+ font-size: 17px !important; 
+}
+
+#img-cart {
+  height: 170px;
+  width: 153px;
+}
+.increment-div {
   display: flex;
-  flex-direction: row;
+}
+.item-quantity-div {
+  display: flex;
   align-items: center;
-  align-content: center;
-  justify-content: center;
+  flex-direction: column;
+}
+
+#mycart-counter {
+  padding-left: 0px;
+  padding-right: 0px; 
+}
+
+.MuiButton-label {
+  font-size: 10px;
+}
+.order-main-div {
+  min-height: 526px;
+  margin-top: 0px; 
+}
+#order-summary-title{
+font-size: 20px;
+}
+
+#img-ordersummary {
   width: 200px;
-  height: 150px;
-}
-.aligncontentbesidepic{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: left;
-  justify-content: center;
-  width: 300px;
-  
-  
-
-
+  height: 184px;
 }
 
-/* ------Angular---------------- */
-buttonAngular{
-   /* color: rgb(102, 26, 26); 
-  color: aliceblue; */
-  color: red;
-
-
+#address-table{
+  font-size: 10px;
 }
-.my-cardAngular {
-  width: 300px;
-  outline: none;
-  border: none;
-  /* margin-right: 20%; */
-  display: flex;
-  padding: 10px;
-  /* flex-wrap: wrap; */
-  box-sizing: border-box;
-  justify-content: center;
-  box-shadow: 0 4px 8px 0  rgb(179, 59, 59),0 6px 20px 0 rgba(241, 37, 37, 0.19);
-  border-radius: 13px;
-    margin-top: 20px;
-  display: flex;
-  flex-direction: row;
-
-}
-registration-container {
-
-  justify-content: center;
-  
-}
-.my-cardNGULAR {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
 }

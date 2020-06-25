@@ -1,11 +1,10 @@
-
 import React, { Component } from 'react'
 import { withRouter } from "react-router-dom";
 import { Card, Snackbar, IconButton } from "@material-ui/core";
 import CloseOutlinedIcon from "@material-ui/icons/CloseOutlined";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import { controller } from '../../service/UserService.jsx';
+import { controller } from '../../services/UserService.jsx';
 import Select from '@material-ui/core/Select';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -256,4 +255,3 @@ class Registration extends Component {
       }
     }
     export default withRouter(Registration);
-    

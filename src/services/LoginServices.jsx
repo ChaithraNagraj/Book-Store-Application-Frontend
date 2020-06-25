@@ -5,5 +5,3 @@ export const LoginRequestMethod = async (data)=>{
     const response = await axios.post(loginURL,data);
     return response;
 }
-
-export default LoginRequestMethod;

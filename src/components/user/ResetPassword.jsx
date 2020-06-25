@@ -1,44 +1,43 @@
 import React from 'react';
 import { Card, TextField, Snackbar, IconButton, Button } from '@material-ui/core'
 import { withRouter } from "react-router-dom";
-
-// import UserService from './service/UserService';
-//import UserService from '../service/UserService'
+import "./resetpass.css";
+import { resetPassword } from "../../services/ResetPassServices"; 
 
 export default class Resetpassword extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            password: '',
-            password2:'',
+            confirmpassword: '',
+            password:'',
             snackBarMsg: '',
             openSnackBar: false,
         }
         // this.handleemail=this.handleemail.bind(this)
     }
 
-    handlePassword = (event) => {
+    handleconfirmPassword = (event) => {
         this.setState({
-            password: event.target.value,
+            confirmpassword: event.target.value,
         })
     }
 
-    handlePassword2 = (event) => {
+    handlePassword = (event) => {
         this.setState({
-            password2: event.target.value            
+            password: event.target.value            
         })
     }
 
 
     handleSubmit = () => {
 
-        if (this.state.password === '') {
+        if (this.state.confirmpassword === '') {
             this.setState({
                 openSnackBar: true,
                 snackBarMsg: "Password cannot be empty"
             })
         }
-        else if(this.state.password !== this.state.password2){
+        else if(this.state.password !== this.state.password){
             this.setState({
                 openSnackBar: true,
                 snackBarMsg: "Password did not match"
@@ -50,13 +49,13 @@ export default class Resetpassword extends React.Component {
                 "password": this.state.password
             }
             console.log("Reset Password Component data", data)
-            // service.resetPassword(data).then(res => {
-            //     console.log("Response after hitting reset password api >> ", data);
-            //     this.props.history.push('/')
+            resetPassword(data).then(res => {
+                console.log("Response after hitting reset password api >> ", data);
+                this.props.history.push('/')
 
-            // }).catch(error => {
-            //     console.log("Error after hitting reset password api  ", error);
-            // })
+            }).catch(error => {
+                console.log("Error after hitting reset password api  ", error);
+            })
         }
     }
     handleClose = () => {
@@ -69,30 +68,30 @@ export default class Resetpassword extends React.Component {
             <div className="resetPassword-container">
                 <Card className="resetPassword-card">
                     <div>
-                        <h1 style={{ color: "#ffb300" }}>
-                            Reset Password
+                        <h1 style={{ color: "black",backgroundColor:"#A03037", fontsize:"10px",marginTop:"-2px"}}>
+                                 Reset Password
                     </h1>
-                    <div className="resetPassword1">
+                    <div className="resetPassword1" style={{marginLeft:'100px' }}>
                         <TextField
-                        type="password"
-                            id="password"
+                        type="confirmpassword"
+                            id="confirmpassword"
                             placeholder="New Password"
                             variant="outlined"
                             value={this.state.password}
-                            onChange={this.handlePassword}
+                            onChange={this.handleconfirmPassword}
                         /></div>
                         
-                    <div className="resetPassword2">
+                    <div className="resetPassword" style={{marginLeft:'100px' }}>
                         <TextField
                         type="password"
-                            id="password2"
+                            id="password"
                             placeholder="Confirm Password"
                             variant="outlined"
                             value={this.state.password2}
-                            onChange={this.handlePassword2}
+                            onChange={this.handlePassword}
                         /></div>
                         <div className="resetButton">
-                        <Button variant="contained" color="primary"  onClick={this.handleSubmit}>Submit</Button>
+                        <Button variant="contained" color="primary" style={{marginLeft:'300px' ,marginTop:'20px'}} onClick={this.handleSubmit}>Submit</Button>
                     </div></div>
                 </Card>
 
