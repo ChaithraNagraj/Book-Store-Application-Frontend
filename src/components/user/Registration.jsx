@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react'
 import { withRouter } from "react-router-dom";
 import { Card, Snackbar, IconButton } from "@material-ui/core";
@@ -71,6 +72,13 @@ class Registration extends Component {
           password: password
         });
       };
+      handleChangeRadio = (event) => {
+        console.log("radiobutton****")
+        
+        this.setState({     
+            role: event.target.value
+        })
+    }
     
       onSubmit = () => {
         if (this.state.name === "") {
@@ -111,6 +119,7 @@ class Registration extends Component {
             mobileNumber: this.state.mobileNumber,
             role: this.state.role
           };
+          console.log(registartionDetails)
     
           // userRegister.then(response => {
           //     console.log(response.data);
@@ -126,7 +135,7 @@ class Registration extends Component {
     
       render() {
         return (
-          <div className="registerForm">
+          // <div className="registerForm">
             <Card className="formcard">
               <Snackbar
                 anchorOrigin={{
@@ -144,8 +153,8 @@ class Registration extends Component {
                 }
               />
               <div className="heading" >
-                                <div className="register-h2"  style={{backgroundColor:'#A03037'}}>
-                  <h2>Sign up for BookStore</h2>
+              <div className="register-h2"  style={{backgroundColor:'#A03037',color: 'white'}}>
+                  <h4>Sign up for BookStore</h4>
                 </div>
               </div>
               <div>
@@ -203,31 +212,46 @@ class Registration extends Component {
                       onChange={this.onChangeMobno}
                     />
                   </div>
-                  <div>
-                    <TextField
-                      id="outlined-role-input"
-                      label="Role"
-                      type="text"
-                      margin="normal"
-                      variant="outlined"
-                      value={this.state.role}
-                      onChange={this.onChangeRole}
-                    />
+                 
+                  <div style={{ width: '52%', marginLeft: '190px',height:'220', paddingBottom: '-40px' }}>
+                        {/* <div className="regFName"> 
+                            {/* <div style={{ width: '92%', marginLeft: '390px', paddingBottom: '20px' }} >
+                                <div style={{ width: '92%', marginLeft: '-300px', paddingBottom: '20px' }} className="typeRadio">Type of Registration</div> */}
+                                <RadioGroup style ={{allign:"centre",height:'220'}} aria-label="Type"  name="type" row >
+                                    <FormControlLabel value="1"
+                                     control={<Radio />} 
+                                     onChange={this.handleChangeRadio}
+                                    // checked={!this.state.role === "user"}
+                                     label="User" />
+
+                                    <FormControlLabel value="2" 
+                                    control={<Radio />} 
+                                    onChange={this.handleChangeRadio}
+                                    // checked={!this.state.role === "user"}
+                                    label="Seller" />
+                                    <FormControlLabel value="3" 
+                                    control={<Radio />} 
+                                    onChange={this.handleChangeRadio}
+                                    // checked={!this.state.role === "user"}
+                                    label="Admin" />
+
+                                    
+                                </RadioGroup>
                   </div>
 
-                  <div  style={{marginTop:'50px'}}>
-                      <Button
+                  <div  style={{marginTop:'50px',font:'',color:'Red'}}>
+                      <Button  style={{backgroundColor:'#A03037',color: 'white'}}
                       variant="contained"
-                      color="primary"
+                      // color="red"
                       onClick={this.onSubmit}
                     >
-                      Submit
+                      Register
                     </Button>
                   </div>
                 </div>
               </div>
             </Card>
-          </div>
+          // </div>
         );
       }
     }

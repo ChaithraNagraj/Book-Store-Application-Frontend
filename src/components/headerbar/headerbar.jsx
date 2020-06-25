@@ -13,7 +13,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 // import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 // import headerBar from '../../headerBar.scss';
 
-export default class ToolBar extends Component {
+ export default class ToolBar extends Component {
 
   constructor(props) {
     super(props);
@@ -133,3 +133,4 @@ handleGoToCart(event)
     );
   }
 }
+//  export default Toolbar;

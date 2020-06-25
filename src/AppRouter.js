@@ -6,6 +6,7 @@ import homepage from './components/homepage/homepage';
 import user from './components/user/Login';
 import cart from './components/cart';
 import Registration from './components/user/Registration';
+// import Register from './components/user/Register'
 
     import OrderPlaced from './components/OrderPlaced';
 const AppRouter = () => (
@@ -18,6 +19,8 @@ const AppRouter = () => (
 
             <Route path="/Registration" component={Registration} eaxcat={true}/>
             <Route path='/OrderPlaced' component={OrderPlaced} />
+            {/* <Route path="/Register" component={Register} eaxcat={true}/> */}
+
 
 
         </div>
