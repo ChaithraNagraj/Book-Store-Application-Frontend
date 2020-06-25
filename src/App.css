@@ -49,19 +49,22 @@ display: flex;
   align-items: center;
   position: relative;
   right: 1 gfds5px;
-  right:-20px;
+  right:0px;
+
 }
 .cart-div{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+
 }
 .wishlist-div{
 display: flex;
 flex-direction: column;
 justify-content: center;  
-margin-left: 20px;
+margin-left: 50px;
 align-items: center;
 }
 

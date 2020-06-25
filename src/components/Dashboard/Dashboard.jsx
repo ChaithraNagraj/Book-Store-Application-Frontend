@@ -84,7 +84,7 @@ class Dashboard extends Component {
         if (search.toString().length >= 1) {
             const newData = this.state.books.filter(item => {
                 return (
-                    item.bookTittle.toLowerCase().indexOf(search.toLowerCase()) > -1 ||
+                    item.bookName.toLowerCase().indexOf(search.toLowerCase()) > -1 ||
                     item.authorName.toLowerCase().indexOf(search.toLowerCase()) > -1
                 );
             })

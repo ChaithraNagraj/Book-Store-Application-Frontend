@@ -1,13 +1,13 @@
 import axios from 'axios';
-const getAllBooksURL = 'http://localhost:8080/getBooks';
-const getBookCOuntURL = 'http://localhost:8080/api/BookStore/CountBook';
+const getAllBooksURL = 'http://localhost:8080/books/getBooks';
+const getAllBookByAutorNameURL='http://localhost:8080/books/bookStoreApplication/getBookByAuthorName';
 
 export const getAllBooksRequestMethod= async ()=>{
     const response = await axios.get(getAllBooksURL);
     return response;
 }
 
-export const getBookCountRequestMethod= async ()=>{
-    const response = await axios.get(getBookCOuntURL);
+export const getBookByAuthorName= async ()=>{
+    const response = await axios.get(getAllBookByAutorNameURL);
     return response;
 }
