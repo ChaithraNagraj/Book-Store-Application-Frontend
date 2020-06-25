@@ -21,7 +21,6 @@ export default class ToolBar extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleGoToHome = this.handleGoToHome.bind(this);
-    // this.handleGoToLogin=this.handleGoToLogin.bind(this);
     this.handleGoToCart=this.handleGoToCart.bind(this);
     this.showDropdownMenu = this.showDropdownMenu.bind(this);
     this.hideDropdownMenu = this.hideDropdownMenu.bind(this);
@@ -51,13 +50,7 @@ showDropdownMenu(event) {
     window.location.reload(false);
 
   }
-  // handleGoToLogin(event)
-  // {
-  //   // window.location='bookstorefrontend/src/components/user/Login.jsx';
-  //   window.location.assign('../../Login');
-  //   // window.location.assign('../../Registration');
-  // }
-
+  
 handleGoToCart(event)
 {
   window.location.assign('../../cart');
@@ -98,7 +91,7 @@ handleGoToCart(event)
               Bookstore
             </Typography>
           
-            <div className="searchBar">
+            <div className="searchBar"> style
               <SearchIcon style={{ color: 'grey', margin: '1%' }} />
               <InputBase
                 placeholder="Search…"
@@ -106,16 +99,10 @@ handleGoToCart(event)
                 value={this.state.value} onChange={(value) => this.handleChange(value)}
               />
             </div>
-            {/* <div className="PermIdentityIcon">
-              <PermIdentityIcon style={{ color: 'white', margin: '1%' }} />
-              </div> */}
-             <div className="dropdown" style = {{ color:' white', marginLeft: '12%',width:"180px"}} >
-             {/* <div className="PermIdentityIcon">
-              <PermIdentityIcon style={{ color: 'white', margin: '1%' }} />
-              </div> */}
-
+         <div className="dropdown" style = {{ color:' white', marginLeft: '12%',width:"180px"}} >
+             
          <div className="Sign" onClick={this.showDropdownMenu}varient="h9" noWrap>       
-            <AccountCircleIcon style={{ color: 'white', margin: '-1%'}} />
+            <AccountCircleIcon style={{ color: 'white', margin: '-1%' ,size:'large'}} />
              Hello,Sign-in..</div>
 
           { this.state.displayMenu ? (
@@ -132,15 +119,12 @@ handleGoToCart(event)
         )
       }  
              </div>
-             {/* <div className="PermIdentityIcon">
-              <PermIdentityIcon style={{ color: 'white', margin: '15%' }} />
-              </div> */}
-
+             
            <Typography onClick={() => this.handleGoToCart()}  style={{ marginLeft: '1%' }} variant="h9" noWrap>
              Cart
             </Typography>
             <div className="ShoppingCart">
-              <ShoppingCartIcon style={{ color: 'white', margin: '15%' }} />
+              <ShoppingCartIcon  style={{ color: 'white', margin: '15%' }} />
               </div>
 
           </Toolbar>

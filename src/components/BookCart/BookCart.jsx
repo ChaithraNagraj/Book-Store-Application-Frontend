@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-// import logo from '../logo.svg';
+import logo from '../../logo.svg';
 import Container from '@material-ui/core/Container';
-import GridView from '../gridViewComponent/GridView';
 export class BookCard extends Component {
     render() {
         return (
@@ -17,7 +16,7 @@ export class BookCard extends Component {
                                             <h4 id="book-title-by-id" >{ele.bookTitle}</h4>
                                         </div>
                                         <div className="author-name-div">
-                                            <p>{ele.authorName}</p>
+                                        ₹ {ele.price}
                                         </div>
                                         <div className="book-price-div">
                                             <p>₹ {ele.bookPrice}/-</p>

@@ -3,8 +3,16 @@ import ToolBar from '../headerbar/headerbar';
 import Footer from "../Footer/Footer";
 import CustomPaginationActionsTable from '../paginationComponent/Pagination';
 import LowerBar from '../lowerBarComponent/LowerBar';
-import { getMethod } from '../../service/httpService.jsx';
+import { getAllBooks} from '../../service/BookService';
 import BookCard from '../BookCart/BookCart';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
+
+const useStyles = createMuiTheme({
+    root: {
+        flexGrow: 1,
+    }
+});
+
 class Home extends React.Component {
 
     constructor(props) {
@@ -26,53 +34,68 @@ class Home extends React.Component {
         
     }
 
-    // componentDidMount() {
-    //     this.getAllBooks();
-    // }
-    componentWillMount() {
-        this.setState({
-            books: [
-                {
-                    id: 1,
-                    title: "Don't Make Me to think",
-                    author: "Steven King",
-                    price: 150,
-                    image:"../../dontMakeMeThink"
-                },
-                 {
-                    id: 2,
-                    title: "Java for Beginners",
-                    author: "kalpesh mali",
-                    price: 250,
-                    image:""
-                },
-                {
-                    id: 3,
-                    title: "The girl Room 103",
-                    author: "Durjoydat",
-                    price: 219,
-                    image:""
-                },
-                {
-                    id: 4,
-                    title: "Half Girlfiend",
-                    author: "Chetha bagath",
-                    price: 165,
-                    image:""
-                },
-                {
-                    id: 5,
-                    title: "The wish i could tell you",
-                    author: "Durjoy Datta",
-                    price: 170,
-                    image:""
-                },
-
-
-
-            ]
-        });
+    componentDidMount() {
+        this.getAllBooks();
     }
+    // componentWillMount() {
+    //     this.setState({
+    //         books: [
+    //             {
+    //                 id: 1,
+    //                 title: "Don't Make Me to think",
+    //                 author: "Steven King",
+    //                 price: 150,
+    //                 image:"../../dontMakeMeThink"
+    //             },
+    //             {
+    //                 id: 1,
+    //                 title: "her last wish",
+    //                 author: "Durjoy Datta",
+    //                 price: 150,
+    //                 image:"../../dontMakeMeThink"
+    //             },
+    //             {
+    //                 id: 1,
+    //                 title: "The world best boyfriend",
+    //                 author: "Steven King",
+    //                 price: 150,
+    //                 image:"../../dontMakeMeThink"
+    //             },
+
+    //              {
+    //                 id: 2,
+    //                 title: "Java for Beginners",
+    //                 author: "kalpesh mali",
+    //                 price: 250,
+    //                 image:""
+    //             },
+    //             {
+    //                 id: 3,
+    //                 title: "The girl Room 103",
+    //                 author: "Durjoydat",
+    //                 price: 219,
+    //                 image:""
+    //             },
+    //             {
+    //                 id: 4,
+    //                 title: "Half Girlfiend",
+    //                 author: "Chetha bagath",
+    //                 price: 165,
+    //                 image:""
+    //             },
+    //             {
+    //                 id: 5,
+    //                 title: "The wish i could tell you",
+    //                 author: "Durjoy Datta",
+    //                 price: 170,
+    //                 image:""
+    //             },
+
+
+
+    //         ]
+    //     });
+    // }
 
     
     handleClick(event) {
@@ -93,13 +116,11 @@ class Home extends React.Component {
         })
     }
 
-    
-
     getAllBooks = () => {
         let path = {
             path: "books"
         }
-        getMethod(path).then((res) => {
+        getAllBooks(path).then((res) => {
             this.setState({ books: res.data.data });
             this.setState({
                 maxNumOfPage: Math.ceil(this.state.books.length / this.state.todosPerPage)
@@ -122,7 +143,7 @@ class Home extends React.Component {
                     <div style={this.state.bookState ? { display: 'block' } : { display: 'none' }}>
                         <div style={{ width: '74%', margin: 'auto', marginTop: '6%' }}>
                             <LowerBar data={this.state.books.length} function={this.setbooks} />
-                            {/* <BookCard
+                            <BookCard
                              books={currentTodos}
                             cartCounter={this.cartCountHandler} 
                             //books={this.state.books} text={this.state.text} 
@@ -131,79 +152,9 @@ class Home extends React.Component {
                             showWishlist={this.state.showWishlist} 
                             disableButton={this.state.disableButton} 
                             clickedId={this.state.clickedId} 
-                            /> */}
-<div>
-                        <div style={{ display: 'flex', flexDirection: 'column' }}>
-                            {
-                                this.state.books.map(books => {
-                                    return(
-                                        <div>
-                                        <div>
-                                            <div className="book-details-div">
+                            />
 
-                                            <div className="img-book">
-                                                                <img src={"books.image"} className="order-logo" />
-                                              </div>
-                                                
-                                            {/* <CardActionArea >
-                    <div className="bookImage">
-                        <img alt="" width="100px" height="130px" />
-                    </div>
-                </CardActionArea> */}
-                <div className="aligncontentbesidepic">
-                                    <div >
-                                        
-                                                <h4 className="h4-div">{books.title}</h4>
-
-                                            </div>
-                                            <div className="author-name-div">
-                                                <p>{books.author}</p>
-
-                                            </div>
-                                            <div className="book-price-div">
-                                                <p>Rs.{books.price}</p>
-                                            </div>
-                                            <div className="quantity-div">
-                                                {/* <button className="minus-btn" onClick={this.substractQuantity}><RemoveRoundedIcon className="icon" /></button> */}
-
-                                                {/* <div className="input-type">
-                                                    {this.state.quantity}
-                                                </div> */}
-                                                {/* <input type="text"  className="input-type"> */}
-
-                                                {/* <button className="" onClick={this.addQuantity}><AddRoundedIcon className="icon" /></button> */}
-                                                {/* <button className="" onClick={() => this.removeFromCart(books.cartId)} >Remove</button> */}
-                                            </div>
-                                        </div>   
-                         </div>               
-                                            {/* <div className="bookButtons">
-                    <Button variant="outlined" style={{ backgroundColor: '#A03037', color: 'white', width: '40%', height: '10%', fontSize: '10px' }} onClick={() => this.buyBook(this.props.data)}>buynow</Button>
-                </div> */}
-               <button className="add-bag-button" style={{ backgroundColor: '#A52A2A', color: 'white', width: '20%', height: '10%', fontSize: '10px' }}
-                            // onClick={()=>{this.props.cartCounter(ele.bookID,ele.numOfCopies)}}
-                            >
-                                ADD TO BAG
-                            </button>
-
-         <button className="wishlist-button" style={{  width: '10%', height: '20%', fontSize: '10px' }}
-                            > WISHLIST</button>
-
-
-                                        </div>
-
-                                    </div>
-                                    )
-                                })
-                            }
-                        </div>
-
-                        </div>
-                        </div>
-                        <div>
-                        
-
-                        </div>
-                        
+                </div>
                         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '3%', marginTop: '2%' }}>
                             <CustomPaginationActionsTable perPage={this.state} function={this.setPageNumber}
                                 incfunction={this.incrementCurrentPageNumber}
@@ -212,13 +163,6 @@ class Home extends React.Component {
                             
                         </div>
                     </div>
-                   
-                
-                        
-
-                   
-                     
-
                     <div style={this.state.orderState ? { display: 'block' } : { display: 'none' }}>
                     </div>
                     <div style={this.state.finalPage ? { display: 'block' } : { display: 'none' }}>
