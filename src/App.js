@@ -5,6 +5,7 @@ import MyCart from './components/cart/MyCart';
 import Login from './components/user/Login';
 import Registration from './components/user/Registration';
 import OrderSummary from './components/cart/OrderSummary';
+import cart from './components/cart/cart';
 import {BrowserRouter as Router ,Switch, Route } from 'react-router-dom';
 import Resetpassword from './components/user/ResetPassword';
 function App() {
@@ -15,6 +16,7 @@ function App() {
    <Route path='/BookstoreApplication' component={Dashboard} />
    <Route path='/Login' component={Login}/>
    <Route path='/MyCart' component={MyCart}/>
+   <Route path= '/cart' copmponent={cart}/>
    <Route path='/Registration' component={Registration}/>
    <Route path='/ResetPassword' component={Resetpassword}/>
    <Route path='/ordersummary' component={OrderSummary} />

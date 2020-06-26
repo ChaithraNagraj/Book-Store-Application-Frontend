@@ -12,22 +12,22 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import controller from '../service/UserService';
 import TextField from '@material-ui/core/TextField';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
-// import  Toolbar  from '../components/headerbar/headerbar';
-// import  Footer  from './Footer';
-// import { Toolbar } from '../components/headerbar/headerbar';
+import  Footer  from '../Footer/Footer';
+import header from '../header/Header';
+import bookImage from '../../assets/book.jpg';
+import "./cart.css";
 
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import {
     getCartAddedCountRequestMethod, getCartValuesRequestMethod,
     deleteCartValueRequestMethod, getCustomerAddressRequestMethod, addCustomerDetailsRequestMethod
-} from '../service/CartServices';
-import OrderPlaced from  './OrderPlaced'
+} from '../../services/CartServices';
+import OrderSummary from  './OrderSummary';
 
 
 
@@ -64,13 +64,6 @@ export class Cart extends Component {
             email: "",
             incrementDecrementCount: 1
 
-            
-
-
-
-
-
-
 
         }
       
@@ -97,7 +90,7 @@ export class Cart extends Component {
                     title: "Don't Make Me to think",
                     author: "Steven King",
                     price: 1500,
-                    image:"C:\Users\Shilpa\Documents\React\Book-Store-Application-Frontend\src\assets\dontMakeMeThink.jpg",
+                    image:"",
 
                 } 
                 //  {
@@ -301,7 +294,7 @@ this.setState({
         this.setState({
             showOrderPlacedPage: !doesShowOrderPlacedPage
         })
-        this.props.history.push("/OrderPlaced");
+        this.props.history.push("/OrderSummary");
 
     }
 
@@ -330,7 +323,7 @@ this.setState({
                    <Container maxWidth="lg">            
                 <div >
                 <Grid item xs={10}>
-                        <div  className="Customer-address-div">    
+                        <div  className="Customer-address-div" >    
                         <Typography id='mycart-title'variant="h4">My cart ({this.state.quantity})</Typography>
        
                             {
@@ -341,11 +334,13 @@ this.setState({
                                                 <div className="book-details-div" >
 
                                                 <div className="img-book">
-                                                  <img src={"C:\Users\Shilpa\Desktop"} className="order-logo" />
+                                
+                                                  <img className='img' id='img-ordersummary' src={bookImage}/>
+
                                                 </div>
                                                     
                                 
-                                             <div className="aligncontentbesidepic">
+                                             <div className="aligncontentbesidepic ">
                                                 <div >
                                                     <h4 className="h4-div">{book.title}</h4>
                                                 </div>

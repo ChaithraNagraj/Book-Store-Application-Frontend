@@ -3,7 +3,7 @@ import Header from '../header/Header';
 import DisplayBooks from '../Book/DisplayBooks';
 import Footer from '../Footer/Footer';
 import { AddCartRequestMethod, getCartAddedCountRequestMethod } from '../../services/CartServices';
-import {getAllBooksRequestMethod} from '../../services/BookServices';
+import {getAllBooksRequestMethod,getBookByAuthorName} from '../../services/BookServices';
 import MyCart from '../cart/MyCart';
 import Pagination from '../pagination/Pagination';
 import {withRouter } from 'react-router-dom';
@@ -30,6 +30,7 @@ class Dashboard extends Component {
     
  componentDidMount() {
      this.getAllBooksRequestMethod();
+
      }
 
      getAllBooksRequestMethod = () => {
@@ -45,7 +46,20 @@ class Dashboard extends Component {
             console.log(err);
         })
     }
-    // componentDidMount() {
+
+    getCartAddedCountRequestMethod=()=> {
+        let path={
+            path:"books"
+        }
+        getCartAddedCountRequestMethod(path).then((res) => {
+            this.setState({ books:res.data.data});
+            this.setState({
+            maxNumOfPage: Math.ceil(this.state.books.length / this.state.todosPerPage)
+            })
+        }).catch((err) => {
+            console.log(err); 
+        })
+    }    // componentDidMount() {
     //     Promise.all([getAllBooksRequestMethod(), getBookCountRequestMethod(), getCartAddedCountRequestMethod()])
     //         .then(([getallBookResult, countBookResult,cartCountResult]) => {
     //             this.setState({
@@ -56,6 +70,7 @@ class Dashboard extends Component {
 
     //         })
     // }
+
 
     paginate = (pageNumber) => {
         this.setState({
@@ -167,8 +182,7 @@ class Dashboard extends Component {
         })
         console.log(this.state.wishlist)
     }
-
-    render() {
+        render() {
         
         const indexOfLastPost = this.state.currentPage * this.state.postsPerPage;
         const indexOfFirstPost = indexOfLastPost - this.state.postsPerPage;
