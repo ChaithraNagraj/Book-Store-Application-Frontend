@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Typography, Button } from '@material-ui/core';
-import orderImage from '../../assets/ordersuccessful.jpg';
+import orderImage from '../../assets/cart.jpg';
 import {withRouter } from 'react-router-dom';
 
 class OrderSummary extends Component {
