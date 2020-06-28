@@ -9,7 +9,6 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip'; 
-// import 2states from '../../2states.jpg';
 import bookImage from '../../assets/book.jpg';
 
 class DisplayBooks extends Component {
@@ -19,7 +18,9 @@ class DisplayBooks extends Component {
             <>
                 <div className='bookcount-sortby-div'>
                     <Typography id='display-book-title' variant='h5'>
-                        Books<span id='bookcountfont'>({this.props.bookCount} items)</span>
+                        Books<span id='bookcountfont'>({this.props.bookCount}items)</span>
+                        {/* Books<span id='bookcountfont'>({this.books.index} items)</span> */}
+
                         </Typography>
                     <div className='sortby-div'>
                         <select name="Sort By Relevance" id="Sort_By_Relevance" onChange={this.props.sortByRelevanceHandler} >

@@ -70,7 +70,7 @@ class Login extends Component {
 
                 <form className=" container p-5 bg-light text-primary mx-auto" id='form' onSubmit={this.submitHandler} >
                 <div className="form-group">
-            <h1 className='display-3 text-dark' style={{backgroundColor:'#A03037'}}>Login to BookStore</h1>
+            <h1 className='display-3 text-dark' style={{backgroundColor:'#A03037',width:'100%'}}> Welcome To BookStore Login</h1>
           </div>
           <div className="form-group" style={{marginTop:'15px',fontWeight:'bold', marginnRight:'100px'}}>
             <label for="loginId">LoginId :</label>
@@ -89,7 +89,7 @@ class Login extends Component {
           {
             this.state.showError ? <div className="form-group text-danger" id="error">Email or Password is incorrect </div> : null
           }
-          <button type="submit" className="btn btn-success" id="submitBtn"  style={{ background:' #A03037',margin:'center',color:'Balck',marginTop:'20px' }}>Login</button> 
+          <button type="submit" className="btn btn-success" id="submitBtn"  style={{ background:' #A03037',fontWeight:'bold',margin:'center',color:'Balck',marginTop:'20px',height:'30px',width:'100px'}}>Login</button> 
                          <small className="link"><Link href="../Registration" >
 
                                 Register-Here?

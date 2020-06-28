@@ -16,10 +16,10 @@ function App() {
    <Route path='/BookstoreApplication' component={Dashboard} />
    <Route path='/Login' component={Login}/>
    <Route path='/MyCart' component={MyCart}/>
-   <Route path= '/cart' copmponent={cart}/>
+   <Route path='/cart' component={cart}/>
    <Route path='/Registration' component={Registration}/>
    <Route path='/ResetPassword' component={Resetpassword}/>
-   <Route path='/ordersummary' component={OrderSummary} />
+   <Route path='/Ordersummary' component={OrderSummary} />
    </Switch>
    </Router>
   );

@@ -152,8 +152,8 @@ class Registration extends Component {
                 }
               />
               <div className="heading" >
-              <div className="register-h2"  style={{backgroundColor:'#A03037',color: 'white'}}>
-                  <h4>Sign up for BookStore</h4>
+              <div className="register-h2"  style={{backgroundColor:'#A03037',color: 'black'}}>
+                  <h2 >Sign up for BookStore</h2>
                 </div>
               </div>
               <div>
@@ -238,8 +238,8 @@ class Registration extends Component {
                                 </RadioGroup>
                   </div>
 
-                  <div  style={{marginTop:'50px',font:'',color:'Red'}}>
-                      <Button  style={{backgroundColor:'#A03037',color: 'white'}}
+                  <div  style={{marginTop:'5px',font:'',color:'Red'}}>
+                      <Button  style={{backgroundColor:'#A03037',color: 'black'}}
                       variant="contained"
                       // color="red"
                       onClick={this.onSubmit}

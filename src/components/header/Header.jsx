@@ -45,7 +45,7 @@ class Header extends Component {
         return (
             
             <>
-                <div className='header'>
+                <div className='header'style={{position:"initial"}}>
                     <div className='book-logo-search-div'>
                         <div className='book-logo-div' onClick={() => this.handleGoToHome()}>
                             <MenuBookIcon fontSize='large' />
@@ -71,12 +71,22 @@ class Header extends Component {
                                 />
                         </div>
                     </div>
+                    <div className='cart-wishlist-div'>
+                        <div className='cart-div' style={{marginLeft:"150px"}}>
+                            <span className='icon-counter' id='lblCartCount'> {this.props.cartCount} </span>
+                            <Button id='icon-btn' onClick={this.props.cartIconClickedHandler}  ><ShoppingCartIcon fontSize='medium'/></Button>
+                        </div>
+                        <div className='wishlist-div'>
+                        <span className='icon-counter' id='lblWishListCount'> {this.props.wishlistCount} </span>
+                           <Button id='icon-btn' onClick={this.props.wishListIconClickedHandler}> <FavoriteIcon fontSize='medium' /> </Button>
+                        </div>
+                    </div>
                     <div className="Sign" onClick={this.showDropdownMenu}varient="h9" noWrap>       
-            <AccountCircleIcon style={{ color: 'white', marginLeft:'-40px'}} />
-             Hello,Sign-in..</div>
+            <AccountCircleIcon style={{ color: 'white', marginLeft:'-150px'}} />
+             </div>
           { this.state.displayMenu ? (
            <ul> 
-         <li><a href="./Login" >Login</a></li> 
+         <li><a href="./Login">Login</a></li> 
           <li><a href="/Account">Account Details</a></li> 
          <li><a href="/OrderSummary">Your orders</a></li> 
          <li><a href="/wishlist">Your wishlist</a></li> 
@@ -87,17 +97,6 @@ class Header extends Component {
           null
         )
       }  
-                    <div className='cart-wishlist-div'>
-                        <div className='cart-div'>
-                            <span className='icon-counter' id='lblCartCount'> {this.props.cartCount} </span>
-                            <Button id='icon-btn' onClick={this.props.cartIconClickedHandler}  ><ShoppingCartIcon fontSize='medium'/></Button>
-                        </div>
-                        <div className='wishlist-div'>
-                        <span className='icon-counter' id='lblWishListCount'> {this.props.wishlistCount} </span>
-                           <Button id='icon-btn' onClick={this.props.wishListIconClickedHandler}> <FavoriteIcon fontSize='medium' /> </Button>
-                        </div>
-                    </div>
-                    
                 </div>
                 
             </>

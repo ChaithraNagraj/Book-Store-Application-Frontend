@@ -8,6 +8,7 @@ import MyCart from '../cart/MyCart';
 import Pagination from '../pagination/Pagination';
 import {withRouter } from 'react-router-dom';
 import Wishlist from '../cart/Wishlist';
+import { responsiveFontSizes } from '@material-ui/core';
 
 class Dashboard extends Component {
 
@@ -46,7 +47,6 @@ class Dashboard extends Component {
             console.log(err);
         })
     }
-
     getCartAddedCountRequestMethod=()=> {
         let path={
             path:"books"
@@ -206,6 +206,7 @@ class Dashboard extends Component {
                             <DisplayBooks
                                 books={this.state.isSearching ? this.state.filterArray :currentPosts}
                                 bookCount={this.state.isSearching ? this.state.filterArrayCount : this.state.bookCount}
+                                TotalCount={this.state.books.length}
                                 onChangePaginationHandler={this.onChangePaginationHandler}
                                 addToBagClickHandler={this.addToBagClickHandler}
                                 addToWishlistClickHandler={this.addToWishlistClickHandler}

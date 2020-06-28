@@ -1,7 +1,7 @@
 
    .registrationCard {
     width: 600px;
-    height: 1000px;
+    height: 600px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -14,8 +14,8 @@
       margin-bottom: 300px;
   }
   .formcard  {
-    width: 450px;
-    height: 550px;
+    width: 470px;
+    height: 610px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -23,7 +23,7 @@
   .register-h2 {
     text-align: center;
     font-size: 25px;
-    margin-top: -30px;
+    margin-top: -20px;
   }
   .register-names {
 margin-left: 110px;
