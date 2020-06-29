@@ -5,6 +5,7 @@ import Footer from '../Footer/Footer';
 import { AddCartRequestMethod, getCartAddedCountRequestMethod } from '../../services/CartServices';
 import {getAllBooksRequestMethod,getBookByAuthorName, getBookCountRequestMethod} from '../../services/BookServices';
 import MyCart from '../cart/MyCart';
+import Abcart from '../cart/Abcart'
 import Pagination from '../pagination/Pagination';
 import {withRouter } from 'react-router-dom';
 import Wishlist from '../cart/Wishlist';
@@ -195,7 +196,9 @@ class Dashboard extends Component {
                     wishListIconClickedHandler={this.wishListIconClickedHandler}
                 />
                 {
-                    this.state.showMyCartComponent ?<MyCart />
+                    // this.state.showMyCartComponent ?<MyCart />
+                    this.state.showMyCartComponent ?<Abcart />
+
                         : this.state.ShowWishListComponent ? 
                         <Wishlist
                             wishlist={this.state.wishlist}

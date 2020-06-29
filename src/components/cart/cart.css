@@ -139,7 +139,7 @@
   }
   
   .img-book {
-    width: 220px;
+    width: 120px;
       /* border: 2px solid; */
       margin-left: 26px;
       margin-bottom: 15px;
@@ -405,7 +405,14 @@
     min-height: 1024px;
   }
   
-  
+  .aligncontentbesidepic{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: left;
+    justify-content: center;
+    width: 300px;
+  }
   
   
    .BookCard-Header {

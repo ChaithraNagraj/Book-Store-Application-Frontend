@@ -6,6 +6,8 @@ import Login from './components/user/Login';
 import Registration from './components/user/Registration';
 import OrderSummary from './components/cart/OrderSummary';
 import cart from './components/cart/cart';
+import Abcart from './components/cart/Abcart'
+import OrderPlaced from './components/cart/OrderPlaced'
 import {BrowserRouter as Router ,Switch, Route } from 'react-router-dom';
 import Resetpassword from './components/user/ResetPassword';
 function App() {
@@ -20,6 +22,11 @@ function App() {
    <Route path='/Registration' component={Registration}/>
    <Route path='/ResetPassword' component={Resetpassword}/>
    <Route path='/Ordersummary' component={OrderSummary} />
+   <Route path='/Abcart' component={Abcart}/>
+   <Route path='/OrderPlaced' component={OrderPlaced}/>
+
+
+
    </Switch>
    </Router>
   );
