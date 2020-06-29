@@ -4,7 +4,7 @@ import { Card, Snackbar, IconButton } from "@material-ui/core";
 import CloseOutlinedIcon from "@material-ui/icons/CloseOutlined";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import { controller } from '../../services/UserService.jsx';
+import { userRegister } from '../../services/UserService.jsx';
 import Select from '@material-ui/core/Select';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -124,10 +124,10 @@ class Registration extends Component {
           //     console.log(response.data);
     
           // })
-          controller.userRegister(registartionDetails).then(res => {
+          userRegister(registartionDetails).then(res => {
             console.log("resp-----", res.data);
     
-            this.props.history.push("/inform");
+            this.props.history.push("../../Dashboard");
           });
         }
       };
@@ -217,7 +217,7 @@ class Registration extends Component {
                             {/* <div style={{ width: '92%', marginLeft: '390px', paddingBottom: '20px' }} >
                                 <div style={{ width: '92%', marginLeft: '-300px', paddingBottom: '20px' }} className="typeRadio">Type of Registration</div> */}
                                 <RadioGroup style ={{allign:"centre",height:'220'}} aria-label="Type"  name="type" row >
-                                    <FormControlLabel value="1"
+                                    <FormControlLabel value="3"
                                      control={<Radio />} 
                                      onChange={this.handleChangeRadio}
                                     // checked={!this.state.role === "user"}
@@ -228,7 +228,7 @@ class Registration extends Component {
                                     onChange={this.handleChangeRadio}
                                     // checked={!this.state.role === "user"}
                                     label="Seller" />
-                                    <FormControlLabel value="3" 
+                                    <FormControlLabel value="1" 
                                     control={<Radio />} 
                                     onChange={this.handleChangeRadio}
                                     // checked={!this.state.role === "user"}

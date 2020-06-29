@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const addCartURL = 'https://localhost:8080/api/Cart/AddCart';
+const addCartURL = 'http://localhost:8080/carts/addToCart';
 const cartAddedCountURL = 'https://localhost:8080/api/Cart/CountCart';
 const getCartValuesURL = 'https://localhost:8080/api/Cart/GetAllCartValue';
 const deleteCartValueURL = 'https://localhost:8080/api/Cart/DeleteCart';

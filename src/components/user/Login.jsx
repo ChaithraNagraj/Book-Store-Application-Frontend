@@ -53,7 +53,7 @@ class Login extends Component {
           loginAuthentication: true
         })
       }
-      this.props.history.push('../../homepage');
+      this.props.history.push('../../Dashboard');
     }).catch(() => {
       //alert("email or password is incorrect");
       this.setState({
