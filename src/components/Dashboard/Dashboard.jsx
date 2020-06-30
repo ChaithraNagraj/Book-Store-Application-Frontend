@@ -163,11 +163,15 @@ class Dashboard extends Component {
         })
         var cart = {
             Book_ID: clickedID,
-            SelectBookCount: bookAvailable
+            // bookId: clickedID,
+
+            // SelectBookCount: bookAvailable
         }
+        console.log("Hello World!!!!!")
         const response = AddCartRequestMethod(cart);
         response.then(res => {
             console.log(res.data);
+            console.log("***********add to cart *******************")
         })
     }
 

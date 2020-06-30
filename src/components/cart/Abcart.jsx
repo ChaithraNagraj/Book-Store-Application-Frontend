@@ -57,7 +57,7 @@ export class Abcart extends Component {
             total:"",
             showCustomerDetails:false,
 
-            showOrderSummery: true,
+            showOrderSummery: false,
 
             showOrderPlacedPage: false,
 
@@ -111,7 +111,7 @@ export class Abcart extends Component {
                     bookTitle: "Don't Make Me to think",
                     authorName: "Steven King",
                     price: 1500,
-                    image:"C:\Users\Shilpa\Documents\React\Book-Store-Application-Frontend\src\assets\dontMakeMeThink.jpg",
+                    image:"",
 
                 } 
                 //  {
@@ -204,12 +204,12 @@ export class Abcart extends Component {
          addCustomerDetailsRequestMethod(data).then((response) => {
             console.log(response.data, "-----------------data---------------");
         })
-        let doesShowOrderSummary = this.state.showOrderSummery;
-        let doesShowCustomerDetails = this.state.showOrderPlacedPage;
-        this.setState({
-            showOrderSummary: !doesShowOrderSummary,
-            showOrderPlacedPage: !doesShowCustomerDetails
-        })
+        // let doesShowOrderSummary = this.state.showOrderSummery;
+        // let doesShowCustomerDetails = this.state.showOrderPlacedPage;
+        // this.setState({
+        //     showOrderSummary: !doesShowOrderSummary,
+        //     showOrderPlacedPage: !doesShowCustomerDetails
+        // })
 
     }
 //  ----------------------shryas--------------------------------------------------------   
@@ -305,11 +305,21 @@ this.setState({
         })
     }
     orderSummeryShowHandler = async () => {
-        let doesShowOrderSummery = this.state.showOrderSummery;
-         this.setState({
-            showOrderSummery: !doesShowOrderSummery
+        // showOrderSummery:true
+        this.setState({
+            showOrderSummery:true
         })
+        // let doesShowOrderSummery = this.state.showOrderSummery;
+        //  this.setState({
+        //     showOrderSummery: !doesShowOrderSummery
+        // })
     }
+    // orderSummeryShowHandler = async () => {
+    //     let doesShowOrderSummery = this.state.showOrderSummery;
+    //      this.setState({
+    //         showOrderSummery: !doesShowOrderSummery
+    //     })
+    // }
     orderPlacedPageHandler = async () => {
         let doesShowOrderPlacedPage = this.state.showOrderPlacedPage;
         this.setState({
