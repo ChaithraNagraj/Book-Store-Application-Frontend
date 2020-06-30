@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Typography, Button } from '@material-ui/core';
-import orderImage from '../../assets/ordersuccessful.jpg';
+import orderImage from '../../assets/SuccessPage.jpg';
 import {withRouter } from 'react-router-dom';
 
 class OrderSummary extends Component {
@@ -21,7 +21,7 @@ class OrderSummary extends Component {
         return (
             <>
                 <div className='order-main-div'>
-                <Typography id='order-summary-title' variant='h3'>Order Placed Successfully</Typography>
+                <Typography id='order-summary-title' variant='h3'></Typography>
                 <div className='order-image-div'>
                 <img className='img' id='img-ordersummary' src={orderImage}/>
                 </div>

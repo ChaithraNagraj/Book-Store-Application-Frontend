@@ -73,16 +73,20 @@ class Header extends Component {
                     </div>
                     <div className='cart-wishlist-div'>
                         <div className='cart-div' style={{marginLeft:"150px"}}>
-                            <span className='icon-counter' id='lblCartCount'> {this.props.cartCount} </span>
-                            <Button id='icon-btn' onClick={this.props.cartIconClickedHandler}  ><ShoppingCartIcon fontSize='medium'/></Button>
+                            {/* <span className='icon-counter' id='lblCartCount'> {this.props.cartCount} </span> */}
+                            <span className='Stack-over' id='lblCartCount'> {this.props.cartCount} </span>
+
+                            <Button id='icon-btn' onClick={this.props.cartIconClickedHandler}  ><ShoppingCartIcon fontSize='large'/></Button>
                         </div>
                         <div className='wishlist-div'>
-                        <span className='icon-counter' id='lblWishListCount'> {this.props.wishlistCount} </span>
-                           <Button id='icon-btn' onClick={this.props.wishListIconClickedHandler}> <FavoriteIcon fontSize='medium' /> </Button>
+                        {/* <span className='icon-counter' id='lblWishListCount'> {this.props.wishlistCount} </span> */}
+                        <span className='Stack-Over' id='lblWishListCount'> {this.props.wishlistCount} </span>
+
+                           <Button id='icon-btn' onClick={this.props.wishListIconClickedHandler}> <FavoriteIcon fontSize='large' /> </Button>
                         </div>
                     </div>
                     <div className="Sign" onClick={this.showDropdownMenu}varient="h9" noWrap>       
-            <AccountCircleIcon style={{ color: 'white', marginLeft:'-150px'}} />
+            <AccountCircleIcon fontSize='large' style={{ color: 'white', marginLeft:'-150px', marginTop:"13px"}} />
              </div>
           { this.state.displayMenu ? (
            <ul> 

@@ -18,7 +18,7 @@ class DisplayBooks extends Component {
             <>
                 <div className='bookcount-sortby-div'>
                     <Typography id='display-book-title' variant='h5'>
-                        Books<span id='bookcountfont'>({this.props.bookCount}items)</span>
+                        Books<span id='bookcountfont'>(Found {this.props.bookCount} items,of {this.props.TotalCount})</span>
                         {/* Books<span id='bookcountfont'>({this.books.index} items)</span> */}
 
                         </Typography>

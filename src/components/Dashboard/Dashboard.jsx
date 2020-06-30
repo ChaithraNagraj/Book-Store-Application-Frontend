@@ -3,7 +3,7 @@ import Header from '../header/Header';
 import DisplayBooks from '../Book/DisplayBooks';
 import Footer from '../Footer/Footer';
 import { AddCartRequestMethod, getCartAddedCountRequestMethod } from '../../services/CartServices';
-import {getAllBooksRequestMethod,getBookByAuthorName} from '../../services/BookServices';
+import {getAllBooksRequestMethod,getBookByAuthorName, getBookCountRequestMethod} from '../../services/BookServices';
 import MyCart from '../cart/MyCart';
 import Pagination from '../pagination/Pagination';
 import {withRouter } from 'react-router-dom';
@@ -31,10 +31,9 @@ class Dashboard extends Component {
     
  componentDidMount() {
      this.getAllBooksRequestMethod();
-
      }
 
-     getAllBooksRequestMethod = () => {
+      getAllBooksRequestMethod = () => {
         let path = {
             path: "books"
         }
@@ -183,7 +182,6 @@ class Dashboard extends Component {
         console.log(this.state.wishlist)
     }
         render() {
-        
         const indexOfLastPost = this.state.currentPage * this.state.postsPerPage;
         const indexOfFirstPost = indexOfLastPost - this.state.postsPerPage;
         const currentPosts = this.state.books.slice(indexOfFirstPost, indexOfLastPost);
