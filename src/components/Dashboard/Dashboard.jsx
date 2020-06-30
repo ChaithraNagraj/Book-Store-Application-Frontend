@@ -4,7 +4,7 @@ import DisplayBooks from '../Book/DisplayBooks';
 import Footer from '../Footer/Footer';
 import { AddCartRequestMethod, getCartAddedCountRequestMethod } from '../../services/CartServices';
 import {getAllBooksRequestMethod,getBookByAuthorName, getBookCountRequestMethod} from '../../services/BookServices';
-import MyCart from '../cart/MyCart';
+import Cart from '../cart/cart';
 import Pagination from '../pagination/Pagination';
 import {withRouter } from 'react-router-dom';
 import Wishlist from '../cart/Wishlist';
@@ -33,7 +33,7 @@ class Dashboard extends Component {
      this.getAllBooksRequestMethod();
      }
 
-      getAllBooksRequestMethod = () => {
+            getAllBooksRequestMethod = () => {
         let path = {
             path: "books"
         }
@@ -80,9 +80,9 @@ class Dashboard extends Component {
 
 
     cartIconClickedHandler = () => {
-        let doesShowMyCartComponent = this.state.showMyCartComponent;
+        let doesShowCartComponent = this.state.showCartComponent;
         this.setState({
-            showMyCartComponent: !doesShowMyCartComponent
+            showCartComponent: !doesShowCartComponent
         })
     }
 
@@ -195,7 +195,7 @@ class Dashboard extends Component {
                     wishListIconClickedHandler={this.wishListIconClickedHandler}
                 />
                 {
-                    this.state.showMyCartComponent ?<MyCart />
+                    this.state.showCartComponent ?<Cart />
                         : this.state.ShowWishListComponent ? 
                         <Wishlist
                             wishlist={this.state.wishlist}
