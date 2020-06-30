@@ -1,7 +1,4 @@
 import React, { Component } from 'react'
-//  import './App.css';
-// import "./card.scss"
-
 import Card from '@material-ui/core/Card';
 import { Container } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
@@ -17,7 +14,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import  Footer  from '../Footer/Footer';
-import header from '../header/Header';
+import Header from '../header/Header';
 import bookImage from '../../assets/book.jpg';
 import "./cart.css";
 

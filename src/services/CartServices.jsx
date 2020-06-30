@@ -3,6 +3,10 @@ import axios from 'axios'
 const addCartURL = 'http://localhost:8080/carts/addToCart';
 const cartAddedCountURL = 'https://localhost:8080/cart/CountCart';
 const getCartValuesURL = 'https://localhost:8080/carts/displayItems';
+// const addCartURL = 'http://localhost:8080/carts/addToCart/{bookId}';
+// const cartAddedCountURL = 'https://localhost:8080/api/Cart/CountCart';
+// const getCartValuesURL = 'https://localhost:8080/api/Cart/GetAllCartValue';
+
 const deleteCartValueURL = 'https://localhost:8080/api/Cart/DeleteCart';
 const addCustomerDetailsURL = 'https://localhost:8080/api/Address/AddAddress';
 const getCustomerAddressURL = 'https://localhost:8080/api/Address/GetCustomerAddress';
@@ -12,16 +16,6 @@ let headers = {
     'Content-Type': 'application/json',
       'token': localStorage.getItem('token')
 }
-
-// const api = `your api here`
-// axios.get(api, { headers: {"Authorization" : `Bearer ${token}`} } )
-//         .then(res => {
-//             console.log(res.data);
-//         this.setState({
-//             items: res.data,  /*set response data in items array*/
-//             isLoaded : true,
-//             redirectToReferrer: false
-//         })
 export const AddCartRequestMethod = async (data)=>{
     const response = await axios.post(addCartURL,data,
         
@@ -46,7 +40,7 @@ export const getCartValuesRequestMethod= async ()=>{
         }
 
         );
-    console.log("Printing response from display api");
+    console.log("Printing response which are recieved from bookstore api");
     console.log(response);
     return response;
 }

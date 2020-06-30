@@ -4,7 +4,6 @@ import DisplayBooks from '../Book/DisplayBooks';
 import Footer from '../Footer/Footer';
 import { AddCartRequestMethod, getCartAddedCountRequestMethod } from '../../services/CartServices';
 import {getAllBooksRequestMethod,getBookByAuthorName, getBookCountRequestMethod} from '../../services/BookServices';
-import MyCart from '../cart/MyCart';
 import Abcart from '../cart/Abcart'
 import Pagination from '../pagination/Pagination';
 import {withRouter } from 'react-router-dom';
@@ -34,7 +33,7 @@ class Dashboard extends Component {
      this.getAllBooksRequestMethod();
      }
 
-      getAllBooksRequestMethod = () => {
+            getAllBooksRequestMethod = () => {
         let path = {
             path: "books"
         }
@@ -153,7 +152,7 @@ class Dashboard extends Component {
     addToBagClickHandler = (clickedID, bookAvailable) => {
         let cartCount = this.state.cartCount;
         let clickedidArray = this.state.clickedId;
-        clickedidArray.push(clickedID);
+        // clickedidArray.push(clickedID);
         console.log(clickedID);
         //console.log(window.sessionStorage.getItem("email"));
         this.setState({
@@ -162,16 +161,14 @@ class Dashboard extends Component {
             addToBagBtnText: "Added to bag"
         })
         var cart = {
-            Book_ID: clickedID,
-            // bookId: clickedID,
-
+            // Book_ID: clickedID,
+            bookId: clickedID,
+        
             // SelectBookCount: bookAvailable
         }
-        console.log("Hello World!!!!!")
         const response = AddCartRequestMethod(cart);
         response.then(res => {
             console.log(res.data);
-            console.log("***********add to cart *******************")
         })
     }
 
@@ -202,7 +199,6 @@ class Dashboard extends Component {
                 {
                     // this.state.showMyCartComponent ?<MyCart />
                     this.state.showMyCartComponent ?<Abcart />
-
                         : this.state.ShowWishListComponent ? 
                         <Wishlist
                             wishlist={this.state.wishlist}
