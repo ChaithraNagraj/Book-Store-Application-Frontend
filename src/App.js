@@ -25,8 +25,6 @@ function App() {
    <Route path='/Abcart' component={Abcart}/>
    <Route path='/OrderSummary' component={OrderSummary}/>
    <Route path='/OrderPlaced' component={OrderPlaced}/>
-
-
    </Switch>
    </Router>
   );

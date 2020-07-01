@@ -40,6 +40,13 @@ class Header extends Component {
         window.location.reload(false);
     
       }
+      handleGoToLogin(event) {
+        // this.props.history.push('./Login')
+        window.location.assign('./Login');
+        // window.location.reload(false);
+    
+      }
+ 
     render() {
         console.log(this.props.cartCount);
         return (
@@ -85,10 +92,10 @@ class Header extends Component {
                            <Button id='icon-btn' onClick={this.props.wishListIconClickedHandler}> <FavoriteIcon fontSize='large' /> </Button>
                         </div>
                     </div>
-                    <div className="Sign" onClick={this.showDropdownMenu}varient="h9" noWrap>       
+                    <div className="Sign" onClick={() => this.handleGoToLogin()}varient="h9" noWrap>       
             <AccountCircleIcon fontSize='large' style={{ color: 'white', marginLeft:'-150px', marginTop:"13px"}} />
              </div>
-          { this.state.displayMenu ? (
+          {/* { this.state.displayMenu ? (
            <ul> 
          <li><a href="./Login">Login</a></li> 
           <li><a href="/Account">Account Details</a></li> 
@@ -100,7 +107,7 @@ class Header extends Component {
         (
           null
         )
-      }  
+      }   */}
                 </div>
                 
             </>

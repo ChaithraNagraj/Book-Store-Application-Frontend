@@ -70,7 +70,7 @@ class Login extends Component {
 
                 <form className=" container p-5 bg-light text-primary mx-auto" id='form' onSubmit={this.submitHandler} >
                 <div className="form-group">
-            <h1 className='display-3 text-dark' style={{backgroundColor:'#A03037',width:'100%'}}> Welcome To BookStore Login</h1>
+            <h1 className='display-3 text-dark' style={{backgroundColor:'#A03037',width:'100%'}}> Login Here</h1>
           </div>
           <div className="form-group" style={{marginTop:'15px',fontWeight:'bold', marginnRight:'100px'}}>
             <label for="loginId">LoginId :</label>
