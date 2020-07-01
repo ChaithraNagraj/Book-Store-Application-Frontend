@@ -161,8 +161,10 @@ class Dashboard extends Component {
             addToBagBtnText: "Added to bag"
         })
         var cart = {
-            Book_ID: clickedID,
-            SelectBookCount: bookAvailable
+            // Book_ID: clickedID,
+            bookId: clickedID,
+        
+            // SelectBookCount: bookAvailable
         }
         const response = AddCartRequestMethod(cart);
         response.then(res => {

@@ -57,7 +57,7 @@ export class Abcart extends Component {
             total:"",
             showCustomerDetails:false,
 
-            showOrderSummery: true,
+            showOrderSummery: false,
 
             showOrderPlacedPage: false,
 
@@ -96,36 +96,49 @@ export class Abcart extends Component {
     componentWillMount() {
         //this method will bring the books which are in cart table and number of quantity
         //
-           Promise.all([getCartAddedCountRequestMethod(), getCartValuesRequestMethod()])
-            .then(([cartAddedCountResult, getCartValues]) => {
+        //    Promise.all([getCartAddedCountRequestMethod(), getCartValuesRequestMethod()])
+        //     .then(([cartAddedCountResult, getCartValues]) => {
+        //         this.setState({
+        //             cartAddedCount: cartAddedCountResult.data,
+        //             cart: getCartValues.data
+        //         })
+        //     })
+        Promise.all([getCartValuesRequestMethod()])
+            .then(([ getCartValues]) => {
                 this.setState({
-                    cartAddedCount: cartAddedCountResult.data,
                     cart: getCartValues.data
                 })
             })
+            Promise.all([getCartAddedCountRequestMethod()])
+            .then(([ cartAddedCountResult]) => {
+                this.setState({
+                    cartAddedCount: cartAddedCountResult.data
+                })
+            })
     
-        this.setState({
-            cart: [
-                {
-                    cartId: 1,
-                    bookTitle: "Don't Make Me to think",
-                    authorName: "Steven King",
-                    price: 1500,
-                    image:"",
+    
+        // this.setState({
+        //     cart: [
+        //         {
+        //             cartId: 1,
+        //             bookTitle: "Don't Make Me to think",
+        //             authorName: "Steven King",
+        //             price: 1500,
+        //             image:"",
 
-                } 
-                //  {
-                //     id: 2,
-                //     title: "Java for Beginners",
-                //     author: "kalpesh mali",
-                //     price: 250,
-                //     image:""
-                // }
-            ]
-        });
-        this.setState({
-            total:this.state.cart.price
-        })
+        //         } ,
+        //          {
+        //             id: 2,
+        //             title: "Java for Beginners",
+        //             author: "kalpesh mali",
+        //             price: 250,
+        //             image:""
+        //         }
+        //     ]
+        // });
+        // this.setState({
+        //     total:this.state.cart.price
+        // })
         
     }
     nameHandler = (event) => {
@@ -204,12 +217,12 @@ export class Abcart extends Component {
          addCustomerDetailsRequestMethod(data).then((response) => {
             console.log(response.data, "-----------------data---------------");
         })
-        let doesShowOrderSummary = this.state.showOrderSummery;
-        let doesShowCustomerDetails = this.state.showOrderPlacedPage;
-        this.setState({
-            showOrderSummary: !doesShowOrderSummary,
-            showOrderPlacedPage: !doesShowCustomerDetails
-        })
+        // let doesShowOrderSummary = this.state.showOrderSummery;
+        // let doesShowCustomerDetails = this.state.showOrderPlacedPage;
+        // this.setState({
+        //     showOrderSummary: !doesShowOrderSummary,
+        //     showOrderPlacedPage: !doesShowCustomerDetails
+        // })
 
     }
 //  ----------------------shryas--------------------------------------------------------   
@@ -305,11 +318,21 @@ this.setState({
         })
     }
     orderSummeryShowHandler = async () => {
-        let doesShowOrderSummery = this.state.showOrderSummery;
-         this.setState({
-            showOrderSummery: !doesShowOrderSummery
+        // showOrderSummery:true
+        this.setState({
+            showOrderSummery:true
         })
+        // let doesShowOrderSummery = this.state.showOrderSummery;
+        //  this.setState({
+        //     showOrderSummery: !doesShowOrderSummery
+        // })
     }
+    // orderSummeryShowHandler = async () => {
+    //     let doesShowOrderSummery = this.state.showOrderSummery;
+    //      this.setState({
+    //         showOrderSummery: !doesShowOrderSummery
+    //     })
+    // }
     orderPlacedPageHandler = async () => {
         let doesShowOrderPlacedPage = this.state.showOrderPlacedPage;
         this.setState({
@@ -319,8 +342,28 @@ this.setState({
 
     }
 
-    removeFromCart = event => {
+    removeFromCart = async (id) => {
         //need to write wen service layer is ready**
+        const response = deleteCartValueRequestMethod({ params: { id: id } });
+        await response.then(res => {
+            console.log(res.data)
+            const cartCountRes = getCartAddedCountRequestMethod();
+            cartCountRes.then(
+                res => {
+                    this.setState({
+                        cartAddedCount: res.data
+                    })
+                }
+            )
+            const cartValuesRes = getCartValuesRequestMethod();
+            cartValuesRes.then(
+                res => {
+                    this.setState({
+                        cart: res.data,
+                    })
+                }
+            )
+        })
         
 
     }

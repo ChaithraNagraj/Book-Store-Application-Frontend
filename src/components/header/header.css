@@ -2,74 +2,12 @@
     display: flex;
     justify-content: start;
     margin-left: 20px;
-    border-radius: 4px;
+    border-radius: 2px;
     background-color: aliceblue;
-    width: 40%;
-}
-.Sign {
-    font-weight:bold;
-    background-Color: '#800000  ';
-  
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    top:45px;
-    right:50px;
-    width: 200px;
-    background-color:white;
-    font-weight:bold;
-    position: absolute;
-
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
- li a {
-     color: rgb(22, 21, 21);
-     text-decoration: none;
-}
- li {
-     padding: 8px 16px;
-     border-bottom: 1px solid #e5e5e5;
-}
- li:last-child {
-     border-bottom: none;
-}
- li:hover {
-     background-color: #e5e5e5;
-     color: rgb(22, 21, 21);
+    height:20px;
+    width: 10%;
 }
  .button{
-     width:178x;
-     height:18px;
-     /* background-color:#222020 ; */
-     padding:12px;
-     border-radius:5px;
-     font-weight:bold;
-     /* color: white; */
-}
- .button:before{
-     content:"";
-     position:absolute;
-     width:0px;
-     height:0px;
-     border: 10px;
-     border-color: white;
-     right:5px;
-     /* left:1px; */
-
-     top:18px;
-}
-.div
-{
-    color:'white';
-    /* font-weight:bold; */
-
-}
-
-.button{
     width:120px;
     height:6px;
     /* background-color:#222020 ; */

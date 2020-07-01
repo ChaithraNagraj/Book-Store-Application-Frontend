@@ -52,7 +52,7 @@ class Header extends Component {
         return (
             
             <>
-                <div className='header'style={{position:"initial", windth:'100%'}}>
+                <div className='header'>
                     <div className='book-logo-search-div'>
                         <div className='book-logo-div' onClick={() => this.handleGoToHome()}>
                             <MenuBookIcon fontSize='large' />

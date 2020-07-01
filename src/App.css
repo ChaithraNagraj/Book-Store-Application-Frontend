@@ -8,12 +8,16 @@
   width: 100%;
   height: 100%;
   color: white;
-  height:45px;
+  height:42px;
+  margin-top:-80px;
 }
 
 .book-logo-search-div{
 display: flex;
 position: relative;
+height: -10px;
+margin-top: -8px;
+margin-bottom: -6px;
 left: 12%;
 /* left: 150px; */
 align-items: center;
@@ -91,7 +95,7 @@ align-items: center;
   justify-content: space-between;
   margin-left: 16%;
   margin-right: 18%;
-  margin-top: 40px;
+  margin-top: 80px;
   align-items: center;
 }
 
@@ -111,7 +115,7 @@ align-items: center;
 
 .display-books-div{
     display: grid;
-    grid-template-columns: 250px 250px 250px 250px;
+    grid-template-columns: 200px 200px 200px 200px;
     grid-gap: 30px;
     justify-content: center;
     margin-top: 20px;
@@ -334,7 +338,7 @@ h2#welcome-text {
     grid-template-columns: repeat(4,1fr) !important;
     grid-gap: 30px;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 20px;
     min-height: 699px;
 
@@ -357,7 +361,7 @@ h2#welcome-text {
 
 }
 
- @media all and (max-width: 360px) 
+ @media all and (max-width: 260px) 
 {
   .book-logo-search-div {
     display: flex;
@@ -385,12 +389,12 @@ h2#welcome-text {
 .bookcount-sortby-div {
   margin-left: 8%;
   margin-right: 8%;
-  margin-top: 30px;
+  margin-top: 60px;
 }
 
 .display-books-div {
   display: grid;
-  grid-template-columns: 300px;
+  grid-template-columns: 200px;
 }
 
 .MuiSvgIcon-fontSizeLarge {
@@ -409,7 +413,7 @@ h4.title {
 }
 
 .MuiOutlinedInput-root {
-  height: 40px;
+  height: 20px;
 }
 
 #Sort_By_Relevance {
