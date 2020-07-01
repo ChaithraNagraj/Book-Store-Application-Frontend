@@ -14,17 +14,20 @@
 .book-logo-search-div{
 display: flex;
 position: relative;
-left: 150px;
+left: 12%;
+/* left: 150px; */
 align-items: center;
 }
 
 .book-logo-div{
 margin-right: 20px;
+
 }
 
 .book-title{
 margin-right: 60px;
 margin-top:-55px;
+
 margin-left: auto;
 height: 20px;
 display: flex;
@@ -322,8 +325,10 @@ h2#welcome-text {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
+
 /* Media Query  */
-/* @media  screen and (max-width:1280px) and (min-width: 1024px){
+ @media  screen and (max-width:1280px) and (min-width: 1024px)
+ {
   .display-books-div{
     display: grid;
     grid-template-columns: repeat(4,1fr) !important;
@@ -332,13 +337,12 @@ h2#welcome-text {
     margin-top: 20px;
     margin-bottom: 20px;
     min-height: 699px;
+
 }
-
-} */
-
+ }
 @media all and (max-width:768px)  
 {
-  /* .display-books-div {
+   .display-books-div {
     grid-template-columns: repeat(2,1fr) !important;
     margin-right: 10%;
     margin-left: 10%;
@@ -349,7 +353,8 @@ h2#welcome-text {
 }
 .search-div {
   margin-left: -30px;
-} */
+} 
+
 }
 
  @media all and (max-width: 360px) 

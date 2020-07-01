@@ -4,7 +4,7 @@ import DisplayBooks from '../Book/DisplayBooks';
 import Footer from '../Footer/Footer';
 import { AddCartRequestMethod, getCartAddedCountRequestMethod } from '../../services/CartServices';
 import {getAllBooksRequestMethod,getBookByAuthorName, getBookCountRequestMethod} from '../../services/BookServices';
-import Cart from '../cart/cart';
+import Abcart from '../cart/Abcart'
 import Pagination from '../pagination/Pagination';
 import {withRouter } from 'react-router-dom';
 import Wishlist from '../cart/Wishlist';
@@ -80,9 +80,9 @@ class Dashboard extends Component {
 
 
     cartIconClickedHandler = () => {
-        let doesShowCartComponent = this.state.showCartComponent;
+        let doesShowMyCartComponent = this.state.showMyCartComponent;
         this.setState({
-            showCartComponent: !doesShowCartComponent
+            showMyCartComponent: !doesShowMyCartComponent
         })
     }
 
@@ -152,7 +152,7 @@ class Dashboard extends Component {
     addToBagClickHandler = (clickedID, bookAvailable) => {
         let cartCount = this.state.cartCount;
         let clickedidArray = this.state.clickedId;
-        clickedidArray.push(clickedID);
+        // clickedidArray.push(clickedID);
         console.log(clickedID);
         //console.log(window.sessionStorage.getItem("email"));
         this.setState({
@@ -195,7 +195,8 @@ class Dashboard extends Component {
                     wishListIconClickedHandler={this.wishListIconClickedHandler}
                 />
                 {
-                    this.state.showCartComponent ?<Cart />
+                    // this.state.showMyCartComponent ?<MyCart />
+                    this.state.showMyCartComponent ?<Abcart />
                         : this.state.ShowWishListComponent ? 
                         <Wishlist
                             wishlist={this.state.wishlist}

@@ -19,7 +19,7 @@ render() {
 
     return (
         <nav className="pagination-nav" id='pagination'>
-            <ul className='pagination'style={{marginTop:'1000px'}}>
+            <ul className='pagination'style={{marginTop:'100%'}}>
                 {
                     pageNumbers.map(number => (
                         <li key={number} className='page-item'>

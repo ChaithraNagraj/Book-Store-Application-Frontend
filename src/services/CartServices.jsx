@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-const addCartURL = 'http://localhost:8080/carts/addToCart';
+const addCartURL = 'http://localhost:8080/carts/addToCart/{bookId}';
 const cartAddedCountURL = 'https://localhost:8080/api/Cart/CountCart';
 const getCartValuesURL = 'https://localhost:8080/api/Cart/GetAllCartValue';
 const deleteCartValueURL = 'https://localhost:8080/api/Cart/DeleteCart';
-const addCustomerDetailsURL = 'https://localhost:8080/api/Address/AddDetailAddress';
+const addCustomerDetailsURL = 'https://localhost:8080/api/Address/AddAddress';
 const getCustomerAddressURL = 'https://localhost:8080/api/Address/GetCustomerAddress';
 
 export const AddCartRequestMethod = async (data)=>{
