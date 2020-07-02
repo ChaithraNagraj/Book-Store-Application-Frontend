@@ -166,6 +166,7 @@ class Dashboard extends Component {
         
             // SelectBookCount: bookAvailable
         }
+        console.log(cart)
         const response = AddCartRequestMethod(cart);
         response.then(res => {
             console.log(res.data);

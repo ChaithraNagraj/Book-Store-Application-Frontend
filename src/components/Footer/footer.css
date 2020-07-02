@@ -1,0 +1,14 @@
+@media all and (max-width: 460px) 
+{.footer-div {
+    display: flex;
+      position: relative;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: #380008;
+      color: white;
+      height: 40px;
+      justify-content: center;
+      align-items: center;
+    }
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
+import ImportContactsTwoToneIcon from '@material-ui/icons/ImportContactsTwoTone';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import TextField from '@material-ui/core/TextField';
@@ -40,21 +41,28 @@ class Header extends Component {
         window.location.reload(false);
     
       }
+      handleGoToLogin(event) {
+        // this.props.history.push('./Login')
+        window.location.assign('./Login');
+        // window.location.reload(false);
+    
+      }
+ 
     render() {
         console.log(this.props.cartCount);
         return (
             
             <>
-                <div className='header'style={{position:"initial", windth:'100%'}}>
+                <div className='header'>
                     <div className='book-logo-search-div'>
                         <div className='book-logo-div' onClick={() => this.handleGoToHome()}>
-                            <MenuBookIcon fontSize='large' />
+                            <ImportContactsTwoToneIcon fontSize='large' />
                         </div>
                         <div className='book-title'onClick={() => this.handleGoToHome()}>
                             <h2 className='title'>BookStore</h2>
                         </div>
 
-                        <div className='search-div'>
+                        <div className='search-div' style={{marginTop:'8px'}}>
                             <TextField
                                 className='search-textfield'
                                 InputProps={{
@@ -85,10 +93,10 @@ class Header extends Component {
                            <Button id='icon-btn' onClick={this.props.wishListIconClickedHandler}> <FavoriteIcon fontSize='large' /> </Button>
                         </div>
                     </div>
-                    <div className="Sign" onClick={this.showDropdownMenu}varient="h9" noWrap>       
+                    <div className="Sign" onClick={() => this.handleGoToLogin()}varient="h9" noWrap>       
             <AccountCircleIcon fontSize='large' style={{ color: 'white', marginLeft:'-150px', marginTop:"13px"}} />
              </div>
-          { this.state.displayMenu ? (
+          {/* { this.state.displayMenu ? (
            <ul> 
          <li><a href="./Login">Login</a></li> 
           <li><a href="/Account">Account Details</a></li> 
@@ -100,7 +108,7 @@ class Header extends Component {
         (
           null
         )
-      }  
+      }   */}
                 </div>
                 
             </>

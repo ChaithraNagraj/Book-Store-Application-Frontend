@@ -18,6 +18,7 @@ function App() {
    <Route path='/BookstoreApplication' component={Dashboard} />
    <Route path='/Login' component={Login}/>
    <Route path='/MyCart' component={MyCart}/>
+   
    <Route path='/cart' component={cart}/>
    <Route path='/Registration' component={Registration}/>
    <Route path='/ResetPassword' component={Resetpassword}/>
@@ -25,8 +26,6 @@ function App() {
    <Route path='/Abcart' component={Abcart}/>
    <Route path='/OrderSummary' component={OrderSummary}/>
    <Route path='/OrderPlaced' component={OrderPlaced}/>
-
-
    </Switch>
    </Router>
   );

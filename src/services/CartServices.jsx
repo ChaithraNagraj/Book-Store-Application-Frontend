@@ -5,11 +5,13 @@ const getCustomerAddressURL = 'http://localhost:8080/api/Address/GetCustomerAddr
 const cartAddedCountURL = 'http://localhost:8080/carts/CountCart';
 
 const addCartURL = 'http://localhost:8080/carts/addToCart';
+
 const getCartValuesURL = 'http://localhost:8080/carts/displayItems';
 
 var tokenn=sessionStorage.getItem("token");
 console.log("token")
 console.log("token from cart service")
+
 
 let headers = {
     // 'Content-Type': 'application/json',
@@ -34,8 +36,10 @@ export const AddCartRequestMethod = async (data)=>{
         );
     return response;
     
-}
 
+
+
+}
 export const getCartAddedCountRequestMethod= async ()=>{
     const response = await axios.get(cartAddedCountURL);
     return response;
