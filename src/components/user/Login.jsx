@@ -70,7 +70,7 @@ class Login extends Component {
           loginAuthentication: true
         })
       }
-      this.props.history.push('../../Dashboard');
+      this.props.history.push('../../bookstoreApplication');
     }).catch(() => {
       //alert("email or password is incorrect");
       this.setState({
@@ -86,28 +86,28 @@ class Login extends Component {
               <Card className="logincard">
 
                 <form className=" container p-5 bg-light text-primary mx-auto" id='form' onSubmit={this.submitHandler} >
-                <div className="form-group">
-            <h1 className='display-3 text-dark' style={{backgroundColor:'#A03037',width:'100%'}}> Login Here</h1>
+                <div className="form-group" style={{width:'100%'}}>
+            <h1 className='display-3 text-dark' style={{backgroundColor:'#A03037',width:'100%',marginRight:'80px'}}> Login Here</h1>
           </div>
           <div className="form-group" style={{marginTop:'15px',fontWeight:'bold', marginnRight:'100px'}}>
-            <label for="loginId">LoginId :</label>
-            <input type="text" id="loginId" className="form-control " onChange={this.loginIdHandler} style={{marginTop:'20px', marginRight:'60px'}}/>
+            <label for="loginId" style={{marginTop:'5px'}}>LoginId  </label>
+            <input type="text" id="loginId" className="form-control " onChange={this.loginIdHandler} style={{ marginRight:'150px'}}/>
 
           </div>
           <div className="form-group" style={{ marginTop: '15px',fontWeight:'bold', marginnRight:'100px' }}>
-            <label for="password">Password :</label>
-            <input type="password" id="password" className="form-control " onChange={this.passwordHandler} style={{marginTop:'20px', marginRight:'60px'}} />
+            <label for="password" style={{marginTop:'15px'}}>Password </label>
+            <input type="password" id="password" className="form-control " onChange={this.passwordHandler} style={{marginTop:'10px', marginRight:'155px'}} />
           </div>
           <div className="form-group" style={{ marginTop: '15px',fontWeight:'bold', marginnRight:'100px' }}>
-            <label for="role">Role:</label>
-            <input type="role" id="role" className="form-control " onChange={this.roleHandler} style={{marginTop:'20px', marginRight:'65px'}} />
+            <label for="role" style={{marginTop:'15px'}}>Role </label>
+            <input type="role" id="role" className="form-control " onChange={this.roleHandler} style={{marginTop:'10px', marginRight:'143px'}} />
           </div>
 
           {
             this.state.showError ? <div className="form-group text-danger" id="error">Email or Password is incorrect </div> : null
           }
-          <button type="submit" className="btn btn-success" id="submitBtn"  style={{ background:' #A03037',fontWeight:'bold',margin:'center',color:'Balck',marginTop:'20px',height:'30px',width:'100px'}}>Login</button> 
-                         <small className="link"><Link href="../Registration" >
+          <button type="submit" className="btn btn-success" id="submitBtn"  style={{ background:' #A03037',fontWeight:'bold',color:'Balck',marginTop:'20px',height:'30px',width:'100px'}}>Login</button> 
+                         <small className="link" ><Link href="../Registration" >
 
                                 Register-Here?
 

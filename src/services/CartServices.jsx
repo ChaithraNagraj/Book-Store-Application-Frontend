@@ -9,22 +9,22 @@ const getCartValuesURL = 'https://localhost:8080/carts/displayItems';
 const deleteCartValueURL = 'https://localhost:8080/api/Cart/DeleteCart';
 const addCustomerDetailsURL = 'https://localhost:8080/api/Address/AddAddress';
 const getCustomerAddressURL = 'https://localhost:8080/api/Address/GetCustomerAddress';
-var tokenn=sessionStorage.getItem("token");
-
+// var tokenn=sessionStorage.getItem("token");
+const token = localStorage.getItem("token")
 let headers = {
     'Content-Type': 'application/json',
       'token': localStorage.getItem('token')
 }
+
 export const AddCartRequestMethod = async (data)=>{
-    const response = await axios.post(addCartURL,data,
-        
-        {
-            headers : headers
-            }
-        // { headers: {"Authorization" : `Basic ${tokenn}`} }
-        );
-    return response;
+    console.log(data.bookId)
+    const response = axios.post(`${addCartURL}/`+data.bookId, {
+        headers: {
+            'token': token }}) 
+            return response;  
 }
+
+
 
 export const getCartAddedCountRequestMethod= async ()=>{
     const response = await axios.get(cartAddedCountURL);

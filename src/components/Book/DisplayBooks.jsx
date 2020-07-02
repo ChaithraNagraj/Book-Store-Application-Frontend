@@ -60,23 +60,23 @@ class DisplayBooks extends Component {
                                         <CardActions>
 
                                         {
-                                            this.props.clickedId.includes(ele.bookID) ?
+                                            this.props.clickedId.includes(ele.bookId) ?
                                             <Button
                                                 variant='outlined'
                                                 color='primary'
-                                                onClick={()=>{this.props.addToBagClickHandler(ele.bookID,ele.bookCount)}}
+                                                onClick={()=>{this.props.addToBagClickHandler(ele.bookId,ele.bookCount)}}
                                             > Added to bag</Button> :
                                             <>
                                             <Button
                                                 variant='outlined'
                                                 color='white'
                                                 style={{backgroundColor:'#A03037'}}
-                                                onClick={()=>{this.props.addToBagClickHandler(ele.bookID,ele.bookCount)}}
+                                                onClick={()=>{this.props.addToBagClickHandler(ele.bookId,ele.bookCount)}}
                                             > Add to bag</Button>
                                             <Button
                                                 variant='outlined'
                                                 color='black'
-                                                onClick = {()=>this.props.addToWishlistClickHandler(ele.bookID)}
+                                                onClick = {()=>this.props.addToWishlistClickHandler(ele.bookId)}
                                             > WishList</Button>
                                             </>
                                         }

@@ -61,7 +61,7 @@ class Header extends Component {
                             <h2 className='title'>BookStore</h2>
                         </div>
 
-                        <div className='search-div'>
+                        <div className='search-div' style={{marginTop:'8px'}}>
                             <TextField
                                 className='search-textfield'
                                 InputProps={{
