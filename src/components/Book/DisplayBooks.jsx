@@ -36,7 +36,7 @@ class DisplayBooks extends Component {
                         this.props.books.map((ele) => {
                             return (
                                 <>
-                                    <Card className='note-card' key={ele.bookID}>
+                                    <Card className='note-card' key={ele.bookId}>
                                         
                                         <Tooltip  title={ele.summary}> 
                                         <CardActionArea> 
@@ -60,25 +60,31 @@ class DisplayBooks extends Component {
                                         <CardActions>
 
                                         {
-                                            this.props.clickedId.includes(ele.bookID) ?
+                                            this.props.clickedId.includes(ele.bookId) ?
                                             <Button
                                                 variant='outlined'
                                                 color='primary'
-                                                onClick={()=>{this.props.addToBagClickHandler(ele.bookID,ele.bookCount)}}
+                                                onClick={()=>{this.props.addToBagClickHandler(ele.bookId)}}
+                                                // disabled={this.props.disableButton} 
+
                                             > Added to bag</Button> :
                                             <>
+                                            
                                             <Button
                                                 variant='outlined'
                                                 color='white'
                                                 style={{backgroundColor:'#A03037'}}
-                                                onClick={()=>{this.props.addToBagClickHandler(ele.bookID,ele.bookCount)}}
-                                            > Add to bag</Button>
+                                                onClick={()=>{this.props.addToBagClickHandler(ele.bookId)}}
+
+                                             > Add to bag</Button>
+                                            
                                             <Button
                                                 variant='outlined'
                                                 color='black'
-                                                onClick = {()=>this.props.addToWishlistClickHandler(ele.bookID)}
+                                                onClick = {()=>this.props.addToWishlistClickHandler(ele.bookId)}
                                             > WishList</Button>
-                                            </>
+                                            
+                                             </>
                                         }
                                         </CardActions>
                                     </Card>

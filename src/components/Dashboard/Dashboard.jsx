@@ -149,15 +149,15 @@ class Dashboard extends Component {
       
     }
 
-    addToBagClickHandler = (clickedID, bookAvailable) => {
+    addToBagClickHandler = (clickedID) => {
         let cartCount = this.state.cartCount;
-        let clickedidArray = this.state.clickedId;
+        let clickedid = this.state.clickedId;
         // clickedidArray.push(clickedID);
         console.log(clickedID);
         //console.log(window.sessionStorage.getItem("email"));
         this.setState({
             cartCount: cartCount + 1,
-            clickedId: [...clickedidArray],
+            clickedId: [...clickedid],
             addToBagBtnText: "Added to bag"
         })
         var cart = {

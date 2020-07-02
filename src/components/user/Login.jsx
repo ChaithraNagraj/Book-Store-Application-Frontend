@@ -48,19 +48,14 @@ class Login extends Component {
     const response = LoginRequestMethod(data);
     response.then(res => {
       console.log(res.data);
-      console.log("printing res values");
-      console.log(res);
-      console.log("now printing the token value**********************************");
+      
       console.log(res.data.token);
-      sessionStorage.setItem("token",res.data.token);
-      console.log("PRINTING THE GETSTORAGE TOKEN@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-      console.log(sessionStorage.getItem("token"));
-      var token=sessionStorage.getItem("token")
+      // sessionStorage.setItem("token",res.data.token);
+      
       localStorage.setItem('token', res.data.token);
 
 
-      console.log("printing var token $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-      console.log(token);
+    
       if (res.data === data.LoginId) {
         // sessionStorage.setItem("token",data.token);
         console("trying to print token")
@@ -70,7 +65,7 @@ class Login extends Component {
           loginAuthentication: true
         })
       }
-      this.props.history.push('../../Dashboard');
+      this.props.history.push('../../bookstoreApplication');
     }).catch(() => {
       //alert("email or password is incorrect");
       this.setState({

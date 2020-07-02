@@ -1,30 +1,39 @@
 import axios from 'axios'
+const deleteCartValueURL = 'http://localhost:8080/api/Cart/DeleteCart';
+const addCustomerDetailsURL = 'http://localhost:8080/api/Address/AddAddress';
+const getCustomerAddressURL = 'http://localhost:8080/api/Address/GetCustomerAddress';
+const cartAddedCountURL = 'http://localhost:8080/carts/CountCart';
 
 const addCartURL = 'http://localhost:8080/carts/addToCart';
-const cartAddedCountURL = 'https://localhost:8080/cart/CountCart';
-const getCartValuesURL = 'https://localhost:8080/carts/displayItems';
-// const addCartURL = 'http://localhost:8080/carts/addToCart/{bookId}';
-// const cartAddedCountURL = 'https://localhost:8080/api/Cart/CountCart';
-// const getCartValuesURL = 'https://localhost:8080/api/Cart/GetAllCartValue';
+const getCartValuesURL = 'http://localhost:8080/carts/displayItems';
 
-const deleteCartValueURL = 'https://localhost:8080/api/Cart/DeleteCart';
-const addCustomerDetailsURL = 'https://localhost:8080/api/Address/AddAddress';
-const getCustomerAddressURL = 'https://localhost:8080/api/Address/GetCustomerAddress';
 var tokenn=sessionStorage.getItem("token");
+console.log("token")
+console.log("token from cart service")
 
 let headers = {
-    'Content-Type': 'application/json',
+    // 'Content-Type': 'application/json',
       'token': localStorage.getItem('token')
 }
+var token = localStorage.getItem('token')
 export const AddCartRequestMethod = async (data)=>{
-    const response = await axios.post(addCartURL,data,
+
+     var bookId=data.bookId
+    console.log(data.bookId)
+    var abc=''
+    // const response = await axios.post("http://localhost:8080/carts/addToCart?bookId="+bookId,"null",{headers: {'token' :  localStorage.getItem('token')}}
+   const response =await axios.post(`http://localhost:8080/carts/addToCart/${bookId}`,{},{headers: {'token' :  localStorage.getItem('token')}}
+
+    // const response =  await axios.post(`${addCartURL}/`+`bookId`,{headers: {'token' :  localStorage.getItem('token')}}
+
+    // const response =await axios.post( addCartURL+'data.bookId',{ headers:headers}
+    // const response =await axios.post( addCartURL+bookId,null,{headers: {'token' :  localStorage.getItem('token')}}
+    // const response =await axios.post( addCartURL,{ params: {bookId: bookId}},null,{headers: {'token' :  localStorage.getItem('token')}}
+
         
-        {
-            headers : headers
-            }
-        // { headers: {"Authorization" : `Basic ${tokenn}`} }
         );
     return response;
+    
 }
 
 export const getCartAddedCountRequestMethod= async ()=>{
@@ -40,8 +49,12 @@ export const getCartValuesRequestMethod= async ()=>{
         }
 
         );
+        
     console.log("Printing response which are recieved from bookstore api");
     console.log(response);
+    
+    
+    
     return response;
 }
 

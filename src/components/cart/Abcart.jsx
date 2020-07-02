@@ -95,26 +95,34 @@ export class Abcart extends Component {
          
     componentWillMount() {
         //this method will bring the books which are in cart table and number of quantity
-        //
-        //    Promise.all([getCartAddedCountRequestMethod(), getCartValuesRequestMethod()])
-        //     .then(([cartAddedCountResult, getCartValues]) => {
+        
+           Promise.all([getCartAddedCountRequestMethod(), getCartValuesRequestMethod()])
+            .then(([cartAddedCountResult, getCartValues]) => {
+                this.setState({
+                    cartAddedCount: cartAddedCountResult.data,
+                    cart: getCartValues.data.data
+                })
+                console.log("hello world")
+             
+
+            })
+            console.log("hello")
+ 
+            
+        // Promise.all([getCartValuesRequestMethod()])
+        //     .then(([ getCartValues]) => {
+        //         console.log("printing display items")
+        //         console.log(getCartValues)
         //         this.setState({
-        //             cartAddedCount: cartAddedCountResult.data,
         //             cart: getCartValues.data
         //         })
         //     })
-        Promise.all([getCartValuesRequestMethod()])
-            .then(([ getCartValues]) => {
-                this.setState({
-                    cart: getCartValues.data
-                })
-            })
-            Promise.all([getCartAddedCountRequestMethod()])
-            .then(([ cartAddedCountResult]) => {
-                this.setState({
-                    cartAddedCount: cartAddedCountResult.data
-                })
-            })
+        //     Promise.all([getCartAddedCountRequestMethod()])
+        //     .then(([ cartAddedCountResult]) => {
+        //         this.setState({
+        //             cartAddedCount: cartAddedCountResult.data
+        //         })
+        //     })
     
     
         // this.setState({
@@ -359,7 +367,7 @@ this.setState({
             cartValuesRes.then(
                 res => {
                     this.setState({
-                        cart: res.data,
+                        cart: res.data.data,
                     })
                 }
             )
@@ -393,12 +401,13 @@ this.setState({
                             {
                                 this.state.cart.map((ele) => {
                                     return (
-                                        <div key={ele.cartId}>
+                                        // <div key={ele.bookId}>
+                                        <div>
                                             <div >
                                                 <div className="book-details-div" >
 
                                                 <div className="img-book">
-                                                  <img src={"C:\Users\Shilpa\Desktop"} className="order-logo" />
+                                                  <img src={""} className="order-logo" />
                                                 </div>
                                                     
                                 
@@ -432,7 +441,8 @@ this.setState({
                                                         {this.state.quantity}
                                                     </div>
                                                     
-                                                    <div key={ele.cartId}>  
+                                                    {/* <div key={ele.cartId}>   */}
+                                                    <div>
 
                                                      {/* <button   
                                                        onClick={this.addQuantity}

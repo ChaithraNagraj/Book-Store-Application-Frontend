@@ -215,7 +215,7 @@ class MyCart extends Component {
                         /> :
                         <div className='my-cart-main-div'>
                             <div className='my-cart-sub-div'>
-                                <Typography id='mycart-title'variant="h4">My cart ({this.state.cartAddedCount})</Typography>
+                                {/* <Typography id='mycart-title'variant="h4">My cart ({this.state.cartAddedCount})</Typography> */}
 
                                 {
                                     this.state.cart.map((ele) => {
