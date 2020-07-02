@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
+import ImportContactsTwoToneIcon from '@material-ui/icons/ImportContactsTwoTone';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import TextField from '@material-ui/core/TextField';
@@ -55,7 +56,7 @@ class Header extends Component {
                 <div className='header'>
                     <div className='book-logo-search-div'>
                         <div className='book-logo-div' onClick={() => this.handleGoToHome()}>
-                            <MenuBookIcon fontSize='large' />
+                            <ImportContactsTwoToneIcon fontSize='large' />
                         </div>
                         <div className='book-title'onClick={() => this.handleGoToHome()}>
                             <h2 className='title'>BookStore</h2>

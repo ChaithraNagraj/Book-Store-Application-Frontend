@@ -9,7 +9,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip'; 
-import bookImage from '../../assets/book.jpg';
+// import bookImage from '../../assets/book.jpg';
 
 class DisplayBooks extends Component {
     
@@ -40,9 +40,9 @@ class DisplayBooks extends Component {
                                         
                                         <Tooltip  title={ele.summary}> 
                                         <CardActionArea> 
-                                            {/* <img id='img-book' src={ele.bookImage} /> */}
+                                            <img id='img-book' src={ele.imageURL} />
 
-                                            <img className='img' id='img-book' src={bookImage}/>
+                                            {/* <img className='img' id='img-book' src={bookImage}/> */}
 
                                                                                         <CardContent id='card-content'>
                                                 <Typography gutterBottom variant="h11" component="h3">
@@ -54,6 +54,9 @@ class DisplayBooks extends Component {
                                                 <Typography id='note-content' variant="body2" color="textSecondary" component="p">
                                                     ₹ {ele.price}
                                                 </Typography>
+                                                {/* <Typography id='note-content' variant="body2" color="textSecondary" component="p">
+                                                     {ele.description}
+                                                </Typography> */}
                                             </CardContent>
                                         </CardActionArea>
                                         </Tooltip>

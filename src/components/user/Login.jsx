@@ -87,20 +87,20 @@ class Login extends Component {
 
                 <form className=" container p-5 bg-light text-primary mx-auto" id='form' onSubmit={this.submitHandler} >
                 <div className="form-group" style={{width:'100%'}}>
-            <h1 className='display-3 text-dark' style={{backgroundColor:'#A03037',width:'100%',marginRight:'80px'}}> Login Here</h1>
+            <h1 className='display-3 text-dark' style={{backgroundColor:'#A03037',width:'100%'}}> Login Here</h1>
           </div>
           <div className="form-group" style={{marginTop:'15px',fontWeight:'bold', marginnRight:'100px'}}>
             <label for="loginId" style={{marginTop:'5px'}}>LoginId  </label>
-            <input type="text" id="loginId" className="form-control " onChange={this.loginIdHandler} style={{ marginRight:'150px'}}/>
+            <input type="text" id="loginId" className="form-control " onChange={this.loginIdHandler} style={{ marginRight:'100px'}}/>
 
           </div>
           <div className="form-group" style={{ marginTop: '15px',fontWeight:'bold', marginnRight:'100px' }}>
             <label for="password" style={{marginTop:'15px'}}>Password </label>
-            <input type="password" id="password" className="form-control " onChange={this.passwordHandler} style={{marginTop:'10px', marginRight:'155px'}} />
+            <input type="password" id="password" className="form-control " onChange={this.passwordHandler} style={{marginTop:'10px', marginRight:'105px'}} />
           </div>
           <div className="form-group" style={{ marginTop: '15px',fontWeight:'bold', marginnRight:'100px' }}>
             <label for="role" style={{marginTop:'15px'}}>Role </label>
-            <input type="role" id="role" className="form-control " onChange={this.roleHandler} style={{marginTop:'10px', marginRight:'143px'}} />
+            <input type="role" id="role" className="form-control " onChange={this.roleHandler} style={{marginTop:'10px', marginRight:'95px'}} />
           </div>
 
           {
