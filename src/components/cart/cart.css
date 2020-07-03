@@ -409,6 +409,15 @@
     justify-content: center;
     width: 300px;
   }
+  .book-details-sidebyside{
+    
+    display: flex;
+    margin-top: 13px;
+    outline: none;
+    flex-direction: row;
+  
+  
+  }
   
   
    .BookCard-Header {

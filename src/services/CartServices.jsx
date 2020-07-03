@@ -1,6 +1,6 @@
 import axios from 'axios'
 const deleteCartValueURL = 'http://localhost:8080/api/Cart/DeleteCart';
-const addCustomerDetailsURL = 'http://localhost:8080/api/Address/AddAddress';
+const addCustomerDetailsURL = 'http://localhost:8080/address/addAddress';
 const getCustomerAddressURL = 'http://localhost:8080/api/Address/GetCustomerAddress';
 const cartAddedCountURL = 'http://localhost:8080/carts/CountCart';
 
@@ -63,16 +63,26 @@ export const getCartValuesRequestMethod= async ()=>{
 }
 
 export const deleteCartValueRequestMethod= async (id)=>{
-    const response = await axios.delete(deleteCartValueURL,id);
+    const response = await axios.delete(deleteCartValueURL,id,{headers: {'token' :  localStorage.getItem('token')}});
     return response;
 }
 
 export const addCustomerDetailsRequestMethod = async (data)=>{
-    const response = await axios.post(addCustomerDetailsURL,data);
+    const response = await axios.post(addCustomerDetailsURL,data, {headers: {'token' :  localStorage.getItem('token')}}
+    
+    );
     return response;
 }
 
 export const getCustomerAddressRequestMethod = async (data)=>{
     const response = await axios.get(getCustomerAddressURL,{ params: {email: data}});
     return response;
+}
+
+export const addQuantityRequestMethod = async (bookId)=>{
+    const response = await axios.put(`http://localhost:8080/carts/addQuantity/${bookId}`,{},{headers: {'token' :  localStorage.getItem('token')}})
+}
+
+export const subQuantityRequestMethod = async (bookId)=>{
+    const response = await axios.put(`http://localhost:8080/carts/removeQuantity/${bookId}`,{},{headers: {'token' :  localStorage.getItem('token')}})
 }

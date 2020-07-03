@@ -26,7 +26,7 @@ import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 
 import {
     getCartAddedCountRequestMethod, getCartValuesRequestMethod,
-    deleteCartValueRequestMethod, getCustomerAddressRequestMethod, addCustomerDetailsRequestMethod
+    deleteCartValueRequestMethod, getCustomerAddressRequestMethod, addCustomerDetailsRequestMethod,addQuantityRequestMethod,subQuantityRequestMethod
 } from '../../services/CartServices';
 import OrderPlaced from  './OrderPlaced'
 import "./Abcart.css";
@@ -93,7 +93,7 @@ export class Abcart extends Component {
     }
       
          
-    componentWillMount() {
+    componentDidMount() {
         //this method will bring the books which are in cart table and number of quantity
         
            Promise.all([getCartAddedCountRequestMethod(), getCartValuesRequestMethod()])
@@ -125,25 +125,25 @@ export class Abcart extends Component {
         //     })
     
     
-        // this.setState({
-        //     cart: [
-        //         {
-        //             cartId: 1,
-        //             bookTitle: "Don't Make Me to think",
-        //             authorName: "Steven King",
-        //             price: 1500,
-        //             image:"",
+        this.setState({
+            cart: [
+                {
+                    cartId: 1,
+                    bookTitle: "Don't Make Me to think",
+                    authorName: "Steven King",
+                    price: 1500,
+                    image:"",
 
-        //         } ,
-        //          {
-        //             id: 2,
-        //             title: "Java for Beginners",
-        //             author: "kalpesh mali",
-        //             price: 250,
-        //             image:""
-        //         }
-        //     ]
-        // });
+                } ,
+                 {
+                    id: 2,
+                    title: "Java for Beginners",
+                    author: "kalpesh mali",
+                    price: 250,
+                    image:""
+                }
+            ]
+        });
         // this.setState({
         //     total:this.state.cart.price
         // })
@@ -255,35 +255,45 @@ sameBookAddHandler = (event,id) => {
 
 //  -------------------------add/sub--------vinod-----------------------   
 
-    addQuantity =  async (id) => {
+    addQuantity =  async (bookId) => {
         let count=this.state.quantity;
         let a=this.state.price;
         let b=this.state.total;
-        
-
-        
-        if(this.state.quantity<=5){
-           
-
+        if(this.state.quantity<=5){   
 this.setState({
             quantity: count + 1
-
-
         });
-
-        this.state.book.forEach(book=>{
-           this.state.total = book.price*count;
+        this.state.cart.forEach((ele)=>{
+           this.state.total = ele.price*count;
         });
     }else{
         alert(" oops!!!! totol 6 items can be avaible in a cart ")
+    }  
+    const response = addQuantityRequestMethod({ params: { id: bookId } });
+    await response.then(res => {
+        console.log(res.data)
+        const cartCountRes = getCartAddedCountRequestMethod();
+        cartCountRes.then(
+            res => {
+                this.setState({
+                    cartAddedCount: res.data
+                })
+            }
+        )
+        const cartValuesRes = getCartValuesRequestMethod();
+        cartValuesRes.then(
+            res => {
+                this.setState({
+                    cart: res.data.data,
+                })
+            }
+        )
+    }) 
     }
-    
-        
-    }
 
 
 
-    substractQuantity = event => {
+    substractQuantity = async (bookId) => {
         let count=this.state.quantity;
 
         if(this.state.quantity>=2){
@@ -295,12 +305,36 @@ this.setState({
 
         });
 
-        this.state.book.forEach((book)=>{
-           this.state.total = this.state.total-book.price;
+        this.state.cart.forEach((ele)=>{
+           this.state.total = this.state.total-ele.price;
          });
         }else{
             alert("quanity cannot be zero")
         }
+
+        const response = subQuantityRequestMethod({ params: { id: bookId } });
+    await response.then(res => {
+        console.log(res.data)
+        const cartCountRes = getCartAddedCountRequestMethod();
+        cartCountRes.then(
+            res => {
+                this.setState({
+                    cartAddedCount: res.data
+                })
+            }
+        )
+        const cartValuesRes = getCartValuesRequestMethod();
+        cartValuesRes.then(
+            res => {
+                this.setState({
+                    cart: res.data.data,
+                })
+            }
+        )
+    }) 
+
+
+
     }
 //  -------------------------------add/sub----------vinod----------------------   
     placeorder = event => {
@@ -327,13 +361,21 @@ this.setState({
     }
     orderSummeryShowHandler = async () => {
         // showOrderSummery:true
-        this.setState({
-            showOrderSummery:true
-        })
+        // this.setState({
+        //     showOrderSummery:true
+        // })
         // let doesShowOrderSummery = this.state.showOrderSummery;
         //  this.setState({
         //     showOrderSummery: !doesShowOrderSummery
         // })
+//line 339-345 uncomented:->working fine now!!!
+
+        let doesShowOrderSummary = this.state.showOrderSummery;
+        let doesShowCustomerDetails = this.state.showCustomerDetails;
+        this.setState({
+            showOrderSummary: !doesShowOrderSummary,
+            showCustomerDetails: !doesShowCustomerDetails
+        })     
     }
     // orderSummeryShowHandler = async () => {
     //     let doesShowOrderSummery = this.state.showOrderSummery;
@@ -350,9 +392,9 @@ this.setState({
 
     }
 
-    removeFromCart = async (id) => {
+    removeFromCart = async (bookId) => {
         //need to write wen service layer is ready**
-        const response = deleteCartValueRequestMethod({ params: { id: id } });
+        const response = deleteCartValueRequestMethod({ params: { id: bookId } });
         await response.then(res => {
             console.log(res.data)
             const cartCountRes = getCartAddedCountRequestMethod();
@@ -391,7 +433,7 @@ this.setState({
           
    
         return (
-            // <div className="Customer-address-div">
+           
                    <Container maxWidth="lg">            
                 <div >
                 <Grid item xs={10}>
@@ -401,10 +443,12 @@ this.setState({
                             {
                                 this.state.cart.map((ele) => {
                                     return (
-                                        // <div key={ele.bookId}>
+                                       
+                                        <div key={ele.bookId}>
                                         <div>
                                             <div >
-                                                <div className="book-details-div" >
+                                                <div>
+                                                <div className="book-details-divcart" >
 
                                                 <div className="img-book">
                                                   <img src={""} className="order-logo" />
@@ -413,7 +457,7 @@ this.setState({
                                 
                                              <div className="aligncontentbesidepic">
                                                 <div >
-                                                    <h4 className="h4-div">{ele.BookTitle}</h4>
+                                                    <h4 className="h4-div">{ele.bookTitle}</h4>
                                                 </div>
                                                 <div className="author-name-div">
                                                     <p>{ele.authorName}</p>
@@ -432,7 +476,7 @@ this.setState({
                                                         <RemoveRoundedIcon className="icon" />
                                                     </button> */}
                                                      <Button
-                                                                    onClick={() =>this.substractQuantity()}
+                                                                    onClick={() =>this.substractQuantity(ele.bookId)}
                                                                 >
                                                                     <RemoveCircleOutlineIcon />
                                                       </Button>
@@ -451,7 +495,7 @@ this.setState({
                                                      </button> */}
                                                      <Button
                                                                     id={ele.cartId}
-                                                                    onClick={() => this.addQuantity()}
+                                                                    onClick={() => this.addQuantity(ele.bookId)}
                                                                 >
                                                                     <AddCircleOutlineIcon />
                                                                 </Button>
@@ -460,15 +504,18 @@ this.setState({
                                                     <button
                                                      className="remove-btn" 
                                                      key ={ele.CartId}
-                                                      onClick={() => this.removeFromCart(ele.CartId)} 
+                                                      onClick={() => this.removeFromCart(ele.bookId)} 
                                                       >Remove</button>
                                                 </div>
     {/* --------------------------but----------------------------------------------------------------------                                             */}
                                             </div>   
-                                          </div>                  
+                                          </div> 
+                                          </div>                 
                                             </div>
                                       </div>
-                                    );
+                                      </div>
+                             
+                                    )
                                    
                                 })
                                
@@ -547,7 +594,7 @@ this.setState({
                                                             </div>
 
                                                             <div className="continue-cart-div">
-                                                                <button type="submit" id="continue" className="address-button" onClick={this.orderSummeryShowHandler}>CONTINUE</button>
+                                                                <button type="submit" id="continue" className="address-button" onClick={this.addCustomerDetailsHandler}>CONTINUE</button>
                                                             </div>
                                                         </form> : null
                                                 }
@@ -597,7 +644,7 @@ this.setState({
                 </div>
                             </Container>
 
-            // </div>
+           
         )
     }
 }
