@@ -120,24 +120,24 @@ align-items: center;
 .display-books-div{
     display: grid;
     grid-template-columns: 200px 200px 200px 200px;
-    grid-gap: 30px;
+    grid-gap: 10px;
     justify-content: center;
-    margin-top: 20px;
-    /* margin-left: 40px; */
+    margin-top: 10px;
+    margin-left: 40px;
     margin-bottom: 20px;
-    min-height: 100px;
+    min-height: 900px;
 }
 
 .MuiPaper-root.MuiCard-root.note-card.MuiPaper-elevation1.MuiPaper-rounded{ 
-  width:100%;
+  width:80%;
   margin:1%;
-  height: 400px;
+  height: 350px;
   background-color: #f1faee;
 }
 
 .MuiCardActions-root {
   display: flex;
-  padding: 8px;
+  padding: 5px;
   align-items: center;
   justify-content: space-around;
 }
@@ -179,7 +179,7 @@ align-items: center;
       margin-top: 20px;
       margin-bottom: 20px;
       min-height: 71px;
-      height: 800px;
+      height: 600px;
       
   }
 
@@ -326,9 +326,9 @@ margin-bottom: 30px;
 #img-book{
   vertical-align: middle;
   border-style: none;
-  margin-left: 20px;
-  width: 220px;
-  height: 220px;
+  margin-left: 30px;
+  width: 150px;
+  height: 150px;
   padding: 10px;
 }
 
@@ -384,7 +384,6 @@ h2#welcome-text {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
-
 /* Media Query  */
  @media  screen and (max-width:1700px) and (min-width: 1024px)
  {
@@ -401,12 +400,52 @@ h2#welcome-text {
  }
 @media all and (max-width:768px)  
 {
-   .display-books-div {
-    grid-template-columns: repeat(2,1fr) !important;
-    margin-right: 10%;
-    margin-left: 10%;
+.display-books-div{
+  display: grid;
+  grid-template-columns: 200px 200px 200px 200px;
+  grid-gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+  /* margin-left: 40px; */
+  margin-bottom: 20px;
+  min-height: 900px;
 }
 
+.cart-wishlist-div{
+  display: flex;
+  align-items: center;
+  position: relative;
+  right: 1 gfds5px;
+  right:0px;
+
+}
+.cart-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.wishlist-div{
+display: flex;
+flex-direction: column;
+justify-content: center;  
+margin-left: 50px;
+align-items: center;
+}
+
+#icon-btn{
+  color: white;
+}
+.icon-counter {
+  padding-left: 9px;
+  padding-right: 2px;
+  border-radius: 50%;
+  height: 25px;
+  width: 30px;
+  border: 1px solid white;
+  color: white;
+}
 .search-textfield {
   width: 0px;
 }
@@ -517,7 +556,7 @@ p {
 }
 
 .MuiButton-label {
-  font-size: 10px;
+  font-size: 8px;
 }
 .order-main-div {
   min-height: 526px;
@@ -536,7 +575,6 @@ font-size: 20px;
   font-size: 10px;
 }
 }
-
 
 .book-price-div{
   font-family: adobe-clean, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;

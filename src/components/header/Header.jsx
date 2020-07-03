@@ -7,7 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Typography from '@material-ui/core/Typography';
-import { Button } from '@material-ui/core';
+import { Button, Popover } from '@material-ui/core';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import {getCartAddedCountRequestMethod} from '../../services/CartServices';
 import "./header.css";
@@ -41,13 +41,15 @@ class Header extends Component {
         window.location.reload(false);
     
       }
-      handleGoToLogin(event) {
-        // this.props.history.push('./Login')
-        window.location.assign('./Login');
-        // window.location.reload(false);
+      // handleGoToLogin(event) {
+      //   // this.props.history.push('./Login')
+      //   window.location.assign('./Login');
+      //   // window.location.reload(false);
     
-      }
- 
+      // }
+handleGoToProfile(event){
+  Popover('./profile')
+}
     render() {
         console.log(this.props.cartCount);
         return (
@@ -93,7 +95,7 @@ class Header extends Component {
                            <Button id='icon-btn' onClick={this.props.wishListIconClickedHandler}> <FavoriteIcon fontSize='large' /> </Button>
                         </div>
                     </div>
-                    <div className="Sign" onClick={() => this.handleGoToLogin()}varient="h9" noWrap>       
+                    <div className="Sign" onClick={() => this.handleGoToProfile()}varient="h9" noWrap>       
             <AccountCircleIcon fontSize='large' style={{ color: 'white', marginLeft:'-150px', marginTop:"13px"}} />
              </div>
           {/* { this.state.displayMenu ? (

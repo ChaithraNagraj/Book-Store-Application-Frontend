@@ -40,5 +40,80 @@
     width: 10%;
 
 }
+.cart-wishlist-div{
+    display: flex;
+    align-items: center;
+    position: relative;
+    right: 1 gfds5px;
+    right:10px;
+  
+  }
+  
+    .book-logo-search-div{
+        display: flex;
+        position: relative;
+        height: -10px;
+        margin-top: -8px;
+        margin-bottom: -6fpx;
+        left: 12%;
+        /* left: 150px; */
+        align-items: center;
+        }
+ .book-title{
+    height: -10px;
+    margin-top: -50px;
+    margin-left: -20px;
+
+ }
+   .cart-wishlist-div{
+  display: flex;
+  align-items: center;
+  position: relative;
+  right: 1 gfds5px;
+  right:0px;
+
+}
+.cart-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+
+}
+.wishlist-div{
+display: flex;
+flex-direction: column;
+justify-content: center;  
+margin-left: 50px;
+align-items: center;
+}
+   
 }
 
+@media  screen and (max-width:1700px) and (min-width: 1024px)
+{
+    .cart-wishlist-div{
+        display: flex;
+        align-items: center;
+        position: relative;
+        right: 1 gfds5px;
+        right:0px;
+        font-family: adobe-clean, "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+      }
+    }
+
+    @media all and (max-width:2168px)  
+{
+
+    .cart-wishlist-div{
+        display: flex;
+        align-items: center;
+        position: relative;
+        right: 1 gfds5px;
+        right:0px;
+      
+      }
+    
+     }

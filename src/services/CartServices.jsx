@@ -77,6 +77,7 @@ export const addCustomerDetailsRequestMethod = async (data)=>{
 export const getCustomerAddressRequestMethod = async (data)=>{
     const response = await axios.get(getCustomerAddressURL,{ params: {email: data}});
     return response;
+
 }
 
 export const addQuantityRequestMethod = async (bookId)=>{
@@ -86,3 +87,5 @@ export const addQuantityRequestMethod = async (bookId)=>{
 export const subQuantityRequestMethod = async (bookId)=>{
     const response = await axios.put(`http://localhost:8080/carts/removeQuantity/${bookId}`,{},{headers: {'token' :  localStorage.getItem('token')}})
 }
+
+

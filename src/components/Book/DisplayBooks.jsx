@@ -80,12 +80,13 @@ class DisplayBooks extends Component {
                                                 style={{backgroundColor:'#A03037'}}
                                                 onClick={()=>{this.props.addToBagClickHandler(ele.bookId)}}
 
-                                             > Add to bag</Button>
+                                             > AddToBag</Button>
                                             
 
                                             <Button
                                                 variant='outlined'
                                                 color='black'
+
                                                 onClick = {()=>this.props.addToWishlistClickHandler(ele.bookId)}
                                             > WishList</Button>
                                             
