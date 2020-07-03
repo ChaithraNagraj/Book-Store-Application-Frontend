@@ -603,7 +603,3 @@ this.setState({
 }
 
 export default Abcart;
-
-
-
-
