@@ -32,12 +32,6 @@ import OrderPlaced from  './OrderPlaced'
 import "./Abcart.css";
 import OrderSummary from  './OrderSummary';
 
-
-
-
-
-
-
 export class Abcart extends Component {
 
     
@@ -77,15 +71,6 @@ export class Abcart extends Component {
             type: "",
             email: "",
             incrementDecrementCount: 1
-
-            
-
-
-
-
-
-
-
         }
       
     
@@ -388,14 +373,12 @@ this.setState({
 
     render() {
         
-          
-   
         return (
             // <div className="Customer-address-div">
-                   <Container maxWidth="lg">            
+                   <Container maxWidth="lg" >            
                 <div >
                 <Grid item xs={10}>
-                        <div  className="Customer-address-div">    
+                        <div  className="Customer-address-div" style={{marginTop:'100px'}}>    
                         <Typography id='mycart-title'variant="h4">My cart ({this.state.quantity})</Typography>
        
                             {
@@ -413,7 +396,7 @@ this.setState({
                                 
                                              <div className="aligncontentbesidepic">
                                                 <div >
-                                                    <h4 className="h4-div">{ele.BookTitle}</h4>
+                                                    <h4 className="h4-div">{ele.bookName}</h4>
                                                 </div>
                                                 <div className="author-name-div">
                                                     <p>{ele.authorName}</p>

@@ -5,8 +5,8 @@ import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import {
     getCartAddedCountRequestMethod, getCartValuesRequestMethod,
     deleteCartValueRequestMethod, getCustomerAddressRequestMethod, addCustomerDetailsRequestMethod
-} from '../services/CartServices';
-import logo from '../assets/2states.jpg';
+} from '../../services/CartServices';
+// import logo from '../assets/2states.jpg';
 import OrderSummary from './OrderSummary';
 
 class MyCart extends Component {

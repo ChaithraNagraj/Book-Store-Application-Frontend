@@ -8,6 +8,7 @@ import Abcart from './components/cart/Abcart'
 import OrderPlaced from './components/cart/OrderPlaced'
 import {BrowserRouter as Router ,Switch, Route } from 'react-router-dom';
 import Resetpassword from './components/user/ResetPassword';
+import profile from './components/Profile/profile';
 function App() {
   return (
   <Router>
@@ -19,6 +20,7 @@ function App() {
    <Route path='/Abcart' component={Abcart}/>
    <Route path='/OrderSummary' component={OrderSummary}/>
    <Route path='/OrderPlaced' component={OrderPlaced}/>
+   <Route path='/profile' component={profile}/>
    </Switch>
    </Router>
   );
