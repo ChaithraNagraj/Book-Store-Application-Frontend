@@ -53,7 +53,9 @@ class Login extends Component {
       // sessionStorage.setItem("token",res.data.token);
       
       localStorage.setItem('token', res.data.token);
-
+    //storing data login
+    localStorage.setItem('loginId', res.data.loginId);
+ 
 
     
       if (res.data === data.LoginId) {

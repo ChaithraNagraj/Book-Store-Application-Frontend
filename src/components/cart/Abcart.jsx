@@ -33,33 +33,20 @@ import "./Abcart.css";
 import OrderSummary from  './OrderSummary';
 
 export class Abcart extends Component {
-
-    
-    constructor(props) {
+        constructor(props) {
         super(props)
-
         this.state = {
             orderID: 0,
             cartItem: 1,
             quantity: 1,
             descrption:'abc',
             // i m taking this dummy data for checking purpose
-
-            
             cart:[],
-           
             total:"",
             showCustomerDetails:false,
-
-            showOrderSummery: false,
-
+            showOrderSummery: true,
             showOrderPlacedPage: false,
-
-            // showFilledAddress: false,
-
             showOrderSuccessful: false,
-
-
             sameBook: 1,
             name: "",
             phoneNumber: 0,
@@ -72,68 +59,25 @@ export class Abcart extends Component {
             email: "",
             incrementDecrementCount: 1
         }
-      
+    } 
     
-       
-    }
-      
-         
     componentDidMount() {
-        //this method will bring the books which are in cart table and number of quantity
-        
-           Promise.all([getCartAddedCountRequestMethod(), getCartValuesRequestMethod()])
-            .then(([cartAddedCountResult, getCartValues]) => {
-                this.setState({
-                    cartAddedCount: cartAddedCountResult.data,
-                    cart: getCartValues.data.cartBooks
-                })
-                console.log("hello world")
-             
-
-            })
-            console.log("hello")
- 
-            
-        // Promise.all([getCartValuesRequestMethod()])
-        //     .then(([ getCartValues]) => {
-        //         console.log("printing display items")
-        //         console.log(getCartValues)
-        //         this.setState({
-        //             cart: getCartValues.data
-        //         })
-        //     })
-        //     Promise.all([getCartAddedCountRequestMethod()])
-        //     .then(([ cartAddedCountResult]) => {
-        //         this.setState({
-        //             cartAddedCount: cartAddedCountResult.data
-        //         })
-        //     })
+        this.getCartValuesRequestMethod();
+        }
+        getCartValuesRequestMethod = () => {
+           let path = {
+               path: "cart"
+           }
+           getCartValuesRequestMethod(path).then((res) => {
+               this.setState({ cart: res.data.data.cartBooks });
+            //    this.setState({
+            //        maxNumOfPage: Math.ceil(this.state.books.length / this.state.todosPerPage)
+            //    })
+           }).catch((err) => {
+               console.log(err);
+           });
+        }
     
-    
-        // this.setState({
-        //     cart: [
-        //         {
-        //             bookId: 1,
-        //             bookName: "Don't Make Me to think",
-        //             authorName: "Steven King",
-        //             price: 1500,
-        //             image:"",
-
-        //         } ,
-        //          {
-        //             bookid: 2,
-        //             bookName: "Java for Beginners",
-        //             authorNAME: "kalpesh mali",
-        //             price: 250,
-        //             image:""
-        //         }
-        //     ]
-        // });
-        // this.setState({
-        //     total:this.state.cart.price
-        // })
-        
-    }
     nameHandler = (event) => {
         const name = event.target.value;
         console.log("name", name);
@@ -362,21 +306,25 @@ this.setState({
             showCustomerDetails: !doesShowCustomerDetails
         })     
     }
-    // orderSummeryShowHandler = async () => {
-    //     let doesShowOrderSummery = this.state.showOrderSummery;
-    //      this.setState({
-    //         showOrderSummery: !doesShowOrderSummery
-    //     })
-    // }
-    orderPlacedPageHandler = async () => {
-        let doesShowOrderPlacedPage = this.state.showOrderPlacedPage;
-        this.setState({
-            showOrderPlacedPage: !doesShowOrderPlacedPage
+    orderSummeryShowHandler = async () => {
+        let doesShowOrderSummery = this.state.showOrderSummery;
+         this.setState({
+            showOrderSummery: !doesShowOrderSummery
         })
-        this.props.history.push("/OrderSummary");
+    }
+    // orderPlacedPageHandler = async () => {
+    //     let doesShowOrderPlacedPage = this.state.showOrderPlacedPage;
+    //     this.setState({
+    //         showOrderPlacedPage: !doesShowOrderPlacedPage
+    //     })
+    //     this.props.history.push("/OrderSummary");
+
+    // }
+    orderPlacedPageHandler (event){
+        // this.props.history.push('../../bookstoreApplication');
+        window.location.assign('./OrderSummary')
 
     }
-
     removeFromCart = async (bookId) => {
         //need to write wen service layer is ready**
         const response = deleteCartValueRequestMethod({ params: { id: bookId } });
@@ -411,7 +359,6 @@ this.setState({
         })
     }
 
- 
 
     render() {
         
@@ -435,23 +382,25 @@ this.setState({
                                                 <div className="book-details-divcart" >
 
                                                 <div className="img-book">
-                                                  <img src={""} className="order-logo" />
+                                                  {/* <img src={""} className="order-logo" /> */}
+                                                  <img id='img-book' src={ele.book.imageURL} />
+
                                                 </div>
                                                     
                                 
                                              <div className="aligncontentbesidepic">
                                                 <div >
-                                                    <h4 className="h4-div">{ele.cartBook.book.bookName}</h4>
+                                                    <h4 className="h4-div">{ele.book.bookName}</h4>
 
                                                 </div>
                                                 <div className="author-name-div">
-                                                    <p>{ele.cartBook.book.authorName}</p>
+                                                    <p>{ele.book.authorName}</p>
                                                 </div>
                                                 <div className="book-price-div">
-                                                    <p>Rs.{ele.cartBook.book.bookprice}</p>
+                                                    <p>Rs.{ele.book.price}</p>
                                                 </div>
                                                 <div className="book-price-div" >
-                                                    <p>totalprice{this.state.quantity * ele.cartBook.bookPrice}</p>
+                                                    <p>totalprice{this.state.quantity * ele.price}</p>
                                                     {/* <p>this.state.total</p> */}
                                                 </div>
      {/* -------------------------------------but---------------------------------------------------                                            */}
@@ -489,7 +438,7 @@ this.setState({
                                                     <button
                                                      className="remove-btn" 
                                                      key ={ele.CartId}
-                                                      onClick={() => this.removeFromCart(ele.cartBook.cartBookId)} 
+                                                      onClick={() => this.removeFromCart(ele.cartBookId)} 
                                                       >Remove</button>
                                                 </div>
     {/* --------------------------but----------------------------------------------------------------------                                             */}
@@ -579,7 +528,10 @@ this.setState({
                                                             </div>
 
                                                             <div className="continue-cart-div">
+                                                                {/* <button type="submit" id="continue" className="address-button" onClick={this.addCustomerDetailsHandler}>CONTINUE</button> */}
+                                                            
                                                                 <button type="submit" id="continue" className="address-button" onClick={this.addCustomerDetailsHandler}>CONTINUE</button>
+
                                                             </div>
                                                         </form> : null
                                                 }
@@ -599,17 +551,17 @@ this.setState({
                                                         return (
                                                             <div className="order-details-div">
                                                                 <div className="img-book">
-                                                                    <img src={ele.image} className="order-logo" />
+                                                                    <img src={ele.book.imageURL} className="order-logo" />
                                                                 </div>
                                                                 <div className= "aligncontentbesidepic">
                                                                     <div className="book-title-div">
-                                                                        <h4 >{ele.titleName}</h4>
+                                                                        <h4 >{ele.book.bookNamw}</h4>
                                                                     </div>
                                                                     <div className="author-name-div">
-                                                                        <p>{ele.authorName}</p>
+                                                                        <p>{ele.book.authorName}</p>
                                                                     </div>
                                                                     <div className="book-price-div">
-                                                                        <p>Rs.{ele.price}</p>
+                                                                        <p>Rs.{ele.book.price}</p>
                                                                     </div>
                                                                 </div>
                                                             </div>

@@ -11,6 +11,9 @@ import { Button, Popover } from '@material-ui/core';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import {getCartAddedCountRequestMethod} from '../../services/CartServices';
 import "./header.css";
+import Login from '../user/Login';
+
+
 class Header extends Component {
     constructor(props) {
         super(props);
@@ -22,6 +25,7 @@ class Header extends Component {
         this.handleGoToCart=this.handleGoToHome.bind(this);
 
       }
+      
     showDropdownMenu(event) {
         event.preventDefault();
         this.setState({ displayMenu: true }, () => {
@@ -41,16 +45,11 @@ class Header extends Component {
         window.location.reload(false);
     
       }
-      // handleGoToLogin(event) {
-      //   // this.props.history.push('./Login')
-      //   window.location.assign('./Login');
-      //   // window.location.reload(false);
-    
-      // }
-handleGoToProfile(event){
+      handleGoToProfile(event){
   window.location.assign('./profile')
   // Popup('./profile')
 }
+   
     render() {
         console.log(this.props.cartCount);
         return (
@@ -96,22 +95,26 @@ handleGoToProfile(event){
                            <Button id='icon-btn' onClick={this.props.wishListIconClickedHandler}> <FavoriteIcon fontSize='large' /> </Button>
                         </div>
                     </div>
-                    <div className="Sign" onClick={() => this.handleGoToProfile()}varient="h9" noWrap>       
-            <AccountCircleIcon fontSize='large' style={{ color: 'white', marginLeft:'-150px', marginTop:"13px"}} />
-             </div>
-          {/* { this.state.displayMenu ? (
-           <ul> 
-         <li><a href="./Login">Login</a></li> 
-          <li><a href="/Account">Account Details</a></li> 
-         <li><a href="/OrderSummary">Your orders</a></li> 
-         <li><a href="/wishlist">Your wishlist</a></li> 
+                    <div className="Sign" onClick={this.handleGoToProfile}varient="h9" noWrap>  
+    
+            <AccountCircleIcon fontSize='large' style={{ color: 'white', marginLeft:'-150px', marginTop:"13px"}}/>
+            {/* <button onMouseOver={MouseOver} onMouseOut={MouseOut}>Hover over me!</button> */}
 
-         </ul> 
-        ):
-        (
-          null
-        )
-      }   */}
+            {/* localStorage.getItem("loginId") */}
+            {/* {() => this.localStorage.getItem("loginId")} */}
+
+
+            {/* <Popup
+    trigger={open => (
+      <button className="button">Trigger - {open ? "Opened" : "Closed"}</button>
+    )}
+    position="right center"
+    closeOnDocumentClick
+  >
+    <span> Popup content </span>
+  </Popup> */}
+
+             </div>
                 </div>
                 
             </>

@@ -13,8 +13,7 @@ import OrderPlaced from './components/cart/OrderPlaced'
 import {BrowserRouter as Router ,Switch, Route } from 'react-router-dom';
 import Resetpassword from './components/user/ResetPassword';
 
-import Header from './components/header/Header'
-
+import Header from './components/header/Header';
 import profile from './components/Profile/profile';
 function App() {
   return (
@@ -22,14 +21,8 @@ function App() {
   <Switch>
    <Route path='/BookstoreApplication' component={Dashboard} />
    <Route path='/Login' component={Login}/>
-   {/* <Route path='/MyCart' component={MyCart}/> */}
-   
-   {/* <Route path='/cart' component={cart}/> */}
    <Route path='/Registration' component={Registration}/>
-   <Route path='/ResetPassword' component={Resetpassword}/>
-   {/* <Route path='/Ordersummary' component={OrderSummary} /> */}
-
-  
+   <Route path='/ResetPassword' component={Resetpassword}/>  
    <Route path='/Abcart' component={Abcart}/>
    <Route path='/OrderSummary' component={OrderSummary}/>
    <Route path='/OrderPlaced' component={OrderPlaced}/>

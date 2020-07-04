@@ -13,9 +13,11 @@ class OrderSummary extends Component {
     }
     
     continueShoppingHandler=()=>{
-        console.log('inside continue');
-        //this.props.history.push('/Dashboard');
-        window.location.reload();
+        // console.log('inside continue');
+        // this.props.history.push('/Dashboard');
+        this.props.history.push('../../bookstoreApplication');
+
+        // window.location.reload();
     }
     render() {
         return (

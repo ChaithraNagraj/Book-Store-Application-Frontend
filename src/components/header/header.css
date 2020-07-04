@@ -117,3 +117,35 @@ align-items: center;
       }
     
      }
+
+
+     @media  screen and (max-width:1700px) and (min-width: 1024px)
+{
+ .cart-div {
+margin-left: 150;
+ }
+.wishlist-div{
+
+}
+.AccountCircleIcon{
+
+  margin-left:-150px;
+   margin-Top:13px;
+}
+}
+
+@media all and (max-width:2168px)  
+{
+
+  .cart-div {
+ margin-left: 150;
+  }
+ .wishlist-div{
+ 
+ }
+ .AccountCircleIcon{
+ 
+   margin-left:-150px;
+    margin-Top:13px;
+ }
+}

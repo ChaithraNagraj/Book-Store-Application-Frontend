@@ -4,7 +4,8 @@ import DisplayBooks from '../Book/DisplayBooks';
 import Footer from '../Footer/Footer';
 import { AddCartRequestMethod, getCartAddedCountRequestMethod } from '../../services/CartServices';
 import {getAllBooksRequestMethod,getBookByAuthorName, getBookCountRequestMethod} from '../../services/BookServices';
-import Abcart from '../cart/Abcart'
+import Abcart from '../cart/Abcart';
+// import MyCart from '../cart/Cart';
 import { AddWishlistRequestMethod } from '../../services/wishlistServics';
 import Pagination from '../pagination/Pagination';
 import {withRouter } from 'react-router-dom';
@@ -153,7 +154,7 @@ class Dashboard extends Component {
     addToBagClickHandler = (clickedID) => {
         let cartCount = this.state.cartCount;
         let clickedid = this.state.clickedId;
-        // clickedidArray.push(clickedID);
+        clickedid.push(clickedID);
         console.log(clickedID);
         //console.log(window.sessionStorage.getItem("email"));
         this.setState({
@@ -201,6 +202,7 @@ class Dashboard extends Component {
                 {
                     // this.state.showMyCartComponent ?<MyCart />
                     this.state.showMyCartComponent ?<Abcart />
+
                         : this.state.ShowWishListComponent ? 
                         <Wishlist
                             wishlist={this.state.wishlist}
