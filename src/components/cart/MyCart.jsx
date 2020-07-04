@@ -350,7 +350,7 @@ class MyCart extends Component {
                                                         />
                                                     </div>
                                                     <div className='form-group'>
-                                                        <button type="submit" id="continue" className="btn btn-primary">Continue</button>
+                                                        <button type="submit" id="continue" className="btn btn-primary"> </button>
                                                     </div>
                                                 </form>
 
