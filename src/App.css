@@ -405,7 +405,7 @@ align-items: center;
 
 }
 
- @media all and (max-width: 460px) 
+ @media all and (max-width: 860px) 
 {
   .book-logo-search-div {
     display: flex;
@@ -520,7 +520,6 @@ font-size: 20px;
   width: 200px;
   height: 184px;
 }
-
 #address-table{
   font-size: 10px;
 }

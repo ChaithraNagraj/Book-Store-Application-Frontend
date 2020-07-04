@@ -5,7 +5,7 @@ import Footer from '../Footer/Footer';
 import { AddCartRequestMethod, getCartAddedCountRequestMethod } from '../../services/CartServices';
 import {getAllBooksRequestMethod,getBookByAuthorName, getBookCountRequestMethod} from '../../services/BookServices';
 import Abcart from '../cart/Abcart'
-
+import { AddWishlistRequestMethod } from '../../services/wishlistServics';
 import Pagination from '../pagination/Pagination';
 import {withRouter } from 'react-router-dom';
 import Wishlist from '../cart/Wishlist';
@@ -173,18 +173,18 @@ class Dashboard extends Component {
             console.log(res.data);
         })
     }
-
+    
     addToWishlistClickHandler = async (clickedID) => {
-        let wishlistCount = this.state.wishlistCount;
-        let result = this.state.books.filter(ele=>{
-            return ele.bookID == clickedID
-        })
-      await  this.setState({
-            wishlistCount: wishlistCount + 1,
-            wishlist : [...result]
-        })
-        console.log(this.state.wishlist)
-    }
+         let wishlistCount = this.state.wishlistCount;
+         let result = this.state.books.filter(ele=>{
+             return ele.bookID == clickedID
+         })
+       await  this.setState({
+             wishlistCount: wishlistCount + 1,
+             wishlist : [...result]
+         })
+         console.log(this.state.wishlist)
+     }
         render() {
         const indexOfLastPost = this.state.currentPage * this.state.postsPerPage;
         const indexOfFirstPost = indexOfLastPost - this.state.postsPerPage;

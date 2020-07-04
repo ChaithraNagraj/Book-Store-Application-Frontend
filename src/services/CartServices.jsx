@@ -35,9 +35,6 @@ export const AddCartRequestMethod = async (data)=>{
         
         );
     return response;
-    
-
-
 
 }
 export const getCartAddedCountRequestMethod= async ()=>{

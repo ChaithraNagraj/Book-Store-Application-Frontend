@@ -48,7 +48,8 @@ class Header extends Component {
     
       // }
 handleGoToProfile(event){
-  Popover('./profile')
+  window.location.assign('./profile')
+  // Popup('./profile')
 }
     render() {
         console.log(this.props.cartCount);
