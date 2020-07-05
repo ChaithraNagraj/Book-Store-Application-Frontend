@@ -9,6 +9,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Typography from '@material-ui/core/Typography';
 import { Button, Popover } from '@material-ui/core';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import Popup from "reactjs-popup";
 import {getCartAddedCountRequestMethod} from '../../services/CartServices';
 import "./header.css";
 import Login from '../user/Login';
@@ -45,11 +46,18 @@ class Header extends Component {
         window.location.reload(false);
     
       }
-      handleGoToProfile(event){
-  window.location.assign('./profile')
-  // Popup('./profile')
-}
-   
+//       handleGoToProfile(event){
+//   window.location.assign('./profile')
+//   // Popup('./profile')
+// }
+handleGoToLogin(event){
+    window.location.assign('./Login')
+    // Popup('./profile')
+  }
+  handleGoToRegistration(event){
+    window.location.assign('./Registration')
+    // Popup('./profile')
+  }
     render() {
         console.log(this.props.cartCount);
         return (
@@ -91,29 +99,23 @@ class Header extends Component {
                         <div className='wishlist-div'>
                         {/* <span className='icon-counter' id='lblWishListCount'> {this.props.wishlistCount} </span> */}
                         <span className='Stack-Over' id='lblWishListCount'> {this.props.wishlistCount} </span>
-
                            <Button id='icon-btn' onClick={this.props.wishListIconClickedHandler}> <FavoriteIcon fontSize='large' /> </Button>
                         </div>
                     </div>
-                    <div className="Sign" onClick={this.handleGoToProfile}varient="h9" noWrap>  
+                    <div className="Sign">  
+    <Popup
+        trigger={open => (
+         <AccountCircleIcon fontSize='large' style={{ color: 'white', marginLeft:'-150px', marginTop:"10px"}}/>
+        )}
+        position="Left center"
+        closeOnDocumentClick
+      >
+              <Button onClick={this.handleGoToLogin}> Login </Button>,
     
-            <AccountCircleIcon fontSize='large' style={{ color: 'white', marginLeft:'-150px', marginTop:"13px"}}/>
-            {/* <button onMouseOver={MouseOver} onMouseOut={MouseOut}>Hover over me!</button> */}
+              <Button onClick={this.handleGoToRegistration}> SignUp  </Button>
 
-            {/* localStorage.getItem("loginId") */}
-            {/* {() => this.localStorage.getItem("loginId")} */}
-
-
-            {/* <Popup
-    trigger={open => (
-      <button className="button">Trigger - {open ? "Opened" : "Closed"}</button>
-    )}
-    position="right center"
-    closeOnDocumentClick
-  >
-    <span> Popup content </span>
-  </Popup> */}
-
+      </Popup>
+    
              </div>
                 </div>
                 

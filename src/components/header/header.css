@@ -8,6 +8,16 @@
     width: 10%;
 
 }
+.cart-wishlist-div{
+  display: flex;
+  align-items: center;
+  position: relative;
+  right: 1 gfds5px;
+  /* right:0px; */
+  margin-right: 5%;
+
+}
+
  .button{
     width:120px;
     height:6px;
@@ -140,9 +150,7 @@ margin-left: 150;
   .cart-div {
  margin-left: 150;
   }
- .wishlist-div{
  
- }
  .AccountCircleIcon{
  
    margin-left:-150px;

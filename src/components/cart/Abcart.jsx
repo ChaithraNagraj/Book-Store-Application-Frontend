@@ -17,10 +17,6 @@ import TextField from '@material-ui/core/TextField';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
-// import  Toolbar  from '../components/headerbar/headerbar';
-// import  Footer  from './Footer';
-// import { Toolbar } from '../components/headerbar/headerbar';
-
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 
