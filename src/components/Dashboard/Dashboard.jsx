@@ -3,7 +3,7 @@ import Header from '../header/Header';
 import DisplayBooks from '../Book/DisplayBooks';
 import Footer from '../Footer/Footer';
 import { AddCartRequestMethod, getCartAddedCountRequestMethod } from '../../services/CartServices';
-import {getAllBooksRequestMethod,getBookByAuthorName, getBookCountRequestMethod} from '../../services/BookServices';
+import {getAllBooksRequestMethod,getBookByPriceAsc,getBookByPriceDesc,getBookByAuthorName, getBookCountRequestMethod} from '../../services/BookServices';
 import Abcart from '../cart/Abcart';
 // import MyCart from '../cart/Cart';
 import { AddWishlistRequestMethod } from '../../services/wishlistServics';
@@ -48,30 +48,10 @@ class Dashboard extends Component {
             console.log(err);
         })
     }
-    getCartAddedCountRequestMethod=()=> {
-        let path={
-            path:"books"
-        }
-        getCartAddedCountRequestMethod(path).then((res) => {
-            this.setState({ books:res.data.data});
-            this.setState({
-            maxNumOfPage: Math.ceil(this.state.books.length / this.state.todosPerPage)
-            })
-        }).catch((err) => {
-            console.log(err); 
-        })
-    }    // componentDidMount() {
-    //     Promise.all([getAllBooksRequestMethod(), getBookCountRequestMethod(), getCartAddedCountRequestMethod()])
-    //         .then(([getallBookResult, countBookResult,cartCountResult]) => {
-    //             this.setState({
-    //                 books: getallBookResult.data,
-    //                    bookCount: countBookResult.data,
-    //                 cartCount : cartCountResult.data
-    //             })
+//     cartCount=(res)=>{
+//         this.setState({ cartCount:res.data.data.cartBooks.totalBooksInCart});
 
-    //         })
-    // }
-
+//    }
 
     paginate = (pageNumber) => {
         this.setState({
@@ -118,39 +98,35 @@ class Dashboard extends Component {
     }
 
     sortByRelevanceHandler=(event)=>{
-      const selection = event.target.value; 
-      let books = this.state.books
-      console.log(selection);
-      if(selection.toString() === "price: low to high")
-      {
-        function compare(a, b) {
-            let comparison = 0;
-            if (a.price < b.price) {
-              comparison = -1;
-            } 
-            return comparison;
-          }
-          this.setState({
-            books:books.sort(compare)
-            })
-      }
-      else{
-        function compare(a, b) {
-            let comparison = 0;
-            if (a.price > b.price) {
-              comparison = -1;
-            }
-            return comparison;
-          }
-          this.setState({
-            books:books.sort(compare)
-            })
+        const selection =event.target.value;
+        let books= this.state.books
+        console.log(selection);
+        if(selection,toString() == "price: low to high"){    
+        const cartCountRes = getBookByPriceAsc();
+            cartCountRes.then(
+                res => {
+                    this.setState({
+                        book: res.data.data
+                    }) 
+                }
+            )
+           
+        }
 
-      }
-      
-      
+       else{
+          const response = getBookByPriceDesc();
+                const booksDesc = getBookByPriceDesc();
+                booksDesc.then(
+                    res => {
+                        this.setState({
+                            books: res.data.data
+                        }) 
+                    }
+                )
+           
     }
-
+  }
+    
     addToBagClickHandler = (clickedID) => {
         let cartCount = this.state.cartCount;
         let clickedid = this.state.clickedId;
@@ -175,17 +151,31 @@ class Dashboard extends Component {
         })
     }
     
-    addToWishlistClickHandler = async (clickedID) => {
-         let wishlistCount = this.state.wishlistCount;
-         let result = this.state.books.filter(ele=>{
-             return ele.bookID == clickedID
-         })
-       await  this.setState({
-             wishlistCount: wishlistCount + 1,
-             wishlist : [...result]
-         })
-         console.log(this.state.wishlist)
-     }
+    addToWishlistClickHandler = (clickedID) => {
+        let wishlistCount = this.state.wishlistCount;
+        let clickedid = this.state.clickedId;
+        // clickedid.push(clickedID);
+        console.log(clickedID);
+        //console.log(window.sessionStorage.getItem("email"));
+        this.setState({
+            wishlistCount: wishlistCount + 1,
+            clickedId: [...clickedid],
+            WishlistBtnText: "Added to wishlist"
+        })
+        var wishlist = {
+            // Book_ID: clickedID,
+            bookId: clickedID,
+        
+            // SelectBookCount: bookAvailable
+        }
+        console.log(wishlist)
+        const response = AddWishlistRequestMethod(wishlist);
+        response.then(res => {
+            console.log(res.data);
+        })
+    }
+    
+    
         render() {
         const indexOfLastPost = this.state.currentPage * this.state.postsPerPage;
         const indexOfFirstPost = indexOfLastPost - this.state.postsPerPage;

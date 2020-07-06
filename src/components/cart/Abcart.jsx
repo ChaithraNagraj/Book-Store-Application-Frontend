@@ -1,18 +1,13 @@
 import React, { Component } from 'react'
-//  import './App.css';
-// import "./card.scss"
-
 import Card from '@material-ui/core/Card';
 import { Container } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
-// import OrderPlaced from './components/OrderPlaced'
 import RemoveRoundedIcon from '@material-ui/icons/RemoveRounded';
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-// import controller from '../service/UserService';
 import TextField from '@material-ui/core/TextField';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -33,14 +28,14 @@ export class Abcart extends Component {
         super(props)
         this.state = {
             orderID: 0,
-            cartItem: 1,
+            cartItem: 0,
             quantity: 1,
             descrption:'abc',
             // i m taking this dummy data for checking purpose
             cart:[],
             total:"",
             showCustomerDetails:false,
-            showOrderSummery: true,
+            showOrderSummery: false,
             showOrderPlacedPage: false,
             showOrderSuccessful: false,
             sameBook: 1,
@@ -65,16 +60,18 @@ export class Abcart extends Component {
                path: "cart"
            }
            getCartValuesRequestMethod(path).then((res) => {
+             localStorage.setItem('cartCount',res.data.data.totalBooksInCart)
+             const abc=localStorage.getItem('cartCount',res.data.data.totalBooksInCart)
+
                this.setState({ cart: res.data.data.cartBooks });
-            //    this.setState({
-            //        maxNumOfPage: Math.ceil(this.state.books.length / this.state.todosPerPage)
-            //    })
+               this.setState({
+                   cartItems: abc
+               })
            }).catch((err) => {
                console.log(err);
            });
         }
-    
-    nameHandler = (event) => {
+        nameHandler = (event) => {
         const name = event.target.value;
         console.log("name", name);
         this.setState({
@@ -152,6 +149,11 @@ export class Abcart extends Component {
         })
         // let doesShowOrderSummary = this.state.showOrderSummery;
         // let doesShowCustomerDetails = this.state.showOrderPlacedPage;
+        this.setState({
+            showCustomerDetails:false,
+            showOrderSummery: true
+
+        })
         // this.setState({
         //     showOrderSummary: !doesShowOrderSummary,
         //     showOrderPlacedPage: !doesShowCustomerDetails
@@ -180,7 +182,7 @@ sameBookAddHandler = (event,id) => {
 
 //  -------------------------add/sub--------vinod-----------------------   
 
-    addQuantity =  async (bookId) => {
+    addQuantity =  async (data) => {
         let count=this.state.quantity;
         let a=this.state.price;
         let b=this.state.total;
@@ -194,31 +196,20 @@ this.setState({
     }else{
         alert(" oops!!!! totol 6 items can be avaible in a cart ")
     }  
-    const response = addQuantityRequestMethod({ params: { id: bookId } });
-    await response.then(res => {
-        console.log(res.data)
-        const cartCountRes = getCartAddedCountRequestMethod();
-        cartCountRes.then(
-            res => {
-                this.setState({
-                    cartAddedCount: res.data
-                })
-            }
-        )
+    const response = addQuantityRequestMethod(data);
         const cartValuesRes = getCartValuesRequestMethod();
         cartValuesRes.then(
             res => {
                 this.setState({
-                    cart: res.data.data,
+                    cart: res.data.data.cartBooks
                 })
             }
         )
-    }) 
     }
 
 
 
-    substractQuantity = async (bookId) => {
+    substractQuantity = async (data) => {
         let count=this.state.quantity;
 
         if(this.state.quantity>=2){
@@ -237,29 +228,15 @@ this.setState({
             alert("quanity cannot be zero")
         }
 
-        const response = subQuantityRequestMethod({ params: { id: bookId } });
-    await response.then(res => {
-        console.log(res.data)
-        const cartCountRes = getCartAddedCountRequestMethod();
-        cartCountRes.then(
-            res => {
-                this.setState({
-                    cartAddedCount: res.data
-                })
-            }
-        )
-        const cartValuesRes = getCartValuesRequestMethod();
+  const response = subQuantityRequestMethod( data);
+            const cartValuesRes = getCartValuesRequestMethod();
         cartValuesRes.then(
             res => {
                 this.setState({
-                    cart: res.data.data,
+                    cart: res.data.data.cartBooks
                 })
             }
         )
-    }) 
-
-
-
     }
 //  -------------------------------add/sub----------vinod----------------------   
     placeorder = event => {
@@ -285,16 +262,6 @@ this.setState({
         })
     }
     orderSummeryShowHandler = async () => {
-        // showOrderSummery:true
-        // this.setState({
-        //     showOrderSummery:true
-        // })
-        // let doesShowOrderSummery = this.state.showOrderSummery;
-        //  this.setState({
-        //     showOrderSummery: !doesShowOrderSummery
-        // })
-//line 339-345 uncomented:->working fine now!!!
-
         let doesShowOrderSummary = this.state.showOrderSummery;
         let doesShowCustomerDetails = this.state.showCustomerDetails;
         this.setState({
@@ -308,37 +275,32 @@ this.setState({
             showOrderSummery: !doesShowOrderSummery
         })
     }
-    // orderPlacedPageHandler = async () => {
-    //     let doesShowOrderPlacedPage = this.state.showOrderPlacedPage;
-    //     this.setState({
-    //         showOrderPlacedPage: !doesShowOrderPlacedPage
-    //     })
-    //     this.props.history.push("/OrderSummary");
-
-    // }
-    orderPlacedPageHandler (event){
-        // this.props.history.push('../../bookstoreApplication');
+        orderPlacedPageHandler (event){
         window.location.assign('./OrderSummary')
 
     }
-    removeFromCart = async (bookId) => {
+   
+    removeFromCart = async (data) => {
         //need to write wen service layer is ready**
-        const response = deleteCartValueRequestMethod({ params: { id: bookId } });
+        const response = deleteCartValueRequestMethod(data);
         await response.then(res => {
             console.log(res.data)
             const cartCountRes = getCartAddedCountRequestMethod();
             cartCountRes.then(
                 res => {
                     this.setState({
-                        cartAddedCount: res.data
-                    })
+                        cartAddedCount: res.data.data.cartBooks
+                    }) 
                 }
             )
             const cartValuesRes = getCartValuesRequestMethod();
             cartValuesRes.then(
+
                 res => {
                     this.setState({
-                        cart: res.data.data,
+                      
+                        cart: res.data.data.cartBooks,
+
                     })
                 }
             )
@@ -346,6 +308,7 @@ this.setState({
         
 
     }
+
     checkoutClickHandler = () => {
         const doesShowOrderSuccessful = this.state.showOrderSuccessful;
         let orderID = Math.floor(Math.random() * 90000) + 10000;
@@ -364,8 +327,8 @@ this.setState({
 
                 <div >
                 <Grid item xs={10}>
-                        <div  className="Customer-address-div" style={{marginTop:'100px'}}>    
-                        <Typography id='mycart-title'variant="h4">My cart ({this.state.quantity})</Typography>
+                        <div  className="Customer-address-div" style={{marginTop:'78px'}}>    
+                        <Typography id='mycart-title'variant="h4">My cart ({this.state.cartItems})</Typography>
        
                             {
                                 this.state.cart.map((ele) => {
@@ -406,26 +369,21 @@ this.setState({
                                                         <RemoveRoundedIcon className="icon" />
                                                     </button> */}
                                                      <Button
-                                                                    onClick={() =>this.substractQuantity(ele.cartBook.cartBookId)}
+                                                 onClick={() =>this.substractQuantity(ele.cartBookId)}
                                                                 >
-                                                                    <RemoveCircleOutlineIcon />
+                                                    <RemoveCircleOutlineIcon />
                                                       </Button>
 
                                                     <div className="input-type" >
                                                         {this.state.quantity}
                                                     </div>
                                                     
-                                                    {/* <div key={ele.cartId}>   */}
                                                     <div>
 
-                                                     {/* <button   
-                                                       onClick={this.addQuantity}
-                                                        ><AddRoundedIcon
-                                                         className="icon" />
-                                                     </button> */}
+                                                     
                                                      <Button
                                                                     id={ele.cartId}
-                                                                    onClick={() => this.addQuantity(ele.cartBook.cartBookId)}
+                                                                    onClick={() => this.addQuantity(ele.cartBookId)}
                                                                 >
                                                                     <AddCircleOutlineIcon />
                                                                 </Button>
@@ -531,8 +489,6 @@ this.setState({
                                                             </div>
                                                         </form> : null
                                                 }
-
-
                             </div>
                             
                         </Grid>

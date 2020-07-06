@@ -18,7 +18,9 @@ import Login from '../user/Login';
 class Header extends Component {
     constructor(props) {
         super(props);
-        this.state = { value: '' };
+        this.state = { value: '' ,
+        login:true,
+        loginValue:''};
     
         // this.handleGoToLogin=this.handleGoToLogin.bind(this);
         this.showDropdownMenu = this.showDropdownMenu.bind(this);
@@ -103,16 +105,31 @@ handleGoToLogin(event){
                         </div>
                     </div>
                     <div className="Sign">  
-    <Popup
+        <Popup
         trigger={open => (
          <AccountCircleIcon fontSize='large' style={{ color: 'white', marginLeft:'-150px', marginTop:"10px"}}/>
         )}
         position="Left center"
         closeOnDocumentClick
       >
-              <Button onClick={this.handleGoToLogin}> Login </Button>,
-    
-              <Button onClick={this.handleGoToRegistration}> SignUp  </Button>
+            <div className="modal" style={{width:"20",height:"200px"}}>
+                  <AccountCircleIcon fontSize='large' style={{ color: 'black',marginTop:"80px",marginLeft:"60px"}}/>
+                  
+         
+          {
+          this.state.login ?
+
+              <Button
+               style={{backgroundColor:'#A03037',marginLeft:"20px",marginTop:"20px"}}
+
+              onClick={this.handleGoToLogin}> Login/SignUp </Button>
+    :
+              <Button 
+            style={{backgroundColor:'#A03037',marginLeft:"20px",marginTop:"20px"}}
+
+              onClick={this.handleGoToRegistration}> Logout  </Button>
+          }
+   </div>
 
       </Popup>
     

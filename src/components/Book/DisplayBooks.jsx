@@ -74,6 +74,7 @@ class DisplayBooks extends Component {
                                             > Added to bag</Button> :
                                             <>
                                             
+                                            
                                             <Button
                                                 variant='outlined'
                                                 color='white'

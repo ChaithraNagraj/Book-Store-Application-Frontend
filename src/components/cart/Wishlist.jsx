@@ -1,30 +1,72 @@
 import React, { Component } from 'react';
 import { Typography } from '@material-ui/core';
-import bookImage from '../../assets/book.jpg';
+import Button from '@material-ui/core/Button';
 
+import { getWishlistValuesRequestMethod , AddWishlistRequestMethod }  from '../../services/wishlistServics';
+import './wishlist.css';
 class Wishlist extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            orderId: 0,
+            wishlistItem: 1,
+            quantity: "",
+            descrption:'abc',
+            wishlist:[],
+            clickId:[],
+            total:"",
+            incrementDecrementCount: 1
+        }
+    } 
+
+    componentDidMount() {
+        this.getWishlistValuesRequestMethod();
+        }
+        getWishlistValuesRequestMethod = () => {
+           let path = {
+               path: "wishlist"
+           }
+           getWishlistValuesRequestMethod(path).then((res) => {
+               this.setState({ wishlist: res.data.data});
+            //    this.setState({
+            //        maxNumOfPage: Math.ceil(this.state.books.length / this.state.todosPerPage)
+            //    })
+           }).catch((err) => {
+               console.log(err);
+           });
+        }
+    
     render() {
         return (
             <>
                 {
-                    this.props.wishlist.map(ele => {
+                    this.state.wishlist.map(ele => {
                         return (
-                            <div className='my-cart-main-div'>
-                            <div className='order-summary-div'>
-                                <Typography variant="h5">Wishlist</Typography>
-                                <div className='book-image-details-div'>
+                            <div className='order-summary-div'style={{marginTop:'80px', marginBottom:'190px'}} >
+                                <Typography  variant="h5">Wishlist</Typography>
+                                <div className='book-image-details-div'style={{marginTop:'50px'}}>
                                     <div className='book-image-div'>
-                                        {/* <img id='img-cart' src={ele.bookImage} alt='error' /> */}
-                                        <img className='img' id='img-book' src={bookImage}/>
+                                    <img id='img-book' src={ele.imageURL} />
+                                        {/* <img className='img' id='img-book' src={bookImage}/> */}
 
                                     </div>
                                     <div className='book-details-div'>
-                                        <Typography variant="h5" >{ele.bookTittle}</Typography>
+                                        <Typography variant="h5" >{ele.bookName}</Typography>
                                         <Typography>{ele.authorName}</Typography>
                                         <Typography>₹ {ele.price}</Typography>
                                     </div>
+                                    <div>
+                                    <Button
+                                    variant='outlined'
+                                    style={{backgroundColor:'#A03037', marginTop:'160px'}}
+                                    color='white'>MoveToCart</Button>
+                                    <Button
+                                    variant='outlined'
+                                    color='white'   
+                                    style={{backgroundColor:'#A03037',marginTop:'160px',marginLeft:'10px'}}
+                                    >RemoveFromWishlist</Button>
+                                  </div>
                                 </div>
-                            </div>
                             </div>
                         )
                     })
@@ -35,4 +77,4 @@ class Wishlist extends Component {
         )
     }
 }
-export default Wishlist
+export default Wishlist;

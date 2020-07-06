@@ -33,14 +33,25 @@ export const getCartAddedCountRequestMethod= async ()=>{
 
 export const getCartValuesRequestMethod= async ()=>{
     const response = await axios.get(getCartValuesURL,{headers: {'token' :  localStorage.getItem('token')}});
+    console.log(response)
     return response;
+
+}
+export const deleteCartValueRequestMethod = async (data)=>{
+
+    var cartBookId=data.cartBookId
+    var data1=data
+   console.log(data.cartBookId)
+   console.log(data)
+
+   var abc=''
+  const response =await axios.delete(`http://localhost:8080/carts/removeFromCart/${data}`,{headers: {'token' :  localStorage.getItem('token')}} 
+       );
+       console.log(response)
+   return response;
+
 }
 
-
-export const deleteCartValueRequestMethod= async (id)=>{
-    const response = await axios.delete(deleteCartValueURL,id,{headers: {'token' :  localStorage.getItem('token')}});
-    return response;
-}
 
 export const addCustomerDetailsRequestMethod = async (data)=>{
     const response = await axios.post(addCustomerDetailsURL,data, {headers: {'token' :  localStorage.getItem('token')}}

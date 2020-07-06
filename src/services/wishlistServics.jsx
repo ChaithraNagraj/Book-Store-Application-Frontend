@@ -1,6 +1,7 @@
 import axios from 'axios';
-// const AddTowishlist = 'http://localhost:8080/wishlists/addToWishlist';
-// const token = localStorage.getItem("token")
+
+const getWishlistValuesURL = 'http://localhost:8080/wishlists/displayItems';
+
 var tokenn=sessionStorage.getItem("token");
 console.log("token")
 console.log("token from cart service")
@@ -19,4 +20,13 @@ export const AddWishlistRequestMethod = async (data)=>{
         );
 
     return response;
+}
+
+
+
+export const getWishlistValuesRequestMethod = async ()=>{
+    const response = await axios.get(getWishlistValuesURL,{headers: {'token' :  localStorage.getItem('token')}});
+    console.log(response)
+    return response;
+
 }
