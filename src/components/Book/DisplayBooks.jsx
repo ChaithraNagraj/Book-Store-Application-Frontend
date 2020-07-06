@@ -38,7 +38,7 @@ class DisplayBooks extends Component {
                                 <>
                                     <Card className='note-card' key={ele.bookId}>
                                         
-                                        <Tooltip  title={ele.summary}> 
+                                        <Tooltip  title={ele.description}> 
                                         <CardActionArea> 
                                             <img id='img-book' src={ele.imageURL} />
 
@@ -54,6 +54,7 @@ class DisplayBooks extends Component {
                                                 <Typography id='note-content' variant="body2" color="textSecondary" component="p">
                                                     ₹ {ele.price}
                                                 </Typography>
+                                                
                                                 {/* <Typography id='note-content' variant="body2" color="textSecondary" component="p">
                                                      {ele.description}
                                                 </Typography> */}

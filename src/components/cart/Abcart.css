@@ -420,7 +420,7 @@ display: flex;
 }
 .checkout-button {
   color: whitesmoke;
-  background-color: dodgerblue;
+  background-color: rgb(151, 17, 17);
   height: 32px;
   width: 190px;
   border-radius: 5px;

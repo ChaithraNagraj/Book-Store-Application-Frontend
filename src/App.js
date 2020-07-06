@@ -4,7 +4,6 @@ import Dashboard from './components/Dashboard/Dashboard';
 
 // import MyCart from './components/cart/MyCart';
 import Login from './components/user/Login';
-import Logout from'./components/user/Logout';
 import Registration from './components/user/Registration';
 import OrderSummary from './components/cart/OrderSummary';
 // import cart from './components/cart/cart';
@@ -13,7 +12,7 @@ import Abcart from './components/cart/Abcart'
 import OrderPlaced from './components/cart/OrderPlaced'
 import {BrowserRouter as Router ,Switch, Route } from 'react-router-dom';
 import Resetpassword from './components/user/ResetPassword';
-
+import Logout from './components/user/Logout';
 import Header from './components/header/Header';
 import profile from './components/Profile/profile';
 function App() {
@@ -29,6 +28,7 @@ function App() {
    <Route path='/OrderPlaced' component={OrderPlaced}/>
    <Route path='/profile' component={profile}/>
    <Route path ='/Logout' component={Logout}/>
+   
    </Switch>
    </Router>
   );

@@ -28,7 +28,8 @@ class Dashboard extends Component {
         currentPage: 1,
         postsPerPage: 6,
         wishlist:[],
-        ShowWishListComponent:false
+        ShowWishListComponent:false,
+
     }
     
  componentDidMount() {
@@ -41,6 +42,7 @@ class Dashboard extends Component {
         }
         getAllBooksRequestMethod(path).then((res) => {
             this.setState({ books: res.data.data });
+            this.setState({cartCount: localStorage.getItem('cartCount')})
             this.setState({
                 maxNumOfPage: Math.ceil(this.state.books.length / this.state.todosPerPage)
             })
@@ -48,10 +50,6 @@ class Dashboard extends Component {
             console.log(err);
         })
     }
-//     cartCount=(res)=>{
-//         this.setState({ cartCount:res.data.data.cartBooks.totalBooksInCart});
-
-//    }
 
     paginate = (pageNumber) => {
         this.setState({
@@ -70,9 +68,12 @@ class Dashboard extends Component {
 
     wishListIconClickedHandler = () => {
         let doesShowWishListComponent = this.state.ShowWishListComponent;
+
         this.setState({
             ShowWishListComponent: !doesShowWishListComponent
+
         })
+
     }
 
     searchHandler = (event) => {
@@ -96,17 +97,17 @@ class Dashboard extends Component {
             })
         }
     }
-
+    
     sortByRelevanceHandler=(event)=>{
         const selection =event.target.value;
         let books= this.state.books
         console.log(selection);
-        if(selection,toString() == "price: low to high"){    
+        if(selection.toString() === "price: low to high"){    
         const cartCountRes = getBookByPriceAsc();
             cartCountRes.then(
                 res => {
                     this.setState({
-                        book: res.data.data
+                        books: res.data.data
                     }) 
                 }
             )
@@ -126,13 +127,15 @@ class Dashboard extends Component {
            
     }
   }
+
     
     addToBagClickHandler = (clickedID) => {
         let cartCount = this.state.cartCount;
+        console.log("helllllll")
+        console.log()
         let clickedid = this.state.clickedId;
         clickedid.push(clickedID);
         console.log(clickedID);
-        //console.log(window.sessionStorage.getItem("email"));
         this.setState({
             cartCount: cartCount + 1,
             clickedId: [...clickedid],

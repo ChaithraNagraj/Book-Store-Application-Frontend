@@ -11,6 +11,7 @@
     "axios": "^0.19.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-hover": "^1.4.0",
     "react-if-elseif-else-render": "^1.0.2",
     "react-native-responsive-screen": "^1.4.1",
     "react-native-vector-icons": "^7.0.0",

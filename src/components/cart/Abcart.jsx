@@ -65,7 +65,7 @@ export class Abcart extends Component {
 
                this.setState({ cart: res.data.data.cartBooks });
                this.setState({
-                   cartItems: abc
+                   cartItems: res.data.data.totalBooksInCart
                })
            }).catch((err) => {
                console.log(err);
@@ -276,6 +276,7 @@ this.setState({
         })
     }
         orderPlacedPageHandler (event){
+            localStorage.removeItem('cartCount')
         window.location.assign('./OrderSummary')
 
     }
@@ -485,7 +486,7 @@ this.setState({
                                                             <div className="continue-cart-div">
                                                                 {/* <button type="submit" id="continue" className="address-button" onClick={this.addCustomerDetailsHandler}>CONTINUE</button> */}
                                                             
-                                                                <button type="submit" id="continue" className="address-button" onClick={this.addCustomerDetailsHandler}>CONTINUE</button>
+                                                                <button type="submit" id="continue" className="address-button" style={{backgroundColor:'rgb(110, 18, 18)',color:'white'}} onClick={this.addCustomerDetailsHandler}>CONTINUE</button>
 
                                                             </div>
                                                         </form> : null

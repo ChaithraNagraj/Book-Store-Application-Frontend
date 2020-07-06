@@ -20,7 +20,7 @@ class Header extends Component {
         this.state = { value: '' ,
         loginId: localStorage.getItem('loginId'),
         // abc:localStorage.getItem("loginId"),
-        login:'',
+        login:false,
 
         loginValue:''};
         
@@ -35,13 +35,19 @@ class Header extends Component {
       
   //     componentDidMount(){
   //       console.log(this.state)
-  // if(this.state.loginId===''){
+  // if(this.state.loginId=== localStorage.getItem('loginId')){
   //   this.setState({
   //     login:true
   //   })
   // }
+  //   else{
+  //     this.setState({
+  //       login:false
+  //     })
+    
+  // }
   
-      // }
+  //     }
       
     showDropdownMenu(event) {
         event.preventDefault();
@@ -57,34 +63,30 @@ class Header extends Component {
     
       }
       handleGoToHome(event) {
-        // this.props.history.push('/')
-        // window.location.assign('../Dashboard');
         window.location.reload(false);
     
       }
 
 
   handleGoToLogin(event){
-    window.location.assign('./Login')
-    
-    // Popup('./profile')
+    window.location.assign('./Login')    
   }
 
-
-  handleGoToRegistration(event){
-    window.location.assign('./Registration')
-    // Popup('./profile')
-  }
+  
   handleGoToLogout(event){
     window.location.assign('./Logout')
 
   }
+  EditHandler(even){
+
+  }
     render() {
         console.log(this.props.cartCount);
-        console.log(this.state.loginId)
-        // var abc =localStorage.getItem("loginId")
-        var abc=this.state.loginId
+        console.log(this.state.loginId);
+        const abc =(this.state.loginId);
+        console.log(abc);
         return (
+
             
             <>
                 <div className='header'>
@@ -131,30 +133,33 @@ class Header extends Component {
         trigger={open => (
          <AccountCircleIcon fontSize='large' style={{ color: 'white', marginLeft:'-150px', marginTop:"10px"}}/>
         )}
-        position="Left center"
+        position="left center"
         closeOnDocumentClick
       >
             <div className="modal" style={{width:"20",height:"200px"}}>
-                  <AccountCircleIcon fontSize='large' style={{ color: 'black',marginTop:"80px",marginLeft:"60px"}}/>
+                  <AccountCircleIcon fontSize='large' style={{ color: 'black',marginTop:"60px",marginLeft:"60px"}}/>
                   
-                  {/* {
-          this.state.loginId?  */}
-      <If condition={abc == ''}>
-        <Then>
-              <Button
-               style={{backgroundColor:'#A03037',marginLeft:"20px",marginTop:"20px"}}
-
-              onClick={this.handleGoToLogin}> Login/SignUp </Button>
-        </Then>
+               <If condition={abc==null}  >
+          <Then>
+           <Button
+           style={{backgroundColor:'#A03037',marginLeft:"20px",marginTop:"20px"}}
+           onClick={this.handleGoToLogin}> Login/SignUp </Button>
+           
+          
+         </Then>
         <Else>
           <Then>
-              <Button 
-            style={{backgroundColor:'#A03037',marginRight:"40px",marginTop:"20px"}}
-
-              onClick={this.handleGoToRegistration}> Logout  </Button>
-                        </Then>
-     </Else>
+            
+            <div  onClick={this.EditHandler} style={{color:'black',marginTop:'20px'}}>
+               Edit
+            </div>
+        <Button
+        style={{backgroundColor:'#A03037',marginLeft:"40px",marginTop:"20px"}}
+               onClick={this.handleGoToLogout}> Logout  </Button>
+                        </Then>  
+        </Else>
 </If>
+          
           </div>
 
       </Popup>

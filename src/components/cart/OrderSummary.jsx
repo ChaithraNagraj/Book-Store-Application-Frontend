@@ -17,7 +17,7 @@ class OrderSummary extends Component {
         // this.props.history.push('/Dashboard');
         this.props.history.push('../../bookstoreApplication');
 
-        // window.location.reload();
+        window.location.reload();
     }
     render() {
         return (
