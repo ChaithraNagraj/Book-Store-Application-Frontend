@@ -44,19 +44,19 @@ class Login extends Component {
       password: this.state.password,
       role: this.state.role
     }
-    sessionStorage.setItem("loginId",this.state.loginId);
+    // sessionStorage.setItem("loginId",this.state.loginId);
     const response = LoginRequestMethod(data);
     response.then(res => {
       console.log(res.data);
       
       console.log(res.data.token);
+      console.log(res.data.data.email);
       // sessionStorage.setItem("token",res.data.token);
       
       localStorage.setItem('token', res.data.token);
     //storing data login
-    localStorage.setItem('loginId', res.data.loginId);
- 
-
+    localStorage.setItem('loginId', res.data.data.email);
+// console.log(localStorage.setItem('loginId', res.data.data.email));
     
       if (res.data === data.LoginId) {
         // sessionStorage.setItem("token",data.token);

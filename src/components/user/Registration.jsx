@@ -127,7 +127,7 @@ class Registration extends Component {
           userRegister(registartionDetails).then(res => {
             console.log("resp-----", res.data);
     
-            this.props.history.push("../../Dashboard");
+            this.props.history.push("../../BookStoreApplication");
           });
         }
       };

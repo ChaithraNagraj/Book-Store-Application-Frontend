@@ -12,22 +12,36 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Popup from "reactjs-popup";
 import {getCartAddedCountRequestMethod} from '../../services/CartServices';
 import "./header.css";
-import Login from '../user/Login';
-
+import { If, Then, ElseIf, Else } from 'react-if-elseif-else-render';
 
 class Header extends Component {
     constructor(props) {
         super(props);
         this.state = { value: '' ,
-        login:true,
+        loginId: localStorage.getItem('loginId'),
+        // abc:localStorage.getItem("loginId"),
+        login:'',
+
         loginValue:''};
+        
     
         // this.handleGoToLogin=this.handleGoToLogin.bind(this);
         this.showDropdownMenu = this.showDropdownMenu.bind(this);
         this.hideDropdownMenu = this.hideDropdownMenu.bind(this);
         this.handleGoToCart=this.handleGoToHome.bind(this);
+        // var abc =localStorage.getItem("loginId");
 
       }
+      
+  //     componentDidMount(){
+  //       console.log(this.state)
+  // if(this.state.loginId===''){
+  //   this.setState({
+  //     login:true
+  //   })
+  // }
+  
+      // }
       
     showDropdownMenu(event) {
         event.preventDefault();
@@ -48,20 +62,28 @@ class Header extends Component {
         window.location.reload(false);
     
       }
-//       handleGoToProfile(event){
-//   window.location.assign('./profile')
-//   // Popup('./profile')
-// }
-handleGoToLogin(event){
+
+
+  handleGoToLogin(event){
     window.location.assign('./Login')
+    
     // Popup('./profile')
   }
+
+
   handleGoToRegistration(event){
     window.location.assign('./Registration')
     // Popup('./profile')
   }
+  handleGoToLogout(event){
+    window.location.assign('./Logout')
+
+  }
     render() {
         console.log(this.props.cartCount);
+        console.log(this.state.loginId)
+        // var abc =localStorage.getItem("loginId")
+        var abc=this.state.loginId
         return (
             
             <>
@@ -104,7 +126,7 @@ handleGoToLogin(event){
                            <Button id='icon-btn' onClick={this.props.wishListIconClickedHandler}> <FavoriteIcon fontSize='large' /> </Button>
                         </div>
                     </div>
-                    <div className="Sign">  
+     <div className="Sign">  
         <Popup
         trigger={open => (
          <AccountCircleIcon fontSize='large' style={{ color: 'white', marginLeft:'-150px', marginTop:"10px"}}/>
@@ -115,21 +137,25 @@ handleGoToLogin(event){
             <div className="modal" style={{width:"20",height:"200px"}}>
                   <AccountCircleIcon fontSize='large' style={{ color: 'black',marginTop:"80px",marginLeft:"60px"}}/>
                   
-         
-          {
-          this.state.login ?
-
+                  {/* {
+          this.state.loginId?  */}
+      <If condition={abc == ''}>
+        <Then>
               <Button
                style={{backgroundColor:'#A03037',marginLeft:"20px",marginTop:"20px"}}
 
               onClick={this.handleGoToLogin}> Login/SignUp </Button>
-    :
+        </Then>
+        <Else>
+          <Then>
               <Button 
-            style={{backgroundColor:'#A03037',marginLeft:"20px",marginTop:"20px"}}
+            style={{backgroundColor:'#A03037',marginRight:"40px",marginTop:"20px"}}
 
               onClick={this.handleGoToRegistration}> Logout  </Button>
-          }
-   </div>
+                        </Then>
+     </Else>
+</If>
+          </div>
 
       </Popup>
     

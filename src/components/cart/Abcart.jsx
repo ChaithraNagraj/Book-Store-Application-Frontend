@@ -359,7 +359,7 @@ this.setState({
                                                     <p>Rs.{ele.book.price}</p>
                                                 </div>
                                                 <div className="book-price-div" >
-                                                    <p>totalprice{this.state.quantity * ele.price}</p>
+                                                    {/* <p>totalprice{this.state.quantity * ele.price}</p> */}
                                                     {/* <p>this.state.total</p> */}
                                                 </div>
      {/* -------------------------------------but---------------------------------------------------                                            */}
@@ -375,7 +375,8 @@ this.setState({
                                                       </Button>
 
                                                     <div className="input-type" >
-                                                        {this.state.quantity}
+                                                        {/* {this.state.quantity} */}
+                                                        {ele.bookQuantity}
                                                     </div>
                                                     
                                                     <div>

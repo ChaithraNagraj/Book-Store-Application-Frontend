@@ -4,6 +4,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 
 // import MyCart from './components/cart/MyCart';
 import Login from './components/user/Login';
+import Logout from'./components/user/Logout';
 import Registration from './components/user/Registration';
 import OrderSummary from './components/cart/OrderSummary';
 // import cart from './components/cart/cart';
@@ -27,6 +28,7 @@ function App() {
    <Route path='/OrderSummary' component={OrderSummary}/>
    <Route path='/OrderPlaced' component={OrderPlaced}/>
    <Route path='/profile' component={profile}/>
+   <Route path ='/Logout' component={Logout}/>
    </Switch>
    </Router>
   );
