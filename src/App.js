@@ -15,6 +15,7 @@ import Resetpassword from './components/user/ResetPassword';
 import Logout from './components/user/Logout';
 import Header from './components/header/Header';
 import profile from './components/Profile/profile';
+import editProfile from './components/EditProfile/editProfile';
 function App() {
   return (
   <Router>
@@ -28,6 +29,7 @@ function App() {
    <Route path='/OrderPlaced' component={OrderPlaced}/>
    <Route path='/profile' component={profile}/>
    <Route path ='/Logout' component={Logout}/>
+   <Route path='/editProfile' component={editProfile}/>
    
    </Switch>
    </Router>

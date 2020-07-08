@@ -1,3 +1,5 @@
+
+
 .header{
   display: flex;
   background-color: #88040fd8;
@@ -66,8 +68,9 @@ display: flex;
 .cart-div{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
+  margin-left: '10px';
 
 
 }
@@ -397,6 +400,20 @@ h2#welcome-text {
     min-height: 699px;
 
 }
+.header{
+  display: flex;
+  background-color: #88040fd8;
+  justify-content: space-between;
+  padding: 10px;
+  position:fixed;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  color: white;
+  height:42px;
+  margin-top:-80px;
+}
+
  }
 @media all and (max-width:768px)  
 {
@@ -411,42 +428,6 @@ h2#welcome-text {
   min-height: 900px;
 }
 
-.cart-wishlist-div{
-  display: flex;
-  align-items: center;
-  position: relative;
-  right: 1 gfds5px;
-  /* right:0px; */
-  margin-right: 15%;
-
-}
-.cart-div{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-}
-.wishlist-div{
-display: flex;
-flex-direction: column;
-justify-content: center;  
-margin-left: 50px;
-align-items: center;
-}
-
-#icon-btn{
-  color: white;
-}
-.icon-counter {
-  padding-left: 9px;
-  padding-right: 2px;
-  border-radius: 50%;
-  height: 25px;
-  width: 30px;
-  border: 1px solid white;
-  color: white;
-}
 .search-textfield {
   width: 0px;
 }
@@ -468,13 +449,25 @@ align-items: center;
   margin-right: 18px;
   margin-top: 8px;
 }
+.Sign{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  right: -80px;
+  font-weight:bold;
+}
 
 .search-textfield {
   width: 100%;
 }
 
-.cart-wishlist-div {
-  right: 0px;
+  .cart-wishlist-div{
+    display: flex;
+    align-items: center;
+    position: relative;
+    right: 1 gfds5px;
+    right:0px;
 }
 
 .wishlist-div {
@@ -585,4 +578,24 @@ font-size: 20px;
 
 
 /* responsiveness */
+/* @media  screen and (max-width:1700px) and (min-width: 1024px)
+{
+.Sign{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  right: -80px;
+  font-weight:bold;
+}
+.cart-wishlist-div{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  right: 1 gfds5px;
+  /* right:0px; */
+  /* margin-right: 15%;
 
+}
+} */ 

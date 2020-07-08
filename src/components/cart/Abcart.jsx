@@ -194,7 +194,7 @@ this.setState({
            this.state.total = ele.price*count;
         });
     }else{
-        alert(" oops!!!! totol 6 items can be avaible in a cart ")
+        alert(" oops!!!! totol 5 items can be avaible in a cart ")
     }  
     const response = addQuantityRequestMethod(data);
         const cartValuesRes = getCartValuesRequestMethod();
@@ -212,7 +212,7 @@ this.setState({
     substractQuantity = async (data) => {
         let count=this.state.quantity;
 
-        if(this.state.quantity>=2){
+        if(this.state.quantity>=1){
 
         
         this.setState({

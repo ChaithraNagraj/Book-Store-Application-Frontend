@@ -1,7 +1,7 @@
-@media all and (max-width: 760px) 
+@media all and (max-width: 1260px) 
 {.footer-div {
     display: flex;
-      position: relative;
+      position: fixed;
       left: 0;
       bottom: 0;
       width: 100%;

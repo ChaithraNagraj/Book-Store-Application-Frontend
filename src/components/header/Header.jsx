@@ -10,6 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import { Button, Popover } from '@material-ui/core';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Popup from "reactjs-popup";
+ import book from '../../assets/education.svg';
+
 import {getCartAddedCountRequestMethod} from '../../services/CartServices';
 import "./header.css";
 import { If, Then, ElseIf, Else } from 'react-if-elseif-else-render';
@@ -78,7 +80,7 @@ class Header extends Component {
 
   }
   EditHandler(even){
-
+window.location.assign('./editProfile')
   }
     render() {
         console.log(this.props.cartCount);
@@ -90,9 +92,10 @@ class Header extends Component {
             
             <>
                 <div className='header'>
-                    <div className='book-logo-search-div'>
+                    <div className='book-logo-search-div' style={{marginLeft:'-10px'}}>
                         <div className='book-logo-div' onClick={() => this.handleGoToHome()}>
-                            <ImportContactsTwoToneIcon fontSize='large' />
+                            {/* <MenuBookIcon fontSize='large' /> */}
+                            <img className='img' id='book' src={book}/>
                         </div>
                         <div className='book-title'onClick={() => this.handleGoToHome()}>
                             <h2 className='title'>BookStore</h2>
@@ -142,7 +145,7 @@ class Header extends Component {
                <If condition={abc==null}  >
           <Then>
            <Button
-           style={{backgroundColor:'#A03037',marginLeft:"20px",marginTop:"20px"}}
+           style={{backgroundColor:'#A03037',marginLeft:"5px",marginTop:"20px"}}
            onClick={this.handleGoToLogin}> Login/SignUp </Button>
            
           
@@ -151,10 +154,11 @@ class Header extends Component {
           <Then>
             
             <div  onClick={this.EditHandler} style={{color:'black',marginTop:'20px'}}>
-               Edit
+
+               {abc}
             </div>
         <Button
-        style={{backgroundColor:'#A03037',marginLeft:"40px",marginTop:"20px"}}
+        style={{backgroundColor:'#A03037',marginLeft:"50px",marginTop:"20px"}}
                onClick={this.handleGoToLogout}> Logout  </Button>
                         </Then>  
         </Else>
