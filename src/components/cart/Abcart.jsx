@@ -18,7 +18,7 @@ import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import {
     getCartAddedCountRequestMethod, getCartValuesRequestMethod,
     deleteCartValueRequestMethod, getCustomerAddressRequestMethod, addCustomerDetailsRequestMethod,addQuantityRequestMethod,subQuantityRequestMethod
-} from '../../services/CartServices';
+,checkoutRequestMethod} from '../../services/CartServices';
 import OrderPlaced from  './OrderPlaced'
 import "./Abcart.css";
 import OrderSummary from  './OrderSummary';
@@ -42,12 +42,12 @@ export class Abcart extends Component {
             name: "",
             phoneNumber: 0,
             pincode: 0,
-            locality: "",
             city: "",
             address: "",
             landmark: "",
             type: "",
             email: "",
+            locality:"",
             incrementDecrementCount: 1
         }
     } 
@@ -65,7 +65,7 @@ export class Abcart extends Component {
 
                this.setState({ cart: res.data.data.cartBooks });
                this.setState({
-                   cartItems: res.data.data.totalBooksInCart
+                   cartItem: res.data.data.totalBooksInCart
                })
            }).catch((err) => {
                console.log(err);
@@ -94,10 +94,10 @@ export class Abcart extends Component {
         })
     }
     localityHandler = (event) => {
-        const locality = event.target.value;
-        console.log('locality', locality)
+        const customer_locality = event.target.value;
+        console.log('locality', customer_locality)
         this.setState({
-            locality: locality
+            customer_locality: customer_locality
         })
     }
     cityHandler = (event) => {
@@ -133,14 +133,15 @@ export class Abcart extends Component {
         //const email = window.sessionStorage.getItem('email');
         //console.log(`email is ${email}`);
         var data = {
-            email: this.state.email,
-            fullName: this.state.name,
+            // email: this.state.email,
+            name: this.state.name,
             phoneNumber: this.state.phoneNumber,
             address: this.state.address,
             pincode: this.state.pincode,
-            citytown: this.state.city,
+            city: this.state.city,
             landmark: this.state.landmark,
-            addressType: this.state.type
+            addressType: this.state.type,
+            locality: this.state.locality
         }
         //need to write method to send data to db
         console.log(data);
@@ -183,12 +184,14 @@ sameBookAddHandler = (event,id) => {
 //  -------------------------add/sub--------vinod-----------------------   
 
     addQuantity =  async (data) => {
-        let count=this.state.quantity;
+        // let count=this.state.quantity;
+        let count=this.state.cartItem;
         let a=this.state.price;
         let b=this.state.total;
-        if(this.state.quantity<=5){   
+        if(this.state.cartItem<=5){   
 this.setState({
-            quantity: count + 1
+            // quantity: count + 1
+            countItems: count+1
         });
         this.state.cart.forEach((ele)=>{
            this.state.total = ele.price*count;
@@ -201,8 +204,11 @@ this.setState({
         cartValuesRes.then(
             res => {
                 this.setState({
-                    cart: res.data.data.cartBooks
+                    cart: res.data.data.cartBooks,
+                    cartItem: res.data.data.totalBooksInCart
+
                 })
+                
             }
         )
     }
@@ -233,8 +239,11 @@ this.setState({
         cartValuesRes.then(
             res => {
                 this.setState({
-                    cart: res.data.data.cartBooks
+                    cart: res.data.data.cartBooks,
+                    cartItem: res.data.data.totalBooksInCart
+
                 })
+                
             }
         )
     }
@@ -275,7 +284,14 @@ this.setState({
             showOrderSummery: !doesShowOrderSummery
         })
     }
-        orderPlacedPageHandler (event){
+        
+    
+    orderPlacedPageHandler (event){
+
+        checkoutRequestMethod().then((response) => {
+            console.log(response.data, "-----------------data---------------");
+        })
+
             localStorage.removeItem('cartCount')
         window.location.assign('./OrderSummary')
 
@@ -312,6 +328,10 @@ this.setState({
 
     checkoutClickHandler = () => {
         const doesShowOrderSuccessful = this.state.showOrderSuccessful;
+        // const response = checkoutRequestMethod();
+        // checkoutRequestMethod().then((response) => {
+        //     console.log(response.data, "-----------------data---------------");
+        // })
         let orderID = Math.floor(Math.random() * 90000) + 10000;
         this.setState({
             showOrderSuccessful: !doesShowOrderSuccessful,
@@ -329,7 +349,7 @@ this.setState({
                 <div >
                 <Grid item xs={10}>
                         <div  className="Customer-address-div" style={{marginTop:'78px'}}>    
-                        <Typography id='mycart-title'variant="h4">My cart ({this.state.cartItems})</Typography>
+                        <Typography id='mycart-title'variant="h4">My cart ({this.state.cartItem})</Typography>
        
                             {
                                 this.state.cart.map((ele) => {
@@ -384,7 +404,7 @@ this.setState({
 
                                                      
                                                      <Button
-                                                                    id={ele.cartId}
+                                                                    // id={ele.cartId}
                                                                     onClick={() => this.addQuantity(ele.cartBookId)}
                                                                 >
                                                                     <AddCircleOutlineIcon />

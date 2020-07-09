@@ -4,7 +4,7 @@ const addCustomerDetailsURL = 'http://localhost:8080/address/addAddress';
 const getCustomerAddressURL = 'http://localhost:8080/api/Address/GetCustomerAddress';
 const cartAddedCountURL = 'http://localhost:8080/carts/CountCart';
 const getCartValuesURL = 'http://localhost:8080/carts/displayItems';
-
+const getCheckoutURL ='http://localhost:8080/orders/checkOut';
 var tokenn=sessionStorage.getItem("token");
 console.log("token")
 console.log("token from cart service")
@@ -72,5 +72,10 @@ export const addQuantityRequestMethod = async (bookId)=>{
 export const subQuantityRequestMethod = async (bookId)=>{
     const response = await axios.put(`http://localhost:8080/carts/removeQuantity/${bookId}`,{},{headers: {'token' :  localStorage.getItem('token')}})
 }
+ export const checkoutRequestMethod =async ()=>{
 
+     const response =await axios.post(getCheckoutURL,{},{headers: {'token' :  localStorage.getItem('token')}}
+     );
+return response;
+ }
 

@@ -28,14 +28,16 @@ class Wishlist extends Component {
            }
            getWishlistValuesRequestMethod(path).then((res) => {
                this.setState({ wishlist: res.data.data});
-            //    this.setState({
-            //        maxNumOfPage: Math.ceil(this.state.books.length / this.state.todosPerPage)
-            //    })
            }).catch((err) => {
                console.log(err);
            });
         }
     
+        RemoveMethod = async (data) => {
+
+
+
+                        }
     render() {
         return (
             <>
@@ -60,7 +62,9 @@ class Wishlist extends Component {
                                     variant='outlined'
                                     style={{backgroundColor:'#A03037', marginTop:'160px'}}
                                     color='white'>MoveToCart</Button>
-                                    <Button
+                                    <Button                                                
+                                      onClick={() =>this.RemoveMethod(ele.cartBookId)}
+
                                     variant='outlined'
                                     color='white'   
                                     style={{backgroundColor:'#A03037',marginTop:'160px',marginLeft:'10px'}}

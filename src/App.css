@@ -400,19 +400,20 @@ h2#welcome-text {
     min-height: 699px;
 
 }
-.header{
+/* .header{
   display: flex;
   background-color: #88040fd8;
   justify-content: space-between;
   padding: 10px;
   position:fixed;
   flex-direction: row;
+  flex-wrap: nowrap;
   width: 100%;
   height: 100%;
   color: white;
   height:42px;
   margin-top:-80px;
-}
+} */
 
  }
 @media all and (max-width:768px)  
@@ -577,25 +578,3 @@ font-size: 20px;
 }
 
 
-/* responsiveness */
-/* @media  screen and (max-width:1700px) and (min-width: 1024px)
-{
-.Sign{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  position: relative;
-  right: -80px;
-  font-weight:bold;
-}
-.cart-wishlist-div{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  position: relative;
-  right: 1 gfds5px;
-  /* right:0px; */
-  /* margin-right: 15%;
-
-}
-} */ 
