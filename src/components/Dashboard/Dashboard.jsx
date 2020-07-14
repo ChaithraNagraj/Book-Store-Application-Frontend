@@ -129,29 +129,40 @@ class Dashboard extends Component {
   }
 
     
-    addToBagClickHandler = (clickedID) => {
+    addToBagClickHandler = (clickedId) => {
         let cartCount = this.state.cartCount;
         console.log("helllllll")
         console.log()
         let clickedid = this.state.clickedId;
-        clickedid.push(clickedID);
-        console.log(clickedID);
+        clickedid.push(clickedId);
+        console.log(clickedId);
         this.setState({
             cartCount: cartCount + 1,
             clickedId: [...clickedid],
             addToBagBtnText: "Added to bag"
         })
-        var cart = {
-            // Book_ID: clickedID,
-            bookId: clickedID,
+        const local = this.state.clickedId;
+        const x=localStorage.setItem('local1',JSON.stringify(local))  
+    console.log(local)
+    console.log(localStorage.getItem('local1'))
+           var cart = {
+            Book_ID: clickedId,
+            // bookId: clickedID.bookId,
         
             // SelectBookCount: bookAvailable
         }
         console.log(cart)
+var retrievedData = localStorage.getItem("cart");
+var test2 = JSON.parse(retrievedData)
+console.log(test2)
+
+console.log(localStorage.getItem('cart'))
+        if(localStorage.getItem('token')!=null){
         const response = AddCartRequestMethod(cart);
         response.then(res => {
             console.log(res.data);
         })
+    }
     }
     
     addToWishlistClickHandler = (clickedID) => {

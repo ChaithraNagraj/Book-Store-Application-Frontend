@@ -22,6 +22,8 @@ import {
 import OrderPlaced from  './OrderPlaced'
 import "./Abcart.css";
 import OrderSummary from  './OrderSummary';
+import { If, Then, ElseIf, Else } from 'react-if-elseif-else-render';
+
 
 export class Abcart extends Component {
         constructor(props) {
@@ -45,10 +47,11 @@ export class Abcart extends Component {
             city: "",
             address: "",
             landmark: "",
-            type: "",
+            addressType: "",
             email: "",
             locality:"",
-            incrementDecrementCount: 1
+            incrementDecrementCount: 1,
+            ABC:localStorage.getItem('token')
         }
     } 
     
@@ -59,6 +62,21 @@ export class Abcart extends Component {
            let path = {
                path: "cart"
            }
+
+           if (localStorage.getItem('token') === null &&
+           localStorage.getItem('local1') != null)
+                      {
+                        const abc = localStorage.getItem('local1');
+                        const xyz =JSON.parse(abc);
+             console.log(xyz)
+               this.setState({
+                //    cart:JSON.parse(localStorage.getItem('cart'))
+                //    cart:localStorage.getItem('cart')
+               ...this.state.cart=xyz
+
+               })
+               console.log(this.state.cart)
+           }else{
            getCartValuesRequestMethod(path).then((res) => {
              localStorage.setItem('cartCount',res.data.data.totalBooksInCart)
              const abc=localStorage.getItem('cartCount',res.data.data.totalBooksInCart)
@@ -67,9 +85,11 @@ export class Abcart extends Component {
                this.setState({
                    cartItem: res.data.data.totalBooksInCart
                })
+               console.log(this.state.cart)
            }).catch((err) => {
                console.log(err);
            });
+        }
         }
         nameHandler = (event) => {
         const name = event.target.value;
@@ -140,7 +160,7 @@ export class Abcart extends Component {
             pincode: this.state.pincode,
             city: this.state.city,
             landmark: this.state.landmark,
-            addressType: this.state.type,
+            addressType: this.state.addressType,
             locality: this.state.locality
         }
         //need to write method to send data to db
@@ -341,7 +361,10 @@ this.setState({
 
 
     render() {
-        
+        const ABC =localStorage.getItem('token');
+        console.log(ABC);
+      const npm =localStorage.getItem('local1');
+      console.log(npm)
         return (
            
                    <Container maxWidth="lg">            
@@ -350,7 +373,17 @@ this.setState({
                 <Grid item xs={10}>
                         <div  className="Customer-address-div" style={{marginTop:'78px'}}>    
                         <Typography id='mycart-title'variant="h4">My cart ({this.state.cartItem})</Typography>
-       
+     
+                      <If condition={ABC==''} >
+                        <Then>
+                                  {npm}    
+                               </Then>
+                            
+                             
+                         <Else>
+                                  <Then>
+            
+
                             {
                                 this.state.cart.map((ele) => {
                                     return (
@@ -430,6 +463,10 @@ this.setState({
                                 })
                                
                             }
+                            </Then>
+
+                            </Else>
+                     </If>
                             {
                                 this.state.quantity!=0 ? 
                                 <div className="continue-cart-div">

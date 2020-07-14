@@ -35,22 +35,7 @@ class Header extends Component {
 
       }
       
-  //     componentDidMount(){
-  //       console.log(this.state)
-  // if(this.state.loginId=== localStorage.getItem('loginId')){
-  //   this.setState({
-  //     login:true
-  //   })
-  // }
-  //   else{
-  //     this.setState({
-  //       login:false
-  //     })
-    
-  // }
-  
-  //     }
-      
+       
     showDropdownMenu(event) {
         event.preventDefault();
         this.setState({ displayMenu: true }, () => {

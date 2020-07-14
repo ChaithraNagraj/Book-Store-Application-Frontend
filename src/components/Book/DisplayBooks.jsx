@@ -64,11 +64,15 @@ class DisplayBooks extends Component {
                                         <CardActions>
 
                                         {
-                                            this.props.clickedId.includes(ele.bookId) ?
+                                            // this.props.clickedId.includes(ele.bookId) ?
+                                            this.props.clickedId.includes(ele) ?
+
                                             <Button
                                                 variant='outlined'
                                                 color='primary'
-                                                onClick={()=>{this.props.addToBagClickHandler(ele.bookId)}}
+                                                // onClick={()=>{this.props.addToBagClickHandler(ele.bookId)}}
+                                               onClick={()=>{this.props.addToBagClickHandler(ele)}}
+
                                                 // disabled={this.props.disableButton} 
 
 
@@ -80,7 +84,8 @@ class DisplayBooks extends Component {
                                                 variant='outlined'
                                                 color='white'
                                                 style={{backgroundColor:'#A03037'}}
-                                                onClick={()=>{this.props.addToBagClickHandler(ele.bookId)}}
+                                                // onClick={()=>{this.props.addToBagClickHandler(ele.bookId)}}
+                                                onClick={()=>{this.props.addToBagClickHandler(ele)}}
 
                                              > AddToBag</Button>
                                             
